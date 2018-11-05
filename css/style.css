@@ -1,0 +1,731 @@
+body {
+	font-family: Arial;
+	overflow-x: hidden;
+}
+
+.admin_action, .admin_action1, .emp
+{
+	background-color: #d9d8d7;
+	border: 1px solid #d9d8d7;
+	color:#3a3434;  
+    padding-top: 15px; 
+    padding-bottom:15px;
+    cursor: pointer; 
+    width:120px;
+    height:35px;
+    display: block; 
+    font-size: 13px;
+}
+
+.admin_action:hover, .admin_action1:hover{
+	color:black;
+}
+
+.emp:hover{
+	color:black;
+}
+
+.header{
+	height:100px;
+	display:block;
+	background-color:#3a3434;
+	color:white;
+	text-align:center;
+	
+}
+
+.content{
+	display:block;
+	background-color:#efeeed;
+    position: relative;
+    height:500px;
+    z-index: 1;
+
+}
+
+.footer{
+	height:20px;
+	display:block;
+	background-color:#3a3434;
+	color:white;
+	padding:25px;
+	z-index: 4;
+}
+
+h1{
+	font-size:20px;
+	position:absolute;
+	left:565px;
+	top:30px;
+}
+
+.left{
+	padding-top:10px;
+	padding-left:10px;
+	float:left;
+	background-color:#d9d8d7;
+	height:490px;
+	width:150px;
+}
+
+.right {
+	position:relative;
+	max-width: 100%
+	z-index: 2;
+    max-height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.table-heading{
+	font-weight: bold;
+	font-size:25px;
+}
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.login_form {
+	background-color: #283747;
+	position:relative;
+	left:400px;
+	top:100px;
+	width:500px;
+	border:1px solid black;
+	padding:30px;
+	padding-left: 60px;
+	padding-right: 5px;
+}
+
+.login_heading {
+	font-size: 16px;
+	text-decoration: none;
+	color:#efeeed;
+	position:relative;
+	left:130px;
+	top:10px;
+}
+
+
+.login_submit {
+	height:50px;
+	width:200px;
+	background-color: #d6dbdf;
+	height:50px;
+	width:200px;
+}
+
+.login_text{
+	width:400px ;
+    height:50px;
+}
+
+.login_submit:hover{
+	color:#efeeed;
+	background-color: green;
+
+}
+
+.login_reset {
+	height:50px;
+	width:200px;
+	background-color: #d6dbdf;
+}
+
+.login_reset:hover{
+	color:#efeeed;
+	background-color: red;
+
+}
+
+td {
+	padding:10px;
+}
+
+*{
+	margin:0;
+	padding:0;
+}
+
+.register{
+	border:1px solid #3a3434;
+	position:absolute;
+	top:45px;
+	left:1230px;
+	font-size:18px;
+	color:#efeeed;
+	text-decoration-line: none;
+	font-weight: bold;
+	padding:6px;
+}
+.register:hover{
+	color:#3a3434;
+	background-color: #efeeed;
+}
+
+.register_form {
+	
+	color:#efeeed;
+	position:relative;
+	left:400px;
+	top:105px;
+	width:450px;
+	padding:30px;
+}
+
+.register_body{
+	background-color: #283747  ;
+	color:#efeeed;
+	display: block;
+}
+.register_heading {
+	position:relative;
+	left:550px;
+	top:110px;
+	font-size: 45px;
+}
+.register_text, .register_select { 
+    width:500px !important;
+    height:50px;
+}
+
+.register_bttn {
+	height:50px;
+	width:250px;
+	background-color: #d6dbdf;
+
+
+}
+#register_bttn1:hover{
+	background-color: green;
+	color:#efeeed;
+}
+#register_bttn2:hover{
+	background-color: red;
+	color:#efeeed;
+}
+.sft{
+	color: #aeb6bf;
+	font-size:30px;
+	
+	position: relative;
+	top:5px;
+	left:530px;
+}
+.dropbtn {
+    background-color:#3a3434;
+    padding: 16px;
+    position: relative;
+    left:630px;
+    font-size: 16px;
+    border: none;
+    width:70px;
+}
+
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: relative;
+    left:620px;
+    background-color: #f1f1f1;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+.dropdown-content a:hover {
+	background-color: #3a3434;
+	color:#efeeed;
+}
+
+.dropdown-content a {
+    color: #3a3434;
+    padding: 10px 13px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+	color:#efeeed;
+}
+
+.username{
+  font-size:18px;
+  color:#efeeed;
+  text-decoration: none;
+}
+
+.logout {
+	position:relative;
+	top:300px;
+	left:300px;
+	color:white;
+}
+.client_form, .hr_form, .training_form, .intern_form, #view_mod_table{
+	position:relative;
+	top:10px;
+	left:50px;
+	min-width: 500px;
+	width:500px;
+	padding-left: 70px;
+	z-index: 3;
+	padding-bottom: 10px;
+}
+input[type='number'], input[type='date'], input[type='time'], textarea
+{
+	width:240px;
+}
+
+#emp6 {
+	font-size: 14px;
+	margin-left: 0px !important;
+}
+
+.client_hd, .hr_heading, .training_heading, .intern_hd, .attnd_hd{
+	position:relative;
+	top:0px;
+	left:100px;
+	font-size: 18px;
+	color:#283747;
+}
+.bd_form {
+	position:relative;
+	top:10px;
+	left:50px;
+	min-width: 500px;
+	width:500px;
+	padding-left: 70px;
+	z-index: 3;
+	padding-bottom: 10px;
+}
+
+.form_btn{
+	width:100px;
+	height:38px;
+}
+
+#form_btn1, #form_btn1_10{
+	position:relative;
+	left:140px;
+}
+
+#form_btn2, #form_btn2_10{
+	position:relative;
+	left:150px;
+}
+.soft_details, .intern_details, #add2, #add3{
+	width:900px;
+}
+.soft_details td, .intern_details td{
+    width:100px;
+}
+
+#add_more {
+	position: relative;
+	left:300px;
+}
+
+#search_td {
+	text-decoration:none; 
+	color:#3a3434;
+}
+#search_td:hover {
+	opacity: 0.5;
+}
+.searchbar {
+	display: none;
+	z-index: 2;
+	position: relative;
+    overflow: hidden;
+    background-color:#5c5353;
+    height:60px;
+    max-width: 100%
+
+}
+.search_form {
+	width: 860px;
+}
+ .search_button{
+ 	float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 9px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    width:50px;
+    height:40px;
+    display: inline;
+ }
+
+ .close_btn {
+ 	display: inline;
+ 	float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 10px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    width:50px;
+    height:50px;
+ }
+ .searchbar button:hover {
+  background: #ccc;
+}
+.searchbar input[type=text] {
+	visibility: inherit;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+    height:40px;
+    width:600px;
+    position: relative;
+    left:200px;
+}
+.ds_class{
+	display:none;
+}
+
+.de_class{
+	display:none;
+}
+
+#excel_files {
+	display:none;
+}
+
+#homepage {
+	position: relative;
+	top:20px;
+	left:40px;
+	height: 500px;
+}
+.home_btn {
+	width:200px;
+	cursor: pointer;
+	margin-left: 200px;
+	text-decoration: none;
+	color:black;
+}
+
+.attnd_table td, th{
+	width:250px;
+	text-align: center;
+}
+#date_today {
+	margin-left: 30px;
+}
+#date_today_label{
+	margin-left: 120px;
+}
+#view_attnd {
+    background-color: #3a3434;
+    color: white;
+    width: 70px;
+    height:35px;
+    border-radius: 7px;
+    border: 1px solid #3a3434;
+    margin-left: 170px;
+    cursor: pointer;
+}
+
+#view_attnd:hover
+{
+	transform: scale(1.1);
+}
+#user_name {
+	width:100px !important;
+}
+.attnd_btn{
+    background-color: #3a3434;
+    color: white;
+    width: 70px;
+    height:35px;
+    border-radius: 7px;
+    border: 1px solid #3a3434;
+    position: relative;
+   
+   cursor: pointer;
+}
+.attnd_btn:hover {
+	transform: scale(1.1);
+}
+#attnd_btn1
+{
+	left:770px;
+}
+#attnd_btn2{
+    
+   left:780px;
+}
+ 
+ .header_links {
+ 	color:white;
+ 	position:absolute;
+ 	top:75px;
+ 	cursor: pointer;
+ 	text-decoration: none;
+ 	font-size: 14px;
+ }
+ #homepage_link{
+  	left:20px;
+}
+
+.user_rows td
+{
+	width:175px;
+}
+
+.user_rows input[type=time]
+{
+	width:90px;
+}
+
+ #bank {
+ 	left:80px;
+ }
+
+ #invoice {
+ 	left:135px;
+ }
+
+ #help {
+ 	left:215px;
+ }
+
+#view1 , #view1_in{
+ 	position: relative;
+ 	left:100px;
+ 	top:50px;
+ 	display:inline-block;
+
+ }
+
+#view2 {
+	position: relative;
+ 	top:50px;
+ 	left:170px;
+	display:inline-block;
+}
+
+#show_clients, #show_products, #show_suppliers, #show_interns {
+	position: relative;
+ 	top:100px;
+}
+
+#view_page , #view_intern_page{
+	height: 500px;
+}
+ 
+#show_clients td,th , #show_products td,th , #show_suppliers td, th , #show_interns td, th{
+	width:100px;
+	height:50px !important;
+	text-align: center;
+	
+}
+
+#show_products {
+	margin-left: 10px;
+}
+
+#show_suppliers {
+	margin-left: 30px;
+}
+
+#show_clients tr, #show_interns tr , #show_products tr , #show_suppliers tr{
+	border: 1px solid black;
+
+}
+#show_clients tr:nth-child(even), #show_interns tr:nth-child(even) , #show_products tr:nth-child(even) , #show_suppliers tr:nth-child(even)  {
+    background-color: #dddddd;
+
+}
+
+
+#last_td1, #last_td2, #last_td3, #last_td4{
+	display: flex;
+	justify-content: space-around;
+	align-content: space-between;
+	border: 1px solid #dddddd;
+}
+
+#edit img{
+	width:25px;
+	height:25px;
+	margin-top: 13px;
+}
+
+#edit img:hover{
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+#delete img:hover{
+	opacity: 0.5;
+	cursor:pointer;
+}
+
+#delete img {
+	width:25px;
+	height:25px;
+	margin-top: 13px;
+}
+
+#bank_details {
+	font-size: 20px;
+	color:#3a3434;
+	position: relative;
+	left:250px;
+}
+ #bank_details3 {
+    font-size:14px;
+    position: relative;
+    top:50px;
+    left:200px;
+    line-height: 1px;
+	height: 600px;	
+}
+
+#bank_details3 td
+{
+	width:200px;
+}
+
+#username_textfield{
+	text-align: center;
+	border-collapse: collapse;
+}
+.bank_details_btn
+{
+	background-color: #3a3434;
+    color: white;
+    width: 130px;
+    height:35px;
+    border-radius: 7px;
+    border: 1px solid #3a3434;
+    cursor: pointer;
+}
+.bank_details_btn:hover
+{
+	transform:scale(1.1);
+}
+#save_bank_details{
+	display: none;
+}
+.config_table
+{
+	width:900px;
+}
+.config_table td
+{
+    width:100px;
+
+}
+#alice_table
+{
+    display:none;
+    width:900px;
+}
+#alice_table td
+{
+	width:260px;
+}
+#liberty_table td
+{
+	width:300px;
+}
+#liberty_table
+{
+	display:none;
+	width:900px;
+}
+#invoice_div
+{
+	margin-top: 20px;
+}
+#performa
+{
+	margin-left: 100px;
+}
+#invoice_r
+{
+	margin-left: 20px;
+}
+#p_invoice_table
+{
+	display: none;
+}
+
+#setting_div 
+{
+	height: 100px;
+	margin-top:10%;
+	margin-left:30%;
+}
+
+#view_full_details1, #view_full_details2, #view_full_details3 
+{
+    background-color: #3a3434;
+    color: white;
+    width: 100px;
+    height:35px;
+    border-radius: 7px;
+    border: 1px solid #3a3434;
+    cursor: pointer;
+}
+#view_full_details1:hover, #view_full_details2:hover, #view_full_details3:hover
+{
+	transform:scale(1.1);
+}
+#view_mod_table
+{
+	width:650px;
+}
+#view_mod_table td{
+    width:300px;
+}
+
+
