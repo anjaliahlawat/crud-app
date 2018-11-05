@@ -43,7 +43,7 @@
                  echo "<option value='".$row['mod_id']."'>".$row['module_name']."</option>";                         
              }
              echo "</select>"; 
-            
+
       ?> 
         <table id="view_mod_table">             
           <tr>
@@ -105,27 +105,27 @@
       ?>
               <tr>
                   <td>Modules Purchased:</td>
-                  <td><input type='text' class='amc_field' name='module_name' value=<?php $row['module_name']?> readonly/></td>
+                  <td><input type='text' class='amc_field' name='module_name' value="<?php $row['module_name']?>" readonly/></td>
               </tr>
               <tr>
                   <td>Invoice No.:</td>
-                  <td><input type='text' class='amc_field' name='invoice_no' value=<?php $row['invoice_no']?> readonly/></td>
+                  <td><input type='text' class='amc_field' name='invoice_no' value="<?php $row['invoice_no']?>" readonly/></td>
               </tr>
               <tr>
                   <td>Invoice Date:</td>
-                  <td><input type='text' class='amc_field' name='invoice_date' value=<?php $row['invoice_date']?> readonly/></td>
+                  <td><input type='text' class='amc_field' name='invoice_date' value="<?php $row['invoice_date']?>" readonly/></td>
               </tr>
               <tr>
                   <td>AMC Period:</td>
-                  <td><input type='text' class='amc_field' name='amc_period' value=<?php $row['amc_period']?> readonly/></td>
+                  <td><input type='text' class='amc_field' name='amc_period' value="<?php $row['amc_period']?>" readonly/></td>
               </tr>
               <tr>
                   <td>Percent of AMC Given:</td>
-                  <td><input type='text' class='amc_field' name='per_of_amc_given' value=<?php $row['per_of_amc_given']?> readonly/></td>
+                  <td><input type='text' class='amc_field' name='per_of_amc_given' value="<?php $row['per_of_amc_given']?>" readonly/></td>
               </tr>
               <tr>
                   <td>Remarks:</td>
-                  <td><input type='text' class='amc_field' name='remarks' value=<?php $row['remarks']?> readonly/></td>
+                  <td><input type='text' class='amc_field' name='remarks' value="<?php $row['remarks']?>" readonly/></td>
               </tr>
     <?php
                   
