@@ -32,8 +32,8 @@
     <td><select class="register_select" name="select_type">
            <option value="" disabled selected>Select your type</option>
            <option  name="director" value="director">Director</option>
-    	   <option  name="admin" value="admin">Admin</option>
-    	   <option  name="employee" value="employee">Employee</option>
+    	     <option  name="admin" value="admin">Admin</option>
+    	     <option  name="employee" value="employee">Employee</option>
 
     </select></td>
     </tr>

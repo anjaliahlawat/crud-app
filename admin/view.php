@@ -6,10 +6,9 @@
     <input class="Afield" id="view1" type="text" onkeyup="myFunction()" name="name" placeholder="type name here"/>
     
     <select class="view_select" id="view2" name="view_select_type">
-           <option  name="clients" value="clients">Clients</option>
+         <option  name="clients" value="clients">Clients</option>
     	   <option  name="suppliers" value="suppliers">Suppliers</option>
     	   <option  name="products" value="products">Products</option>
-
     </select>
 <form method="post" action="home.php">
 <table id="show_clients">
@@ -52,8 +51,8 @@
                  echo "<td>" . $row['product_purchased'] . "</td>";
                  echo "<td>" . $row['records'] . "</td>";
                  echo "<td>" . $row['users'] . "</td>";
-                 echo "<td>" . $row['data_service'] . "</td>";
-                 echo "<td>" . $row['data_entry'] . "</td>";
+                 echo "<td>" . $row['data_service'] . "<input type='hidden' value=". $row['data_service'] ." name ='data_service[]'/></td>";
+                 echo "<td>" . $row['data_entry'] . "<input type='hidden' value=". $row['data_entry'] ." name ='data_entry[]'/></td>";
                  echo "<td>" . $row['status'] . "</td>";
                  echo "<td id='last_td1'><input type='submit' class='form_btn' id='view_full_details1' name='view_full_details1[".$counter."]' value='View Details'></td>";
                  echo "</tr>"; 

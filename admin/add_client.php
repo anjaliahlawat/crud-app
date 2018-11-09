@@ -59,9 +59,9 @@
           </tr>
           <tr class="ds_class" id="ds_class4">
             <td style="width:190px;"><label> Status:</label></td>
-            <td style="width:250px;"><input type="radio"  name="ds_status" value="yet to complete"> Yet to complete<br/>
-                <input type="radio" name="ds_status" value="in_process"> In process<br/>
-                <input type="radio" name="ds_status" value="completed"> Completed</td>
+            <td style="width:250px;"><input type="radio"  name="ds_status" value="Yet to complete"> Yet to complete<br/>
+                <input type="radio" name="ds_status" value="In process"> In process<br/>
+                <input type="radio" name="ds_status" value="Completed"> Completed</td>
           </tr>
           <tr class="ds_class" id="ds_class5">
             <td style="width:190px;"><label> Remarks</label></td>

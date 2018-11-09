@@ -727,5 +727,17 @@ input[type='number'], input[type='date'], input[type='time'], textarea
 #view_mod_table td{
     width:300px;
 }
-
-
+#show_full_details
+{
+	display: flex;
+	justify-content: space-around;
+}
+.btn_for_table
+{
+	width:200px;
+	height:35px;
+}
+.view_full_details_div
+{
+	margin-top: 40px;
+}

@@ -135,10 +135,32 @@ $(document).ready(function(){
           $("#show_clients").css("display", "none");
           $("#view1").css("display", "none");
           $("#view2").css("display", "none");
-          $("view_mod_table").css("display", "block");
       });
-
-      
+      $("select.btn_for_table").change(function(){
+        let selectedtype1 = $( "#table_choice" ).val(); 
+        
+        if (selectedtype1 =='modules')
+        {
+           $("#mod_table").css("display", "block");
+           $("#amc_table").css("display", "none");
+           $("#rec_table").css("display", "none");
+           $("#show_full_details").css("display", "none");
+        }
+        else if(selectedtype1 =='amc')
+        {
+           $("#mod_table").css("display", "none");
+           $("#amc_table").css("display", "block");
+           $("#rec_table").css("display", "none");
+           $("#show_full_details").css("display", "none"); 
+        }
+        else if(selectedtype1 =='records')
+        {
+           $("#rec_table").css("display", "block");
+           $("#mod_table").css("display", "none");
+           $("#amc_table").css("display", "none");
+           $("#show_full_details").css("display", "none"); 
+        }
+      });  
 
   });
 

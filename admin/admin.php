@@ -86,9 +86,18 @@ elseif(isset($_POST['view_full_details1']))
    {
        $client_name= $_POST['client_name'][$id];
        $software_purchased = $_POST['software_purchased'][$id];
+       $data_service = $_POST['data_service'][$id];
+       $data_entry = $_POST['data_entry'][$id];
       include_once "admin/view_full_details.php";
    } 
    
+}
+elseif(isset($_POST['sub_mod_name']))
+{
+    $mod_id = $_POST['mod_id'];
+    $client_name= $_POST['client_name'];
+    $software_purchased = $_POST['software_purchased'];
+    include_once "admin/view_tables.php";
 }
 else 
 {
