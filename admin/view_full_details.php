@@ -269,50 +269,287 @@
           if($software_purchased=='alice')
           {
              $query1 = "SELECT config_id, installation_date, version, no_of_nodes, os, system, installed_memory, os_type, cmp_name, full_cmp_name, domain, workgroup, ip, webserver, url_web_opac, opac_loc, db_loc FROM softlinkasia.alice_system_details where client_id='$client_id'";
-          }                    
-          $result1 = mysqli_query($conn, $query1);
-          $resultcheck1 = mysqli_num_rows($result1);
-          if ($resultcheck1 < 1)
-          {
-             echo "<p>No details available!</p>";
-          }
-          else
-          {
-              echo "<tr>";
-              echo "<th>S.No </th>";
-              echo "<th>Records </th>";
-              echo "<th>Installation Date</th>";
-              echo "<th>Version </th>";
-              echo "<th>No. of Nodes</th>";
-              echo "<th>OS</th>";
-              echo "<th>System(Processor)</th>";
-              echo "<th>Installed Memory</th>";
-              echo "<th>OS Type</th>";
-              echo "<th>Computer Name</th>";
-              echo "<th>Full Computer Name</th>";
-              echo "<th>Domain</th>";
-              echo "<th>Workgroup</th>";
-              echo "<th>IP</th>";
-              echo "<th>Web Server</th>";
-              echo "<th>URL Web OPAC</th>";
-              echo "<th>WEB OPAC Location</th>";
-              echo "<th>OASIS+DB Location</th>";
-              echo "</tr>";
-              $count = 1;             
-              while($row1=mysqli_fetch_assoc($result1))
+                              
+             $result1 = mysqli_query($conn, $query1);
+             $resultcheck1 = mysqli_num_rows($result1);
+             if ($resultcheck1 < 1)
+             {
+                echo "<p>No details available!</p>";
+             }
+             else
+             {
+                $row=mysqli_fetch_assoc($result1);
+       ?>
+                <tr>
+                   <td>Installation Date::</td>
+                   <td><input type='text' class='config_table_textfields' name='installation_date' value="<?php echo $row['installation_date']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>Version:</td>
+                   <td><input type='text' class='config_table_textfields' name='version' value="<?php echo $row['version']?>" readonly/></td>
+                </tr>
+                <tr>
+                    <td>No. of Nodes:</td>
+                    <td><input type='text' class='config_table_textfields' name='no_of_nodes' value="<?php echo $row['no_of_nodes']?>" readonly/></td>
+                </tr>
+                <tr>
+                    <td>OS:</td>
+                    <td><input type='text' class='config_table_textfields' name='os' value="<?php echo $row['os']?>" readonly/></td>
+                </tr>
+                <tr>
+                    <td>System(Processor):</td>
+                    <td><input type='text' class='config_table_textfields' name='system' value="<?php echo $row['system']?>" readonly/></td>
+                </tr>
+                <tr>
+                    <td>Installed Memory:</td>
+                    <td><input type='text' class='config_table_textfields' name='installed_memory' value="<?php echo $row['installed_memory']?>" readonly/></td>
+                </tr>
+                <tr>
+                    <td>OS Type:</td>
+                    <td><input type='text' class='config_table_textfields' name='os_type' value="<?php echo $row['os_type']?>" readonly/></td>
+                </tr>
+                <tr>
+                    <td>Computer Name:</td>
+                    <td><input type='text' class='config_table_textfields' name='cmp_name' value="<?php echo $row['cmp_name']?>" readonly/></td>
+                </tr>
+                <tr>
+                    <td>Full Computer Name:</td>
+                    <td><input type='text' class='config_table_textfields' name='full_cmp_name' value="<?php echo $row['full_cmp_name']?>" readonly/></td>
+                </tr>
+                <tr>
+                    <td>Domain:</td>
+                    <td><input type='text' class='config_table_textfields' name='domain' value="<?php echo $row['domain']?>" readonly/></td>
+                </tr>
+                <tr>
+                    <td>Workgroup:</td>
+                    <td><input type='text' class='config_table_textfields' name='workgroup' value="<?php echo $row['workgroup']?>" readonly/></td>
+                </tr>
+                <tr>
+                    <td>IP(internal/external):</td>
+                    <td><input type='text' class='config_table_textfields' name='ip' value="<?php echo $row['ip']?>" readonly/></td>
+                </tr>
+                <tr>
+                    <td>Web Server:</td>
+                    <td><input type='text' class='config_table_textfields' name='webserver' value="<?php echo $row['webserver']?>" readonly/></td>
+                </tr>
+                <tr>
+                    <td>URL Web OPAC:</td>
+                    <td><input type='text' class='config_table_textfields' name='url_web_opac' value="<?php echo $row['url_web_opac']?>" readonly/></td>
+                </tr>
+                <tr>
+                    <td>WEB OPAC Location:</td>
+                    <td><input type='text' class='config_table_textfields' name='opac_loc' value="<?php echo $row['opac_loc']?>" readonly/></td>
+                </tr>
+                <tr>
+                    <td>OASIS+DB Location:</td>
+                    <td><input type='text' class='config_table_textfields' name='db_loc' value="<?php echo $row['db_loc']?>" readonly/></td>
+                </tr>
+           <?php
+               $query11="SELECT hd_id, drive_name_type, free_space, total_space FROM softlinkasia.hard_disk_alice where client_id='$client_id'";
+               $result11 = mysqli_query($conn, $query11);
+               $resultcheck11 = mysqli_num_rows($result11);
+               if ($resultcheck11 > 0)
+               {
+                   $row11=mysqli_fetch_assoc($result11);
+                ?>
+                  <tr>
+                     <td><b>Hard Disk</b></td>
+                  </tr>
+                  <tr>
+                     <td>Drive Name :</td>
+                     <td><input type='text' class='config_table_textfields' name='drive_name_type' value="<?php echo $row11['drive_name_type']?>" readonly/></td>
+                  </tr>
+                  <tr>
+                     <td>Free Space :</td>
+                     <td><input type='text' class='config_table_textfields' name='free_space' value="<?php echo $row11['free_space']?>" readonly/></td>
+                  </tr>
+                  <tr>
+                     <td>Total Space :</td>
+                     <td><input type='text' class='config_table_textfields' name='total_space' value="<?php echo $row11['total_space']?>" readonly/></td>
+                  </tr>
+                <?php
+               }
+               $query12 = "SELECT ws_id, os, system, installed_memory, system_type, remarks FROM softlinkasia.workstation WHERE client_id='$client_id'";
+               $result12 = mysqli_query($conn, $query12);
+               $resultcheck12 = mysqli_num_rows($result12);
+               if ($resultcheck12 > 0)
+               {
+                  $row12=mysqli_fetch_assoc($result12);
+                  ?>
+                  <tr>
+                     <td><b>Workstations</b></td>
+                  </tr>
+                  <tr>
+                     <td>OS:</td>
+                     <td><input type='text' class='config_table_textfields' name='client_os' value="<?php echo $row12['os']?>" readonly/></td>
+                  </tr>
+                  <tr>
+                     <td>System :</td>
+                     <td><input type='text' class='config_table_textfields' name='client_system' value="<?php echo $row12['system']?>" readonly/></td>
+                  </tr>
+                  <tr>
+                     <td>Installed Memory:</td>
+                     <td><input type='text' class='config_table_textfields' name='client_memory' value="<?php echo $row12['installed_memory']?>" readonly/></td>
+                  </tr>
+                  <tr>
+                     <td>System Type:</td>
+                     <td><input type='text' class='config_table_textfields' name='client_system_type' value="<?php echo $row12['system_type']?>" readonly/></td>
+                  </tr>
+                  <tr>
+                     <td>Remarks:</td>
+                     <td><input type='text' class='config_table_textfields' name='remarks' value="<?php echo $row12['remarks']?>" readonly/></td>
+                  </tr>
+                  <?php
+               }   
+           }
+        }   
+           else if($software_purchased=='liberty')
+           {
+              $query1 = "SELECT config_id, installation_date, version, db_name, os, system, installed_memory, system_type, harddisk, cmp_name, full_cmp_name, workgroup, ip_internal, ip_external, webserver, url_report_server_int, url_report_server_ext, url_liberty_int, url_liberty_ext, db_loc, server_loc, c_used, c_available, d_used, d_available FROM softlinkasia.liberty_system_details where client_id='$client_id'";
+                              
+              $result1 = mysqli_query($conn, $query1);
+              $resultcheck1 = mysqli_num_rows($result1);
+              if ($resultcheck1 < 1)
               {
-                  echo "<tr>";
-                  echo "<td>" . $count . "</td>";
-                  echo "<td>" . $row1['installation_date'] . "</td>";
-                  echo "<td>" . $row1['version'] . "</td>";
-                  echo "<td>" . $row1['no_of_nodes'] . "</td>";
-                  echo "<td>" . $row1['os'] . "</td>";
-                  echo "<td>" . $row1['system'] . "</td>";
-                  echo "<td>" . $row1['installed_memory'] . "</td>";
-                  echo "</tr>";
-                  $count++;
-              }  
-          } 
+                 echo "<p>No details available!</p>";
+              }
+              else
+              {
+                 $row=mysqli_fetch_assoc($result1);
+        ?>
+                 <tr>
+                   <td>Installation Date:</td>
+                   <td><input type='text' class='config_table_textfields' name='installation_date' value="<?php echo $row['installation_date']?>" readonly/></td>
+                 </tr>
+                 <tr>
+                   <td>Version:</td>
+                   <td><input type='text' class='config_table_textfields' name='version' value="<?php echo $row['version']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>Database Name:</td>
+                   <td><input type='text' class='config_table_textfields' name='db_name' value="<?php echo $row['db_name']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>OS:</td>
+                   <td><input type='text' class='config_table_textfields' name='os' value="<?php echo $row['os']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>System:</td>
+                   <td><input type='text' class='config_table_textfields' name='system' value="<?php echo $row['system']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>Installed memory:</td>
+                   <td><input type='text' class='config_table_textfields' name='installed_memory' value="<?php echo $row['installed_memory']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>System Type:</td>
+                   <td><input type='text' class='config_table_textfields' name='system_type' value="<?php echo $row['system_type']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>Hard Disk:</td>
+                   <td><input type='text' class='config_table_textfields' name='harddisk' value="<?php echo $row['harddisk']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>Computer Name:</td>
+                   <td><input type='text' class='config_table_textfields' name='cmp_name' value="<?php echo $row['cmp_name']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>Full Computer Name:</td>
+                   <td><input type='text' class='config_table_textfields' name='full_cmp_name' value="<?php echo $row['full_cmp_name']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>Workgroup:</td>
+                   <td><input type='text' class='config_table_textfields' name='workgroup' value="<?php echo $row['workgroup']?>" readonly/></td>
+                </tr> 
+                <tr>
+                   <td>IP (internal):</td>
+                   <td><input type='text' class='config_table_textfields' name='ip_internal' value="<?php echo $row['ip_internal']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>IP (external):</td>
+                   <td><input type='text' class='config_table_textfields' name='ip_external' value="<?php echo $row['ip_external']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>Web Server:</td>
+                   <td><input type='text' class='config_table_textfields' name='webserver' value="<?php echo $row['webserver']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>URL Report Server (external):</td>
+                   <td><input type='text' class='config_table_textfields' name='url_liberty_ext' value="<?php echo $row['url_report_server_ext']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>URL Report Server (internal):</td>
+                   <td><input type='text' class='config_table_textfields' name='url_liberty_int' value="<?php echo $row['url_report_server_int']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>URL Liberty (external):</td>
+                   <td><input type='text' class='config_table_textfields' name='url_liberty_ext' value="<?php echo $row['url_liberty_ext']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>URL Liberty (internal):</td>
+                   <td><input type='text' class='config_table_textfields' name='url_liberty_int' value="<?php echo $row['url_liberty_int']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>Database Location:</td>
+                   <td><input type='text' class='config_table_textfields' name='db_loc' value="<?php echo $row['db_loc']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>Server Location:</td>
+                   <td><input type='text' class='config_table_textfields' name='server_loc' value="<?php echo $row['server_loc']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>C: Used:</td>
+                   <td><input type='text' class='config_table_textfields' name='c_used' value="<?php echo $row['c_used']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>C: Available:</td>
+                   <td><input type='text' class='config_table_textfields' name='c_available' value="<?php echo $row['c_available']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>D: Used:</td>
+                   <td><input type='text' class='config_table_textfields' name='d_used' value="<?php echo $row['d_used']?>" readonly/></td>
+                </tr>
+                <tr>
+                   <td>D: Available:</td>
+                   <td><input type='text' class='config_table_textfields' name='d_available' value="<?php echo $row['d_available']?>" readonly/></td>
+                </tr>
+          <?php                 
+              }
+            }
+        
+           
       ?>
+     </table>
+     <table id="con_table" style="display:none;">
+         <?php
+             $query1 = "SELECT con_id, con_name, phone_no, designation FROM softlinkasia.contact_details WHERE client_id='$client_id'";
+             $result1 = mysqli_query($conn, $query1);
+             $resultcheck1 = mysqli_num_rows($result1);
+             if ($resultcheck1 < 1)
+             {
+                echo "<p>No contact details available!</p>";
+             }
+             else
+             {
+                echo "<tr>";
+                echo "<th>S.No </th>";
+                echo "<th>Contact Person </th>";
+                echo "<th>Phone Number</th>";
+                echo "<th>Designation</th>";
+                echo "</tr>";
+                $count = 1;             
+                while($row1=mysqli_fetch_assoc($result1))
+                {
+                    echo "<tr>";
+                    echo "<td>" . $count . "</td>";
+                    echo "<td>" . $row1['con_name'] . "</td>";
+                    echo "<td>" . $row1['phone_no'] . "</td>";
+                    echo "<td>" . $row1['designation'] . "</td>";
+                    echo "</tr>";
+                    $count++;
+                }
+             }
+
+         ?>
      </table>     
 </div>   

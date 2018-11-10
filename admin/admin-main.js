@@ -144,6 +144,8 @@ $(document).ready(function(){
            $("#mod_table").css("display", "block");
            $("#amc_table").css("display", "none");
            $("#rec_table").css("display", "none");
+           $("#config_table").css("display", "none");
+           $("#con_table").css("display", "none");
            $("#show_full_details").css("display", "none");
         }
         else if(selectedtype1 =='amc')
@@ -151,11 +153,33 @@ $(document).ready(function(){
            $("#mod_table").css("display", "none");
            $("#amc_table").css("display", "block");
            $("#rec_table").css("display", "none");
+           $("#config_table").css("display", "none");
+           $("#con_table").css("display", "none");
            $("#show_full_details").css("display", "none"); 
         }
         else if(selectedtype1 =='records')
         {
            $("#rec_table").css("display", "block");
+           $("#mod_table").css("display", "none");
+           $("#amc_table").css("display", "none");
+           $("#config_table").css("display", "none");
+           $("#con_table").css("display", "none");
+           $("#show_full_details").css("display", "none"); 
+        }
+        else if(selectedtype1 =='config')
+        {
+           $("#config_table").css("display", "block");
+           $("#rec_table").css("display", "none");
+           $("#mod_table").css("display", "none");
+           $("#amc_table").css("display", "none");
+           $("#con_table").css("display", "none");
+           $("#show_full_details").css("display", "none"); 
+        }
+        else if(selectedtype1 =='contact')
+        {
+           $("#con_table").css("display", "block");
+           $("#config_table").css("display", "none");
+           $("#rec_table").css("display", "none");
            $("#mod_table").css("display", "none");
            $("#amc_table").css("display", "none");
            $("#show_full_details").css("display", "none"); 
