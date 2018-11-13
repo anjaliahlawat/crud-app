@@ -850,6 +850,36 @@ else if(isset($_POST['submit_form9']))
     }
 }
 
+//edit main details of client
+else if(isset($_POST['main_table_btn_save']))
+{
+    $address = $_POST['address'];
+    $product_purchased = $_POST['product_purchased'];
+    $users = $_POST['users'];
+    $s1 = (string)$users;
+    $status = $_POST['status'];
+    $client_id= $_POST['client_id'];
+    if(empty($s1) || empty($status) || empty($address))
+    {
+        header("Location:http://localhost/CRUD/home.php?form=empty");
+        exit();
+    }
+    else
+    {
+        $query="UPDATE softlinkasia.main set address='$address', product_purchased='$product_purchased', users= '$users', status='$status' WHERE client_id='$client_id'";
+        if(mysqli_query($conn, $query))
+        {
+            header("Location:http://localhost/CRUD/home.php?form=success");
+            exit();
+        } 
+        else 
+        {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+        
+    }
+}
+
 function test_input($data)
 {
    $data = trim($data);

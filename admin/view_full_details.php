@@ -1,7 +1,7 @@
-<label id="form_hd1">Client: <?php echo $client_name ?></label>
-<label id="form_hd2"> Software Purchased: <?php echo $software_purchased ?></label>
+<label id="form_hd1">Client: <?php echo $client_name; ?></label>
+<label id="form_hd2"> Software Purchased: <?php echo $software_purchased; ?></label>
 <div id = "show_full_details" class="view_full_details_div">
-<?php
+ <?php
 
     $query0 = "SELECT client_id, client_name, address, software_purchased, product_purchased, records, users, data_service, data_entry, status FROM softlinkasia.main where client_name='$client_name' AND software_purchased='$software_purchased'";
     if (mysqli_query($conn, $query0))
@@ -27,19 +27,22 @@
 
   
   <div id="view_div">
-  <form action='home.php' method='post'>
+  <form action='admin/backend_logic.php' method='post'>
    
    <input type='hidden' value='<?php echo $client_name ?>' name='client_name'/>
-
+   <input type='hidden' value='<?php echo $client_id ?>' name='client_id'/>
    <input type='hidden' value='<?php echo $software_purchased ?>' name='software_purchased'/><br/><br/>
    <table id="main_table">
         <tr>
             <td>Address:</td>
-            <td><input type='text' class='main_table_textfields' name='address_new' value="<?php echo $row['address']?>" readonly/></td>
+            <td><input type='text' class='main_table_textfields' name='address' value="<?php echo $row['address']?>" readonly/></td>
+            <td><input type='button' class='main_table_btn' id='main_table_btn_edit' value='Edit'/>
+            <input type='submit' class='main_table_btn' id='main_table_btn_save' name='main_table_btn_save' value='Save'/></td>
         </tr>
         <tr>
             <td>Product Purchased:</td>
-            <td><input type='text' class='main_table_textfields' name='product_purchased_new' value="<?php echo $row['product_purchased']?>" readonly/></td>
+            <td><input type='text' class='main_table_textfields' name='product_purchased' value="<?php echo $row['product_purchased']?>" readonly/></td>
+            <td><input type='button' class='main_table_btn' id='main_table_btn_del' name='main_table_btn_del' value='Delete'/>
         </tr>
         <tr>
             <td>Records:</td>
@@ -47,92 +50,27 @@
         </tr>
         <tr>
             <td>Users:</td>
-            <td><input type='text' class='main_table_textfields' name='users_new' value="<?php echo $row['users']?>" readonly/></td>
+            <td><input type='number' class='main_table_textfields' name='users' value="<?php echo $row['users']?>" readonly/></td>
         </tr>
-        <?php
-            if($data_service=='no')
-            {
-                echo "<tr>";
-                echo "<td>Data Service</td>";
-                echo "<td><input type='text' class='main_table_textfields' name='users_new' value='".$data_service."' readonly/></td>";
-                echo "</tr>";
-            }
-            else
-            {
-                $query_ds= "SELECT type, start_date, end_date, d_status, remarks, no_of_excel_files_rnc FROM softlinkasia.data_service WHERE client_id='$client_id'";
-                $result_ds = mysqli_query($conn, $query_ds);
-                $row_ds = mysqli_fetch_assoc($result_ds);
-                echo "<tr>";
-                echo "<td>Data Service Type:</td>";
-                echo "<td><input type='text' class='main_table_textfields' name='ds_type' value=".$row_ds['type']." readonly/></td>";
-                echo "</tr>";
-                echo "<tr>";
-                echo "<td>Start Date:</td>";
-                echo "<td><input type='text' class='main_table_textfields' name='start_date' value=".$row_ds['start_date']." readonly/></td>";
-                echo "</tr>";
-                echo "<tr>";
-                echo "<td>End Date:</td>";
-                echo "<td><input type='text' class='main_table_textfields' name='end_date' value=".$row_ds['end_date']." readonly/></td>";
-                echo "</tr>";
-                echo "<tr>";
-                echo "<td>Status</td>";
-                echo "<td><input type='text' class='main_table_textfields' name='d_status' value=".$row_ds['d_status']." readonly/></td>";
-                echo "</tr>";
-                echo "<tr>";
-                echo "<td>Remarks</td>";
-                echo "<td><input type='text' class='main_table_textfields' name='remarks' value=".$row_ds['remarks']." readonly/></td>";
-                echo "</tr>";
-                if($row_ds['type'] == 'excel')
-                {
-                    echo "<tr>";
-                    echo "<td>No. of Excel Files Recovered</td>";
-                    echo "<td><input type='text' class='main_table_textfields' name='no_of_excel_files_rnc' value=".$row_ds['no_of_excel_files_rnc']." readonly/></td>";
-                    echo "</tr>";
-                }
-            }
-            if($data_entry=='no')
-            {
-                echo "<tr>";
-                echo "<td>Data Entry</td>";
-                echo "<td><input type='text' class='main_table_textfields' name='data_entry' value='".$data_entry."' readonly/></td>";
-                echo "</tr>";
-            }
-            else
-            {
-                $query_de= "SELECT type, start_date, end_date, status, remarks FROM softlinkasia.data_entry WHERE client_id='$client_id'";
-                $result_de = mysqli_query($conn, $query_de);
-                $row_de = mysqli_fetch_assoc($result_de);
-                echo "<tr>";
-                echo "<td>Data Entry Type:</td>";
-                echo "<td><input type='text' class='main_table_textfields' name='ds_type' value=".$row_de['type']." readonly/></td>";
-                echo "</tr>";
-                echo "<tr>";
-                echo "<td>Start Date:</td>";
-                echo "<td><input type='text' class='main_table_textfields' name='start_date' value=".$row_de['start_date']." readonly/></td>";
-                echo "</tr>";
-                echo "<tr>";
-                echo "<td>End Date:</td>";
-                echo "<td><input type='text' class='main_table_textfields' name='end_date' value=".$row_de['end_date']." readonly/></td>";
-                echo "</tr>";
-                echo "<tr>";
-                echo "<td>Status</td>";
-                echo "<td><input type='text' class='main_table_textfields' name='status' value=".$row_de['status']." readonly/></td>";
-                echo "</tr>";
-                echo "<tr>";
-                echo "<td>Remarks</td>";
-                echo "<td><input type='text' class='main_table_textfields' name='remarks' value=".$row_de['remarks']." readonly/></td>";
-                echo "</tr>";
-            }             
-        ?>
+        <tr>
+            <td>Data Service</td>
+            <td><input type='text' class='main_table_textfields_1' name='ds' value="<?php echo $data_service; ?>" readonly/></td>
+        </tr>
+        <tr>
+            <td>Data Entry</td>
+            <td><input type='text' class='main_table_textfields_1' name='de' value='<?php echo $data_entry; ?>' readonly/></td>
+        </tr>
         <tr>
             <td>Status:</td>
             <td><input type='text' class='main_table_textfields' name='status' value="<?php echo $row['status']?>" readonly/></td>
         </tr>
    </table>
+   </form>
+  </div>
+  <form action='home.php' method='post'>
+  <input type='hidden' value='<?php echo $client_name ?>' name='client_name'/>
 
-     </form>
-     
-    </div> 
+   <input type='hidden' value='<?php echo $software_purchased ?>' name='software_purchased'/><br/><br/>   
     <div id="which_table" class="view_full_details_div">
         <select class="btn_for_table" id="table_choice" name="which_details">
            <option value="" disabled selected>Edit Details For-</option>
@@ -140,12 +78,18 @@
            <option  name="amc" value="amc">AMC</option>
            <option  name="records" value="records">Records</option>
            <option  name="config" value="config">Server Config.</option>
+           <option  name="ds" value="ds">Data Service</option>
+           <option  name="de" value="de">Data Entry</option>
            <option  name="contact" value="contact">Contact</option>
         </select>
    </div>
-  
+ </form>
 </div>
-<div id="table_div"> 
+<div id="table_div">
+  <form action='home.php' method='post'>
+  <input type='hidden' value='<?php echo $client_name ?>' name='client_name'/>
+
+   <input type='hidden' value='<?php echo $software_purchased ?>' name='software_purchased'/><br/><br/> 
     <table id = "mod_table" style="display:none;">   
       <?php
           $query1 = "SELECT mod_id, module_name, client_id, installation_date, purchased_order_no, no_of_nodes_purchased, date_of_m_purchased, module_cost, reg_no, training_date, no_of_training_days  FROM softlinkasia.modules where client_id='$client_id'";          
@@ -548,8 +492,84 @@
                     echo "</tr>";
                     $count++;
                 }
-             }
+              }
 
          ?>
-     </table>     
+     </table>
+     <table id="ds_table" style="display:none; ">
+         <?php
+            if($data_service=='no')
+            {
+                echo "<p> No details available.</p>";
+            }
+            else
+            {
+                $query_ds= "SELECT type, start_date, end_date, d_status, remarks, no_of_excel_files_rnc FROM softlinkasia.data_service WHERE client_id='$client_id'";
+                $result_ds = mysqli_query($conn, $query_ds);
+                $row_ds = mysqli_fetch_assoc($result_ds);
+                echo "<tr>";
+                echo "<td>Data Service Type:</td>";
+                echo "<td><input type='text' class='main_table_textfields' name='ds_type' value=".$row_ds['type']." readonly/></td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<td>Start Date:</td>";
+                echo "<td><input type='text' class='main_table_textfields' name='start_date' value=".$row_ds['start_date']." readonly/></td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<td>End Date:</td>";
+                echo "<td><input type='text' class='main_table_textfields' name='end_date' value=".$row_ds['end_date']." readonly/></td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<td>Status</td>";
+                echo "<td><input type='text' class='main_table_textfields' name='d_status' value=".$row_ds['d_status']." readonly/></td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<td>Remarks</td>";
+                echo "<td><input type='text' class='main_table_textfields' name='remarks' value=".$row_ds['remarks']." readonly/></td>";
+                echo "</tr>";
+                if($row_ds['type'] == 'excel')
+                {
+                    echo "<tr>";
+                    echo "<td>No. of Excel Files Recovered</td>";
+                    echo "<td><input type='text' class='main_table_textfields' name='no_of_excel_files_rnc' value=".$row_ds['no_of_excel_files_rnc']." readonly/></td>";
+                    echo "</tr>";
+                }
+            }
+         ?>   
+     </table>
+     <table id="con_table" style="display:none;">
+        <?php
+            if($data_entry=='no')
+            {
+                echo "<p> No details available</p>";
+            }
+            else
+            {
+                $query_de= "SELECT type, start_date, end_date, status, remarks FROM softlinkasia.data_entry WHERE client_id='$client_id'";
+                $result_de = mysqli_query($conn, $query_de);
+                $row_de = mysqli_fetch_assoc($result_de);
+                echo "<tr>";
+                echo "<td>Data Entry Type:</td>";
+                echo "<td><input type='text' class='main_table_textfields' name='ds_type' value=".$row_de['type']." readonly/></td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<td>Start Date:</td>";
+                echo "<td><input type='text' class='main_table_textfields' name='start_date' value=".$row_de['start_date']." readonly/></td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<td>End Date:</td>";
+                echo "<td><input type='text' class='main_table_textfields' name='end_date' value=".$row_de['end_date']." readonly/></td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<td>Status</td>";
+                echo "<td><input type='text' class='main_table_textfields' name='status' value=".$row_de['status']." readonly/></td>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<td>Remarks</td>";
+                echo "<td><input type='text' class='main_table_textfields' name='remarks' value=".$row_de['remarks']." readonly/></td>";
+                echo "</tr>";
+            }
+       ?>  
+     </table>
+   </form>       
 </div>   

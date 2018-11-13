@@ -74,7 +74,7 @@ h1{
 	z-index: 2;
     max-height: 100%;
     overflow-y: scroll;
-    overflow-x: scroll;
+    overflow-x: hidden;
 }
 
 .table-heading{
@@ -740,4 +740,21 @@ input[type='number'], input[type='date'], input[type='time'], textarea
 .view_full_details_div
 {
 	margin-top: 40px;
+}
+.main_table_btn
+{
+	background-color: #3a3434;
+    color: white;
+    width: 130px;
+    height:35px;
+    border-radius: 7px;
+    border: 1px solid #3a3434;
+    cursor: pointer;
+}
+.main_table_btn:hover
+{
+	transform:scale(1.1);
+}
+#main_table_btn_save, #view_soft, #ds_type{
+	display: none;
 }

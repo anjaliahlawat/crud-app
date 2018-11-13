@@ -146,6 +146,8 @@ $(document).ready(function(){
            $("#rec_table").css("display", "none");
            $("#config_table").css("display", "none");
            $("#con_table").css("display", "none");
+           $("#de_table").css("display", "none");
+           $("#ds_table").css("display", "none");
            $("#show_full_details").css("display", "none");
         }
         else if(selectedtype1 =='amc')
@@ -155,6 +157,8 @@ $(document).ready(function(){
            $("#rec_table").css("display", "none");
            $("#config_table").css("display", "none");
            $("#con_table").css("display", "none");
+           $("#de_table").css("display", "none");
+           $("#ds_table").css("display", "none");
            $("#show_full_details").css("display", "none"); 
         }
         else if(selectedtype1 =='records')
@@ -164,6 +168,8 @@ $(document).ready(function(){
            $("#amc_table").css("display", "none");
            $("#config_table").css("display", "none");
            $("#con_table").css("display", "none");
+           $("#de_table").css("display", "none");
+           $("#ds_table").css("display", "none");
            $("#show_full_details").css("display", "none"); 
         }
         else if(selectedtype1 =='config')
@@ -173,6 +179,8 @@ $(document).ready(function(){
            $("#mod_table").css("display", "none");
            $("#amc_table").css("display", "none");
            $("#con_table").css("display", "none");
+           $("#de_table").css("display", "none");
+           $("#ds_table").css("display", "none");
            $("#show_full_details").css("display", "none"); 
         }
         else if(selectedtype1 =='contact')
@@ -182,8 +190,39 @@ $(document).ready(function(){
            $("#rec_table").css("display", "none");
            $("#mod_table").css("display", "none");
            $("#amc_table").css("display", "none");
+           $("#de_table").css("display", "none");
+           $("#ds_table").css("display", "none");
            $("#show_full_details").css("display", "none"); 
         }
+        else if(selectedtype1 =='ds')
+        {
+           $("#ds_table").css("display", "block");
+           $("#de_table").css("display", "none");
+           $("#con_table").css("display", "none");
+           $("#config_table").css("display", "none");
+           $("#rec_table").css("display", "none");
+           $("#mod_table").css("display", "none");
+           $("#amc_table").css("display", "none");
+           $("#show_full_details").css("display", "none"); 
+        }
+        else if(selectedtype1 =='de')
+        {
+           $("#de_table").css("display", "block");
+           $("#ds_table").css("display", "none");
+           $("#con_table").css("display", "none");
+           $("#config_table").css("display", "none");
+           $("#rec_table").css("display", "none");
+           $("#mod_table").css("display", "none");
+           $("#amc_table").css("display", "none");
+           $("#show_full_details").css("display", "none"); 
+        }
+      });
+      $("#main_table_btn_edit").click(function()
+      {
+          $("#main_table_btn_save").css("display", "block");
+          $("#main_table_btn_del").css("display", "none");
+          $("#main_table_btn_edit").css("display", "none");
+          $(".main_table_textfields").attr("readonly", false);
       });  
 
   });
