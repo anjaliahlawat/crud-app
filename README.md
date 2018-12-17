@@ -4,7 +4,7 @@ local machine. It aims to perform simple operations on the company's data. It ha
 allowed to different employee of the company for eg. administrator, technical manager, testing and support mananger, director etc.
 
 BUILD WITH-
-Frontend languages - HTML, CSS, JavaScript
-Backend languages - PHP
-Database - MySql
-Server - Xampp
+Frontend languages - HTML5, CSS, JavaScript
+Backend languages - PHP 7.2.7 
+Database - MySql 5.0.12-dev
+Server - Xampp 7.2.11-0
