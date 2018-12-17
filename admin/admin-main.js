@@ -65,7 +65,7 @@ $(document).ready(function(){
       //view client details page
 
       $("select.view_select").change(function(){
-        let selectedtype = $( "#view2" ).val(); 
+        let selectedtype = $("#view2").val(); 
         
         if (selectedtype =='clients')
         {
@@ -224,7 +224,13 @@ $(document).ready(function(){
           $("#main_table_btn_edit").css("display", "none");
           $(".main_table_textfields").attr("readonly", false);
       });  
-
+       $("#config_table_btn_edit").click(function()
+      {
+          $(".config_table_textfields").attr("readonly", false);
+          $("#config_table_btn_edit").css("display", "none");
+          $("#config_table_btn_save").css("display", "block");
+      });
+      
   });
 
 //view for clients, products and suppliers

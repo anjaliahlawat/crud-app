@@ -706,7 +706,7 @@ input[type='number'], input[type='date'], input[type='time'], textarea
 	margin-left:30%;
 }
 
-#view_full_details1, #view_full_details2, #view_full_details3 
+#view_full_details1, #view_full_details2, #view_full_details3, #edit_mod, #edit_amc 
 {
     background-color: #3a3434;
     color: white;
@@ -716,7 +716,7 @@ input[type='number'], input[type='date'], input[type='time'], textarea
     border: 1px solid #3a3434;
     cursor: pointer;
 }
-#view_full_details1:hover, #view_full_details2:hover, #view_full_details3:hover
+#view_full_details1:hover, #view_full_details2:hover, #view_full_details3:hover, #edit_mod:hover, #edit_amc:hover
 {
 	transform:scale(1.1);
 }
@@ -741,7 +741,7 @@ input[type='number'], input[type='date'], input[type='time'], textarea
 {
 	margin-top: 40px;
 }
-.main_table_btn
+.main_table_btn, .mod_table_btn, .amc_table_btn, .rec_table_btn, #edit_rec, .config_table_btn, .ds_table_btn
 {
 	background-color: #3a3434;
     color: white;
@@ -751,10 +751,31 @@ input[type='number'], input[type='date'], input[type='time'], textarea
     border: 1px solid #3a3434;
     cursor: pointer;
 }
-.main_table_btn:hover
+.main_table_btn:hover, .mod_table_btn:hover, .amc_table_btn:hover, .rec_table_btn:hover, #edit_rec:hover, .config_table_btn:hover, .ds_table_btn:hover
 {
 	transform:scale(1.1);
 }
 #main_table_btn_save, #view_soft, #ds_type{
 	display: none;
+}
+#error_msg, #ds_table_btn_add
+{
+	margin-left:80px;
+}
+#mod_table td, th
+{
+	padding: 5;
+	
+}
+#mod_table
+{
+	overflow-x: scroll;
+}
+#mod_table tr:nth-child(even) , #amc_table tr:nth-child(even), #rec_table tr:nth-child(even){
+    background-color: #dddddd;
+}
+#view_amc_table, #view_rec_table, #config_table
+{
+	margin-left: 100px;
+	margin-top: 60px;
 }

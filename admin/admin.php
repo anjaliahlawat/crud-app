@@ -92,12 +92,35 @@ elseif(isset($_POST['view_full_details1']))
    } 
    
 }
-elseif(isset($_POST['sub_mod_name']))
+elseif(isset($_POST['edit_mod']))
 {
-    $mod_id = $_POST['mod_id'];
-    $client_name= $_POST['client_name'];
-    $software_purchased = $_POST['software_purchased'];
-    include_once "admin/view_tables.php";
+    foreach ($_POST['edit_mod'] as $id => $edit_mod)
+    {
+        $mod_id = $_POST['mod_id'][$id];
+        $client_name= $_POST['client_name'];
+        $software_purchased = $_POST['software_purchased'];
+        include_once "admin/view_tables.php";
+    }
+}
+elseif(isset($_POST['edit_amc']))
+{
+    foreach ($_POST['edit_amc'] as $id => $edit_amc)
+    {
+        $amc_id = $_POST['amc_id'][$id];
+        $client_name= $_POST['client_name'];
+        $software_purchased = $_POST['software_purchased'];
+        include_once "admin/view_amc_table.php";
+    }
+}
+elseif(isset($_POST['edit_rec']))
+{
+    foreach ($_POST['edit_rec'] as $id => $edit_rec)
+    {
+        $rec_id = $_POST['rec_id'][$id];
+        $client_name= $_POST['client_name'];
+        $software_purchased = $_POST['software_purchased'];
+        include_once "admin/view_rec_table.php";
+    }
 }
 else 
 {

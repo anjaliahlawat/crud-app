@@ -169,7 +169,7 @@
      </tr>
      <tr>
         <td><label> Web Server:</label></td>
-        <td><input class="Afield" type="text" name="lwebserver" /></td>
+        <td><input class="Afield" type="text" name="l_webserver" /></td>
      </tr>
      <tr>
         <td><label> URL Report Server(Internal):</label></td>

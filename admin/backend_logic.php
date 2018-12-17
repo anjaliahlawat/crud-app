@@ -345,7 +345,7 @@ else if (isset($_POST['submit_form7']))
         else 
         {
             
-            $sql1 = "SELECT client_id FROM main WHERE client_name='$clientname' AND software_purchased='$software_purchased'";
+            $sql1 = "SELECT client_id FROM softlinkasia.main WHERE client_name='$clientname' AND software_purchased='$software_purchased'";
             $result1 = mysqli_query($conn, $sql1);
             $resultcheck = mysqli_num_rows($result1);
            if ($resultcheck < 1)
@@ -356,7 +356,7 @@ else if (isset($_POST['submit_form7']))
            {
                $row = mysqli_fetch_assoc($result1);
                $client_id = $row['client_id'];
-               $sql2 = "INSERT INTO modules ( module_name, client_id, installation_date, purchased_order_no, no_of_nodes_purchased, date_of_m_purchased, module_cost, reg_no, training_date, no_of_training_days) VALUES ( '$module_name', '$client_id', '$installation_date', '$purchased_order_no', '$no_of_nodes_purchased', '$date_of_m_purchased', '$module_cost', '$reg_no', '$training_date', '$no_of_training_days')";
+               $sql2 = "INSERT INTO softlinkasia.modules ( module_name, client_id, installation_date, purchased_order_no, no_of_nodes_purchased, date_of_m_purchased, module_cost, reg_no, training_date, no_of_training_days) VALUES ( '$module_name', '$client_id', '$installation_date', '$purchased_order_no', '$no_of_nodes_purchased', '$date_of_m_purchased', '$module_cost', '$reg_no', '$training_date', '$no_of_training_days')";
                mysqli_query($conn, $sql2);
                header("Location:http://localhost/CRUD/home.php?form=success");
                 exit();
@@ -514,7 +514,7 @@ else if(isset($_POST['submit_form10']))
                $l_os = $_POST['l_os'];
                $l_system = $_POST['l_system'];
                $l_memory = $_POST['l_memory'];
-               $l_os_type = $_POST['l_os_type'];
+               $l_system_type = $_POST['l_system_type'];
                $hard_disk = $_POST['hard_disk'];
                $l_cmp_name = $_POST['l_cmp_name'];
                $l_full_cmp_name = $_POST['l_full_cmp_name'];
@@ -532,14 +532,14 @@ else if(isset($_POST['submit_form10']))
                $c_available = $_POST['c_available'];
                $d_used = $_POST['d_used'];
                $d_available = $_POST['d_available'];
-               if(empty($s1) || empty($l_version) || empty($db_name) || empty($l_os) || empty($l_system) || empty($l_memory) || empty($l_os_type) || empty($hard_disk) || empty($l_cmp_name) || empty($l_full_cmp_name) || empty($l_workgroup) || empty($ip_int) || empty($ip_ext) || empty($l_webserver) || empty($url_int) || empty($url_ext) || empty($l_url_int) || empty($l_url_ext) || empty($l_db_loc) || empty($l_server_loc))
+               if(empty($s1) || empty($l_version) || empty($db_name) || empty($l_os) || empty($l_system) || empty($l_memory) || empty($l_system_type) || empty($hard_disk) || empty($l_cmp_name) || empty($l_full_cmp_name) || empty($l_workgroup) || empty($ip_int) || empty($ip_ext) || empty($l_webserver) || empty($url_int) || empty($url_ext) || empty($l_url_int) || empty($l_url_ext) || empty($l_db_loc) || empty($l_server_loc))
                {
                    header("Location:http://localhost/CRUD/home.php?form=emptyfields");
                    exit();
                }
                else
                {
-                   $sql1 = "INSERT INTO liberty_system_details(installation_date, version, db_name, l_os, l_system, l_memory, os_type, hard_disk, l_comp_name, l_full_cmp_name, workgroup, ip_int, ip_ext, webserver, url_int, url_ext, l_url_int,l_url_ext, l_db_loc, l_server_loc, client_id, c_used, c_available, d_used, d_available) VALUES('$installation_date', '$l_version', '$db_name', '$l_os', '$l_system', '$l_memory', '$l_os_type', '$hard_disk', '$l_comp_name', '$l_full_cmp_name', '$l_workgroup', '$ip_int', '$ip_ext', '$l_webserver', '$url_int', '$url_ext', '$l_url_int', '$l_url_ext', '$l_db_loc', '$l_server_loc', '$client_id', '$c_used', '$c_available', '$d_used', '$d_available')";
+                   $sql1 = "INSERT INTO softlinkasia.liberty_system_details(installation_date, version, db_name, os, system, installed_memory, system_type, harddisk, cmp_name, full_cmp_name, workgroup, ip_internal, ip_external, webserver, url_report_server_int, url_report_server_ext, url_liberty_int, url_liberty_ext, db_loc, server_loc, client_id, c_used, c_available, d_used, d_available) VALUES('$installation_date', '$l_version', '$db_name', '$l_os', '$l_system', '$l_memory', '$l_system_type', $hard_disk', '$l_cmp_name', '$l_full_cmp_name', '$l_workgroup', '$ip_int', '$ip_ext', '$l_webserver', '$url_int', '$url_ext', '$l_url_int', '$l_url_ext', '$l_db_loc', '$l_server_loc', '$client_id', '$c_used', '$c_available', '$d_used', '$d_available')";
                    if(mysqli_query($conn, $sql1))
                    {
                       echo "Registered";
@@ -581,7 +581,7 @@ else if (isset($_POST['submit_form2']))
       }
       else 
       {
-         $sql1 = "SELECT client_id FROM main WHERE client_name='$clientname' AND software_purchased='alice'";
+         $sql1 = "SELECT client_id FROM softlinkasia.main WHERE client_name='$clientname' AND software_purchased='alice'";
          $result1 = mysqli_query($conn, $sql1);
          $resultcheck = mysqli_num_rows($result1);
          if( $resultcheck < 1)
@@ -592,12 +592,13 @@ else if (isset($_POST['submit_form2']))
          {
             $row = mysqli_fetch_assoc($result1);
             $client_id = $row['client_id'];
-            $sql2 = "INSERT INTO records(client_id, records, installation_date, purchased_order_no, date_of_new_records, cost, reg_no) VALUES('$client_id', '$rec', '$installation_date', '$purchased_order_no', '$date_of_new_records', '$cost', '$reg_no')";
-            header("Location:http://localhost/CRUD/home.php?form=success");
+            $sql2 = "INSERT INTO softlinkasia.records(client_id, records, installation_date, purchased_order_no, date_of_new_records, cost, reg_no) VALUES('$client_id', '$rec', '$installation_date', '$purchased_order_no', '$date_of_new_records', '$cost', '$reg_no')";
+            if(mysqli_query($conn, $sql2))
+            {
+                header("Location:http://localhost/CRUD/home.php?form=success");
                   exit();
-
+            }            
          }
-
       }
    }
 } 
@@ -879,7 +880,291 @@ else if(isset($_POST['main_table_btn_save']))
         
     }
 }
-
+else if(isset($_POST['main_table_btn_del']))
+{
+    $client_id= $_POST['client_id'];
+    $query ="DELETE FROM softlinkasia.main WHERE client_id='$client_id'";
+    if(mysqli_query($conn, $query))
+        {
+            header("Location:http://localhost/CRUD/home.php?form=success");
+            exit();
+        } 
+        else 
+        {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+}
+else if(isset($_POST['mod_table_btn_save']))
+{
+    $module_name = $_POST['module_name'];
+    $date_of_m_purchased = $_POST['date_of_m_purchased'];
+    $s1 = (string)$date_of_m_purchased;
+    $module_cost = $_POST['module_cost'];
+    $s2 = (string)$module_cost;
+    $no_of_nodes_purchased = $_POST['no_of_nodes_purchased'];
+    $s3 = (string)$no_of_nodes_purchased;
+    $purchased_order_no = $_POST['purchased_order_no'];
+    $reg_no = $_POST['reg_no'];
+    $installation_date = $_POST['installation_date'];
+    $s4 = (string)$installation_date;
+    $training_date = $_POST['training_date'];
+    $s5 = (string)$training_date;
+    $no_of_training_days = $_POST['no_of_training_days'];
+    $s6 = (string)$no_of_training_days;
+    $mod_id = $_POST['mod_id'];
+    if(empty($s1) || empty($s2) || empty($s3) || empty($s4) || empty($s5) || empty($s6) || empty($reg_no) || empty($purchased_order_no) || empty($module_name))
+    {
+        header("Location:http://localhost/CRUD/home.php?form=empty");
+        exit();     
+    }
+    else
+    {
+         $query="UPDATE softlinkasia.modules SET module_name ='$module_name', installation_date='$installation_date', purchased_order_no='$purchased_order_no', no_of_nodes_purchased='$no_of_nodes_purchased', date_of_m_purchased='$date_of_m_purchased', module_cost='$module_cost', reg_no='$reg_no', training_date='$training_date', no_of_training_days='$no_of_training_days' WHERE mod_id='$mod_id'";
+         if(mysqli_query($conn, $query))
+          {
+              header("Location:http://localhost/CRUD/home.php?form=success");
+              exit();
+          } 
+          else 
+          {
+              echo "Error: " . $query . "<br>" . mysqli_error($conn);
+          }
+    }
+}
+else if(isset($_POST['mod_table_btn_del']))
+{
+    $mod_id= $_POST['mod_id'];
+    $query ="DELETE FROM softlinkasia.modules WHERE mod_id='$mod_id'";
+    if(mysqli_query($conn, $query))
+        {
+            header("Location:http://localhost/CRUD/home.php?form=success");
+            exit();
+        } 
+        else 
+        {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+}
+else if(isset($_POST['amc_table_btn_save']))
+{
+    $module_name = $_POST['module_name'];
+    $invoice_no = $_POST['invoice_no'];
+    $invoice_date = $_POST['invoice_date'];
+    $s1 = (string)$invoice_date;
+    $amc_period = $_POST['amc_period'];
+    $s2 = (string)$amc_period;
+    $per_of_amc_given = $_POST['per_of_amc_given'];
+    $s3 = (string)$per_of_amc_given;
+    $remarks = $_POST['remarks'];
+    $amc_id = $_POST['amc_id'];
+    if(empty($s1) || empty($s2) || empty($s3) || empty($module_name) || empty($invoice_no) || empty($remarks))
+    {
+        header("Location:http://localhost/CRUD/home.php?form=empty");
+        exit();     
+    }
+    else
+    {
+        $query="UPDATE softlinkasia.amc SET module_name ='$module_name', invoice_no='$invoice_no', invoice_date='$invoice_date', amc_period='$amc_period', per_of_amc_given='$per_of_amc_given', remarks='$remarks' WHERE amc_id='$amc_id'";
+         if(mysqli_query($conn, $query))
+          {
+              header("Location:http://localhost/CRUD/home.php?form=success");
+              exit();
+          } 
+          else 
+          {
+              echo "Error: " . $query . "<br>" . mysqli_error($conn);
+          }
+    }
+}
+else if(isset($_POST['amc_table_btn_del']))
+{
+    $amc_id= $_POST['amc_id'];
+    $query ="DELETE FROM softlinkasia.amc WHERE amc_id='$amc_id'";
+    if(mysqli_query($conn, $query))
+        {
+            header("Location:http://localhost/CRUD/home.php?form=success");
+            exit();
+        } 
+        else 
+        {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+}
+else if(isset($_POST['rec_table_btn_save']))
+{
+    $records = $_POST['records'];
+    $s1 = (string)$records;
+    $installation_date = $_POST['installation_date'];
+    $s2 = (string)$installation_date;
+    $purchased_order_no = $_POST['purchased_order_no'];
+    $date_of_new_records = $_POST['date_of_new_records'];
+    $s3 = (string)$date_of_new_records;
+    $cost = $_POST['cost'];
+    $s4 = (string)$cost;
+    $reg_no = $_POST['reg_no'];
+    $rec_id = $_POST['rec_id'];
+    if(empty($s1) || empty($s2) || empty($s3)  || empty($s4) || empty($reg_no) || empty($purchased_order_no))
+    {
+        header("Location:http://localhost/CRUD/home.php?form=empty");
+        exit();     
+    }
+    else
+    {
+        $query="UPDATE softlinkasia.records SET records ='$records', installation_date='$installation_date', purchased_order_no='$purchased_order_no', date_of_new_records='$date_of_new_records', cost='$cost', reg_no='$reg_no' WHERE rec_id='$rec_id'";
+         if(mysqli_query($conn, $query))
+          {
+              header("Location:http://localhost/CRUD/home.php?form=success");
+              exit();
+          } 
+          else 
+          {
+              echo "Error: " . $query . "<br>" . mysqli_error($conn);
+          }
+    }
+}
+else if(isset($_POST['rec_table_btn_del']))
+{
+    $rec_id= $_POST['rec_id'];
+    $query ="DELETE FROM softlinkasia.records WHERE rec_id='$rec_id'";
+    if(mysqli_query($conn, $query))
+        {
+            header("Location:http://localhost/CRUD/home.php?form=success");
+            exit();
+        } 
+        else 
+        {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+}
+else if(isset($_POST['config_table_btn_save']))
+{
+    $client_id = $_POST['client_id'];
+    $software_purchased = $_POST['software_purchased'];
+    if($software_purchased == 'alice')
+    {
+       $installation_date = $_POST['installation_date'];
+       $s1 = (string)$installation_date;
+       $version = $_POST['version'];
+       $nodes = $_POST['nodes'];
+       $s2 = (string)$nodes;
+       $os= $_POST['os'];
+       $system = $_POST['system'];
+       $memory = $_POST['memory'];
+       $os_type = $_POST['os_type'];
+       $cmp_name = $_POST['cmp_name'];
+       $full_cmp_name = $_POST['full_cmp_name'];
+       $domain = $_POST['domain'];
+       $workgroup = $_POST['workgroup'];
+       $ip = $_POST['ip'];
+       $webserver = $_POST['webserver'];
+       $url_web_opac = $_POST['url_web_opac'];
+       $opac_loc = $_POST['opac_loc'];
+       $db_loc = $_POST['db_loc'];
+       $drive_name_type = $_POST['drive_name_type'];
+       $free_space = $_POST['free_space'];
+       $total_space = $_POST['total_space'];
+       $client_os = $_POST['client_os'];
+       $client_system = $_POST['client_system'];
+       $client_memory = $_POST['client_memory'];
+       $client_system_type = $_POST['client_system_type'];
+       $remarks = $_POST['remarks'];
+       if(empty($version) || empty($s1) || empty($s2) || empty($os) || empty($system) || empty($memory) || empty($os_type) || empty($cmp_name) || empty($full_cmp_name) || empty($domain) || empty($workgroup) || empty($ip) || empty($webserver) || empty($url_web_opac) || empty($opac_loc) || empty($db_loc) || empty($drive_name_type) || empty($free_space) || empty($total_space) || empty($client_os) || empty($client_system) || empty($client_memory) || empty($client_system_type))
+       {
+            header("Location:http://localhost/CRUD/home.php?form=emptyfields2");
+            exit();
+       }
+       else
+       {
+          $query="UPDATE softlinkasia.alice_system_details SET installation_date='$installation_date', version='$version', no_of_nodes='$nodes', os='$os', system='$system', installed_memory='$memory', os_type='$os', cmp_name='$cmp_name', full_cmp_name='$full_cmp_name', domain='$domain', workgroup='$workgroup', ip='$ip', webserver='$webserver', url_web_opac='$url_web_opac', opac_loc='$opac_loc', db_loc='$db_loc' WHERE client_id='$client_id'";
+         if(mysqli_query($conn, $query))
+          {
+               $query1 = "UPDATE softlinkasia.hard_disk_alice SET drive_name_type='$drive_name_type', free_space='$free_space', total_space='$total_space' WHERE client_id='$client_id'";
+               if(mysqli_query($conn, $query1))
+               {
+                  $query2 = "UPDATE softlinkasia.workstation SET os='$client_os', system='$client_system', installed_memory='$client_memory', system_type='$client_system_type', remarks='$remarks' WHERE client_id='$client_id'";
+                  if(mysqli_query($conn, $query2))
+                  {
+                       header("Location:http://localhost/CRUD/home.php?form=success");
+                       exit();
+                  }
+                  else 
+                  {
+                       echo "Error: " . $query2 . "<br>" . mysqli_error($conn);
+                  }
+               }
+               else 
+               {
+                   echo "Error: " . $query1 . "<br>" . mysqli_error($conn);
+               }
+          } 
+          else 
+          {
+              echo "Error: " . $query . "<br>" . mysqli_error($conn);
+          } 
+       }
+    }
+    elseif($software_purchased =='liberty')
+    {
+        $installation_date = $_POST['l_installation_date'];
+        $s1 = (string)$installation_date;
+        $l_version = $_POST['l_version'];
+        $db_name = $_POST['db_name'];
+        $l_os = $_POST['l_os'];
+        $l_system = $_POST['l_system'];
+        $l_memory = $_POST['l_memory'];
+        $l_system_type = $_POST['l_system_type'];
+        $hard_disk = $_POST['hard_disk'];
+        $l_cmp_name = $_POST['l_cmp_name'];
+        $l_full_cmp_name = $_POST['l_full_cmp_name'];
+        $l_workgroup = $_POST['l_workgroup'];
+        $ip_int = $_POST['ip_int'];
+        $ip_ext = $_POST['ip_ext'];
+        $l_webserver = $_POST['l_webserver'];
+        $url_int = $_POST['url_int'];
+        $url_ext = $_POST['url_ext'];
+        $l_url_int = $_POST['l_url_int'];
+        $l_url_ext = $_POST['l_url_ext'];
+        $l_db_loc = $_POST['l_db_loc'];
+        $l_server_loc = $_POST['l_server_loc'];
+        $c_used = $_POST['c_used'];
+        $c_available = $_POST['c_available'];
+        $d_used = $_POST['d_used'];
+        $d_available = $_POST['d_available'];
+        if(empty($s1) || empty($l_version) || empty($db_name) || empty($l_os) || empty($l_system) || empty($l_memory) || empty($l_system_type) || empty($hard_disk) || empty($l_cmp_name) || empty($l_full_cmp_name) || empty($l_workgroup) || empty($ip_int) || empty($ip_ext) || empty($l_webserver) || empty($url_int) || empty($url_ext) || empty($l_url_int) || empty($l_url_ext) || empty($l_db_loc) || empty($l_server_loc))
+        {
+            header("Location:http://localhost/CRUD/home.php?form=emptyfields");
+            exit();
+        }
+        else
+        {
+             $query="UPDATE softlinkasia.liberty_system_details SET installation_date='$installation_date', version='$l_version', db_name='$db_name', os='$l_os', system='$l_system', installed_memory='$l_memory', system_type='$l_system_type', harddisk='$hard_disk', cmp_name='$l_cmp_name', full_cmp_name='$l_full_cmp_name', workgroup='$l_workgroup', ip_internal='$ip_int', ip_external='$ip_ext', webserver='$l_webserver', url_report_server_int ='$url_int', url_report_server_ext='$url_ext', url_liberty_int='$l_url_int', url_liberty_ext='$l_url_ext', db_loc='$l_db_loc', server_loc='$l_server_loc', c_used ='$c_used',c_available='$c_used', d_used='$d_used', d_available='$d_available' WHERE client_id='$client_id'";
+             if(mysqli_query($conn, $query))
+             {
+                 header("Location:http://localhost/CRUD/home.php?form=emptyfields");
+                 exit();
+             }
+             else 
+            {
+                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+            }  
+        }       
+    }
+                            
+}
+else if(isset($_POST['config_table_btn_del']))
+{
+    $config_id= $_POST['config_id'];
+    $query ="DELETE FROM softlinkasia.records WHERE config_id='$config_id'";
+    if(mysqli_query($conn, $query))
+        {
+            header("Location:http://localhost/CRUD/home.php?form=success");
+            exit();
+        } 
+        else 
+        {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+}
 function test_input($data)
 {
    $data = trim($data);
