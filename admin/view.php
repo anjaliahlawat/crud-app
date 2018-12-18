@@ -73,7 +73,7 @@
 <table id = "show_products" style="display:none;">
 
    <?php
-   $sql_v = "SELECT product.product_name, product.specifications, product.unit, product.rate, product.tax_type, product.delivery_terms, product.notes, product.warranty, supplier.supplier_name FROM softlinkasia.product, softlinkasia.supplier WHERE product.supplier_id = supplier.supplier_id";
+   $sql_v = "SELECT product_id, product_name, specifications, unit, rate, tax_type, delivery_terms, notes, warranty, supplier_name FROM softlinkasia.product";
 
    if (mysqli_query($conn, $sql_v))
    {
@@ -98,14 +98,13 @@
       	      echo "<th>Warranty</th>";
       	      echo "<th>Supplier</th>";
       	      echo "</tr>";
-              $count = 1;
+              $count = 0;
       	      while ($row = mysqli_fetch_assoc($result_v))
               {
-
                  echo "<tr>";
                  echo "<td>" . $count . "</td>";
-                 echo "<td>" . $row['product_name'] . "<input type='hidden' value=".$row['product_name'] ." name=".$row['product_name']."/></td>";
-                 echo "<td>" . $row['specifications'] . "</td>";
+                 echo "<td>" . $row['product_name'] . "<input type='hidden' value=".$row['product_id'] ." name='product_id[]'/></td>";
+                 echo "<td>" . $row['specifications'] . "<input type='hidden' value=".$row['product_name'] ." name='product_name[]'/></td>";
                  echo "<td>" . $row['unit'] . "</td>";
                  echo "<td>" . $row['rate'] . "</td>";
                  echo "<td>" . $row['tax_type'] . "</td>";
@@ -113,7 +112,7 @@
                  echo "<td>" . $row['notes'] . "</td>";
                  echo "<td>" . $row['warranty'] . "</td>";
                  echo "<td>" . $row['supplier_name'] . "</td>";
-                 echo "<td id='last_td2'><input type='submit' class='form_btn' id='view_full_details2' name='view_full_details2' value='View Details'></td>";
+                 echo "<td id='last_td2'><input type='submit' class='form_btn' id='edit_full_details2' name='edit_full_details2[".$count."]' value='Edit Details'></td>";
                  echo "</tr>"; 
                  $count++; 
              }
@@ -130,7 +129,7 @@
 <table id = "show_suppliers" style="display:none;">
 
    <?php
-       $sql_s = "SELECT supplier_name, type_of_supplier, location, phone_no, contact_person, remarks FROM softlinkasia.supplier";
+       $sql_s = "SELECT supplier_id, supplier_name, type_of_supplier, location, phone_no, contact_person, remarks FROM softlinkasia.supplier";
        if (mysqli_query($conn, $sql_s))
        {
           $result_s = mysqli_query($conn, $sql_s);
@@ -150,19 +149,19 @@
       	      echo "<th>Contact Person</th>";
       	      echo "<th>Remarks</th>";
       	      echo "</tr>";
-              $count = 1;
+              $count = 0;
       	      while ($row = mysqli_fetch_assoc($result_s))
               {
 
                  echo "<tr>";
-                 echo "<td>" . $count . "</td>";
-                 echo "<td>" . $row['supplier_name'] . "<input type='hidden' value=".$row['supplier_name'] ." name=".$row['supplier_name']."/></td>";
+                 echo "<td>" . $count .  "<input type='hidden' value=".$row['supplier_id'] ." name='supplier_id[]'/></td>";
+                 echo "<td>" . $row['supplier_name'] . "<input type='hidden' value=".$row['supplier_name'] ." name='supplier_name[]'/></td>";
                  echo "<td>" . $row['type_of_supplier'] . "</td>";
                  echo "<td>" . $row['location'] . "</td>";
                  echo "<td>" . $row['phone_no'] . "</td>";
                  echo "<td>" . $row['contact_person'] . "</td>";
                  echo "<td>" . $row['remarks'] . "</td>";
-                 echo "<td id='last_td3'><input type='submit' class='form_btn' id='view_full_details3' name='view_full_details3' value='View Details'></td>";
+                 echo "<td id='last_td3'><input type='submit' class='form_btn' id='view_full_details3' name='view_full_details3[".$count."]' value='Edit Details'></td>";
                  echo "</tr>"; 
                  $count++; 
               }
@@ -177,6 +176,3 @@
 </table>
 </form>
 </div>
-
-<!--<a href='#' id='edit'><img src='admin/edit.png'/></a><a href='#' id='delete'><img src='admin/delete.png'/></a>!>
-<table id = "show_suppliers" style="display:none;">

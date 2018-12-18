@@ -87,10 +87,29 @@ elseif(isset($_POST['view_full_details1']))
        $client_name= $_POST['client_name'][$id];
        $software_purchased = $_POST['software_purchased'][$id];
        $data_service = $_POST['data_service'][$id];
-       $data_entry = $_POST['data_entry'][$id];
-      include_once "admin/view_full_details.php";
+       $data_entry = $_POST['data_entry'][$id];              
+       include_once "admin/view_full_details.php";
    } 
    
+}
+elseif(isset($_POST['edit_full_details2'])) 
+{
+   foreach ($_POST['edit_full_details2'] as $id => $edit_full_details2)
+   {
+      $product_id= $_POST['product_id'][$id];
+      $product_name = $_POST['product_name'][$id];
+      include_once "admin/view_full_details2.php";
+   } 
+   
+}
+elseif(isset($_POST['view_full_details3'])) 
+{
+   foreach ($_POST['view_full_details3'] as $id => $view_full_details3)
+   {
+      $supplier_id= $_POST['supplier_id'][$id];
+      $supplier_name = $_POST['supplier_name'][$id];
+      include_once "admin/view_full_details3.php";
+   }    
 }
 elseif(isset($_POST['edit_mod']))
 {
@@ -124,7 +143,7 @@ elseif(isset($_POST['edit_rec']))
 }
 elseif(isset($_POST['ds_table_btn_save']))
 {
-    
+    echo "hello";
 }
 else 
 {

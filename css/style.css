@@ -706,7 +706,7 @@ input[type='number'], input[type='date'], input[type='time'], textarea
 	margin-left:30%;
 }
 
-#view_full_details1, #view_full_details2, #view_full_details3, #edit_mod, #edit_amc 
+#view_full_details1, #edit_full_details2, #view_full_details3, #edit_mod, #edit_amc 
 {
     background-color: #3a3434;
     color: white;
@@ -716,7 +716,7 @@ input[type='number'], input[type='date'], input[type='time'], textarea
     border: 1px solid #3a3434;
     cursor: pointer;
 }
-#view_full_details1:hover, #view_full_details2:hover, #view_full_details3:hover, #edit_mod:hover, #edit_amc:hover
+#view_full_details1:hover, #edit_full_details2:hover, #view_full_details3:hover, #edit_mod:hover, #edit_amc:hover
 {
 	transform:scale(1.1);
 }
@@ -737,11 +737,11 @@ input[type='number'], input[type='date'], input[type='time'], textarea
 	width:200px;
 	height:35px;
 }
-.view_full_details_div
+.view_full_details_div, .view_full_details2_div
 {
 	margin-top: 40px;
 }
-.main_table_btn, .mod_table_btn, .amc_table_btn, .rec_table_btn, #edit_rec, .config_table_btn, .ds_table_btn
+.main_table_btn, .mod_table_btn, .amc_table_btn, .rec_table_btn, #edit_rec, .config_table_btn, .ds_table_btn, .supp_table_btn, .prod_table_btn
 {
 	background-color: #3a3434;
     color: white;
@@ -751,7 +751,7 @@ input[type='number'], input[type='date'], input[type='time'], textarea
     border: 1px solid #3a3434;
     cursor: pointer;
 }
-.main_table_btn:hover, .mod_table_btn:hover, .amc_table_btn:hover, .rec_table_btn:hover, #edit_rec:hover, .config_table_btn:hover, .ds_table_btn:hover
+.main_table_btn:hover, .mod_table_btn:hover, .amc_table_btn:hover, .rec_table_btn:hover, #edit_rec:hover, .config_table_btn:hover, .ds_table_btn:hover, .supp_table_btn:hover, .prod_table_btn:hover
 {
 	transform:scale(1.1);
 }
@@ -784,7 +784,7 @@ input[type='number'], input[type='date'], input[type='time'], textarea
 #mod_table tr:nth-child(even) , #amc_table tr:nth-child(even), #rec_table tr:nth-child(even){
     background-color: #dddddd;
 }
-#view_amc_table, #view_rec_table, #config_table
+#view_amc_table, #view_rec_table, #config_table, #view_supp_table, #view_prod_table
 {
 	margin-left: 100px;
 	margin-top: 60px;

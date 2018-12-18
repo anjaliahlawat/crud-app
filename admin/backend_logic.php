@@ -270,16 +270,16 @@ else if(isset($_POST['submit_form1']))
                     exit();
                 }
            }
-          $sql2 = "INSERT INTO data_service (client_id, type, start_date, end_date, d_status, remarks, no_of_excel_files_rnc) VALUES('$client_id', '$ds_type', '$ds_start_date', '$ds_end_date', '$ds_status', '$ds_remarks', '$no_of_excel_files_rnc')";
+            $sql2 = "INSERT INTO data_service (client_id, type, start_date, end_date, d_status, remarks, no_of_excel_files_rnc) VALUES('$client_id', '$ds_type', '$ds_start_date', '$ds_end_date', '$ds_status', '$ds_remarks', '$no_of_excel_files_rnc')";
 
-          if(mysqli_query($conn, $sql2))
-          {
-              echo "New record created successfully";
-          } 
-          else 
-          {
-              echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
-          }           
+            if(mysqli_query($conn, $sql2))
+            {
+                echo "New record created successfully";
+            } 
+            else 
+            {
+                echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+            }           
         }            
     	}
     	if ($de == 'yes') 
@@ -603,8 +603,8 @@ else if (isset($_POST['submit_form2']))
 // product details
 else if( isset($_POST['submit_form8']))
 {
-    $product_name = mysqli_real_escape_string($conn, $_POST['product_name']);
-    $supplier_name = mysqli_real_escape_string($conn, $_POST['supplier_name']);
+    $product_name = $_POST['product_name'];
+    $supplier_name = $_POST['supplier_name'];
     $specifications = $_POST['specifications'];
     $unit = $_POST['unit'];
     $rate = $_POST['rate'];
@@ -614,45 +614,23 @@ else if( isset($_POST['submit_form8']))
     $warranty = $_POST['warranty'];
     $s1 = (string)$unit;
     $s2 = (string)$rate;
-    
 
-    if (empty($product_name) || empty($supplier_name) || empty($specifications) || empty($s1) || empty($s2) || empty($delivery_terms) || empty($notes))
+    if (empty($product_name) || empty($specifications) || empty($s1) || empty($s2) || empty($delivery_terms) || empty($notes))
     {
        header("Location:http://localhost/CRUD/home.php?form=emptyfields");
        exit();
     }
     else 
     {
-       if (!preg_match("/^[a-zA-Z ]*$/", $product_name) || !preg_match("/^[a-zA-Z .]*$/", $supplier_name))
-       {
-          header("Location:http://localhost/CRUD/home.php?form=invalid");
-          exit();
-       }
-       else 
-       {
-            $sql1 = "SELECT supplier_id FROM softlinkasia.supplier where supplier_name = '$supplier_name'";
-            $result1 = mysqli_query($conn, $sql1);
-            $resultcheck = mysqli_num_rows($result1);
-            if($resultcheck < 1)
-            {
-                echo "<p> This is not your current supplier</p>";
-            } 
-            else
-            {
-                  $row = mysqli_fetch_assoc($result1);
-                  $supplier_id = $row['supplier_id'];
-                  $sql2 = "INSERT INTO product(product_name, specifications, unit, rate, tax_type, delivery_terms, notes, warranty, supplier_id) VALUES('$product_name','$specifications', '$unit', '$rate', '$tax_type', '$delivery_terms', '$notes', '$warranty', '$supplier_id')";
-                  if(mysqli_query($conn, $sql2))
-            
-                  {
-                     echo "New record created successfully";
-                  } 
-                   else 
-                  {
-                     echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
-                  }
-            }
-       }
+        $sql2 = "INSERT INTO softlinkasia.product(product_name, specifications, unit, rate, tax_type, delivery_terms, notes, warranty, supplier_name) VALUES('$product_name','$specifications', '$unit', '$rate', '$tax_type', '$delivery_terms', '$notes', '$warranty', '$supplier_name')";
+        if(mysqli_query($conn, $sql2))   
+        {
+           echo "New record created successfully";
+        } 
+        else 
+        {
+            echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+        }
     }
 }
 //adding supp
@@ -1162,6 +1140,85 @@ else if(isset($_POST['config_table_btn_del']))
         {
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
+}
+else if(isset($_POST['prod_table_btn_save']))
+{
+    $product_name = $_POST['product_name'];
+    $supplier_name = $_POST['supplier_name'];
+    $specifications = $_POST['specifications'];
+    $unit = $_POST['unit'];
+    $rate = $_POST['rate'];
+    $tax_type =$_POST['tax_type'];
+    $delivery_terms = $_POST['delivery_terms'];
+    $notes = $_POST['notes'];
+    $warranty = $_POST['warranty'];
+    $s1 = (string)$unit;
+    $s2 = (string)$rate;
+    $product_id= $_POST['product_id'];
+    if (empty($product_name) || empty($specifications) || empty($s1) || empty($s2) || empty($delivery_terms) || empty($notes))
+    {
+       header("Location:http://localhost/CRUD/home.php?form=emptyfields");
+       exit();
+    }
+    else 
+    {
+        $sql2 = "UPDATE softlinkasia.product SET product_name='$product_name', specifications='$specifications', unit='$unit', rate='$rate', tax_type='$tax_type', delivery_terms='$delivery_terms', notes='$notes', warranty='$warranty', supplier_name='$supplier_name' WHERE product_id='$product_id'";
+       if(mysqli_query($conn, $sql2))     
+       {
+           header("Location:http://localhost/CRUD/home.php?form=success");
+           exit();
+       } 
+       else 
+       {
+           echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+       }          
+    }
+}
+else if(isset($_POST['prod_table_btn_del']))
+{
+  
+    $query ="DELETE FROM softlinkasia.product WHERE product_id='$product_id'";
+    if(mysqli_query($conn, $query))
+    {
+        header("Location:http://localhost/CRUD/home.php?form=success");
+        exit();
+    } 
+    else 
+    {
+        echo "Error: " . $query . "<br>" . mysqli_error($conn);
+    }
+}
+else if(isset($_POST['supp_table_btn_save']))
+{
+    $supplier_name = $_POST['supplier_name'];
+    $type_of_supplier = $_POST['type_of_supplier'];
+    $location = $_POST['location'];
+    $contact_person = $_POST['contact_person'];
+    $phone_no = $_POST['phone_no'];
+    $remarks = $_POST['remarks'];
+    $supplier_id = $_POST['supplier_id'];
+    if(empty($supplier_name) || empty($type_of_supplier) || empty($location) || empty($contact_person) || empty($phone_no))
+    {
+        header("Location:http://localhost/CRUD/home.php?form=empty");
+        exit();
+    }
+    else 
+    {
+        $sql2 = "UPDATE softlinkasia.supplier SET supplier_name='$supplier_name', type_of_supplier='$type_of_supplier', location='$location', contact_person='$contact_person', phone_no='$phone_no', remarks='$remarks' WHERE supplier_id='$supplier_id'";
+        if(mysqli_query($conn, $sql2))
+        {
+            header("Location:http://localhost/CRUD/home.php?form=success");
+            exit();
+        } 
+        else 
+        {
+           echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+        } 
+    }
+}
+else if(isset($_POST['supp_table_btn_del']))
+{
+
 }
 function test_input($data)
 {
