@@ -230,7 +230,12 @@ $(document).ready(function(){
           $("#config_table_btn_edit").css("display", "none");
           $("#config_table_btn_save").css("display", "block");
       });
-      
+      $("#ds_table_btn_add").click(function()
+      {
+         $(".ds_tr").css("display", "block");
+         $("#ds_table_btn_add").css("display", "none");
+         $("#error_msg").css("display", "none");
+      });
   });
 
 //view for clients, products and suppliers

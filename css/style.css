@@ -762,6 +762,16 @@ input[type='number'], input[type='date'], input[type='time'], textarea
 {
 	margin-left:80px;
 }
+.ds_tr
+{
+	display:none;
+	margin-left: 100px;
+}
+.ds_tr td
+{
+	width:200px;
+}
+
 #mod_table td, th
 {
 	padding: 5;

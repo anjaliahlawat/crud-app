@@ -272,17 +272,15 @@ else if(isset($_POST['submit_form1']))
            }
           $sql2 = "INSERT INTO data_service (client_id, type, start_date, end_date, d_status, remarks, no_of_excel_files_rnc) VALUES('$client_id', '$ds_type', '$ds_start_date', '$ds_end_date', '$ds_status', '$ds_remarks', '$no_of_excel_files_rnc')";
 
-              if(mysqli_query($conn, $sql2))
-              {
-                  echo "New record created successfully";
-              } 
-              else 
-              {
-                  echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
-              }
-           
-        }
-            
+          if(mysqli_query($conn, $sql2))
+          {
+              echo "New record created successfully";
+          } 
+          else 
+          {
+              echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+          }           
+        }            
     	}
     	if ($de == 'yes') 
     	{

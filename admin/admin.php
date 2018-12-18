@@ -122,9 +122,12 @@ elseif(isset($_POST['edit_rec']))
         include_once "admin/view_rec_table.php";
     }
 }
+elseif(isset($_POST['ds_table_btn_save']))
+{
+    
+}
 else 
 {
-
    include_once "admin/homepage.php";
 }
 

@@ -250,6 +250,34 @@
             {
                 echo "<p id='error_msg'> No details available.</p>";
                 echo "<input type='button' class='ds_table_btn' id='ds_table_btn_add' name='ds_table_btn_add' value='Add Now'/>";
+                echo "<tr class='ds_tr'>";
+                echo "<td>Data Service Type:</td>";
+                echo "<td><input type='radio' id='excel' name='ds_type' value='afw'> Data import from Excel<br/>
+                <input type='radio' id='afw' name='ds_type' value='excel'> Data conversion from Afw</td>";
+                echo "</tr>";
+                echo "<tr class='ds_tr'>";
+                echo "<td>Start Date:</td>";
+                echo "<td><input type='date' class='ds_table_txt' name='start_date'/></td>";
+                echo "</tr>";
+                echo "<tr class='ds_tr'>";
+                echo "<td>End Date:</td>";
+                echo "<td><input type='date' class='ds_table_txt' name='end_date'/></td>";
+                echo "</tr>";
+                echo "<tr class='ds_tr'>";
+                echo "<td>Status</td>";
+                echo "<td><input type='radio'  name='ds_status' value='Yet to complete'> Yet to complete<br/>
+                          <input type='radio' name='ds_status' value='In process'> In process<br/>
+                          <input type='radio' name='ds_status' value='Completed'> Completed</td>";
+                echo "</tr>";
+                echo "<tr class='ds_tr'>";
+                echo "<td>Remarks</td>";
+                echo "<td><input type='text' class='ds_table_txt' name='ds_remarks'/></td>";
+                echo "</tr>";
+                echo "<tr class='ds_tr'>";
+                echo "<td></td>";
+                echo "<td><input type='submit' class='ds_table_btn' id='ds_table_btn_save' name='ds_table_btn_save' value='Save'/>";
+                echo "</tr>";
+                echo "<input type='hidden' value='".$client_id."' name='rec_id[]'/>";                
             }
             else
             {
@@ -260,6 +288,13 @@
                 echo "<td>Data Service Type:</td>";
                 echo "<td><input type='text' class='main_table_textfields' name='ds_type' value=".$row_ds['type']." readonly/></td>";
                 echo "</tr>";
+                if($row_ds['type']=='excel')
+                {
+                   echo "<tr>";
+                   echo "<td>No. of Excel Files:</td>";
+                   echo "<td><input type='text' class='main_table_textfields' name='no_of_excel_files_rnc' value=".$row_ds['no_of_excel_files_rnc']." readonly/></td>";
+                   echo "</tr>";
+                }
                 echo "<tr>";
                 echo "<td>Start Date:</td>";
                 echo "<td><input type='text' class='main_table_textfields' name='start_date' value=".$row_ds['start_date']." readonly/></td>";
