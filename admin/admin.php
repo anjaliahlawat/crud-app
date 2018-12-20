@@ -111,6 +111,24 @@ elseif(isset($_POST['view_full_details3']))
       include_once "admin/view_full_details3.php";
    }    
 }
+elseif(isset($_POST['view_full_details4'])) 
+{
+   foreach ($_POST['view_full_details4'] as $id => $view_full_details4)
+   {
+      $bd_id= $_POST['bd_id'][$id];
+      $equip_name = $_POST['equip_name'][$id];
+      include_once "admin/view_full_details4.php";
+   }    
+}
+elseif(isset($_POST['view_full_details5'])) 
+{
+   foreach ($_POST['view_full_details5'] as $id => $view_full_details5)
+   {
+      $intern_id= $_POST['intern_id'][$id];
+      $name = $_POST['name'][$id];
+      include_once "admin/view_full_details5.php";
+   }    
+}
 elseif(isset($_POST['edit_mod']))
 {
     foreach ($_POST['edit_mod'] as $id => $edit_mod)

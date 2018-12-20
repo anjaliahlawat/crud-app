@@ -1,9 +1,10 @@
-<form class="hr_form" action="admin/backend_logic.php" method="POST">
+<form class="hr_form" action="employee/backend_logic.php" method="POST">
 <p class="hr_heading">Please fill the following details</p><br/><br/>
   <table class="hr_table">
   <tr>
     <td><label>Employee Id:</label></td>
-    <td><input class="Afield" type="text" name="id"/></td>
+    <td><input class="Afield" type="text" name="emp_id"/></td>
+  </tr>
   <tr>
     <td><label>Name:</label></td>
     <td><input class="Afield" type="text" name="name"/></td>
@@ -18,8 +19,8 @@
   </tr>
   <tr>
     <td><label>Experience:</label></td>
-    <td><input class="Afield" type="text" name="experience1" placeholder="Prior" /></td>
-    <td><input class="Afield" type="text" name="experience2" placeholder="Current" /></td>
+    <td><input class="Afield" type="text" name="experience_prior" placeholder="Prior" /></td>
+    <td><input class="Afield" type="text" name="experience_current" placeholder="Current" /></td>
   </tr>
   <tr>
     <td><label>Job responsibility:</label></td>
@@ -32,6 +33,6 @@
 
   </table>
   <br/>
-  <input type="submit" class="form_btn" id="form_btn1" name="submit_form1" value="Save">
+  <input type="submit" class="form_btn" id="form_btn1" name="submit_form_hr" value="Save">
   <input type="reset" class="form_btn" id="form_btn2" value="Reset">
 </form>

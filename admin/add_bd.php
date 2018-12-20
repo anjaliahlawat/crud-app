@@ -6,8 +6,12 @@
             <td><input class="Afield" type="text" name="equip_name" /></td>
           </tr>
           <tr>
-            <td><label> B/D Date and time:</label></td>
-            <td><input class="Afield" type="date" name="bd_date_time" /> </td>
+            <td><label> B/D Date:</label></td>
+            <td><input class="Afield" type="date" name="bd_date" /> </td>
+          </tr>
+          <tr>
+            <td><label> B/D Time:</label></td>
+            <td><input class="Afield" type="time" name="bd_time" /> </td>
           </tr>
           <tr>
             <td><label> Id no. :</label></td>
@@ -25,7 +29,7 @@
           
           <tr>
             <td><label> B/D Release:</label></td>
-            <td><input class="Afield" type="text" name="bd_release" /> </td>
+            <td><input class="Afield" type="text" name="bd_release" placeholder="YYYY-MM-DD  -- : -- --" /> </td>
           </tr>
           <tr>
             <td><label> Total B/D hours:</label></td>

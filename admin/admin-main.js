@@ -72,16 +72,26 @@ $(document).ready(function(){
            $("#show_clients").css("display", "block");
            $("#show_products").css("display", "none");
            $("#show_suppliers").css("display", "none");
+           $("#show_bd_details").css("display", "none");
         }
         else if(selectedtype =='products')
         {
            $("#show_products").css("display", "block");
            $("#show_clients").css("display", "none");
            $("#show_suppliers").css("display", "none");
+           $("#show_bd_details").css("display", "none");
         }
         else if(selectedtype=='suppliers')
         {
            $("#show_suppliers").css("display", "block");
+           $("#show_clients").css("display", "none");
+           $("#show_products").css("display", "none");
+           $("#show_bd_details").css("display", "none");
+        }
+        else if(selectedtype=='bd_details')
+        {
+           $("#show_bd_details").css("display", "block");
+           $("#show_suppliers").css("display", "none");
            $("#show_clients").css("display", "none");
            $("#show_products").css("display", "none");
         }
@@ -257,6 +267,10 @@ function myFunction() {
   else if(selectedtype.value =='suppliers')
   {
      table = document.getElementById("show_suppliers");
+  }
+  else if(selectedtype.value =='bd_details')
+  {
+     table = document.getElementById("show_bd_details");
   }
   tr = table.getElementsByTagName("tr");
 

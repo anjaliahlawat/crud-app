@@ -551,16 +551,16 @@ input[type='number'], input[type='date'], input[type='time'], textarea
 	display:inline-block;
 }
 
-#show_clients, #show_products, #show_suppliers, #show_interns {
+#show_clients, #show_products, #show_suppliers, #show_interns,  #show_bd_details, #show_emp{
 	position: relative;
  	top:100px;
 }
 
-#view_page , #view_intern_page{
+#view_page , #view_intern_page, #view_emp{
 	height: 500px;
 }
  
-#show_clients td,th , #show_products td,th , #show_suppliers td, th , #show_interns td, th{
+#show_clients td,th , #show_products td,th , #show_suppliers td, th , #show_interns td, th, #show_bd_details td, th{
 	width:100px;
 	height:50px !important;
 	text-align: center;
@@ -741,7 +741,7 @@ input[type='number'], input[type='date'], input[type='time'], textarea
 {
 	margin-top: 40px;
 }
-.main_table_btn, .mod_table_btn, .amc_table_btn, .rec_table_btn, #edit_rec, .config_table_btn, .ds_table_btn, .supp_table_btn, .prod_table_btn
+.main_table_btn, .mod_table_btn, .amc_table_btn, .emp_table_btn, .rec_table_btn, #edit_rec,.intern_table_btn, .t_table_btn, .config_table_btn,#view_full_details5, #view_emp_details, .ds_table_btn, .supp_table_btn, .prod_table_btn, #view_full_details4, .bd_table_btn, #view_t_details
 {
 	background-color: #3a3434;
     color: white;
@@ -751,7 +751,7 @@ input[type='number'], input[type='date'], input[type='time'], textarea
     border: 1px solid #3a3434;
     cursor: pointer;
 }
-.main_table_btn:hover, .mod_table_btn:hover, .amc_table_btn:hover, .rec_table_btn:hover, #edit_rec:hover, .config_table_btn:hover, .ds_table_btn:hover, .supp_table_btn:hover, .prod_table_btn:hover
+.main_table_btn:hover, .mod_table_btn:hover, .amc_table_btn:hover, .emp_table_btn:hover, .t_table_btn:hover, .rec_table_btn:hover, .intern_table_btn:hover, #edit_rec:hover, #view_full_details5:hover, .config_table_btn:hover, #view_emp_details:hover,#view_t_details:hover, .ds_table_btn:hover, .supp_table_btn:hover, .prod_table_btn:hover, .bd_table_btn:hover, #view_full_details4:hover
 {
 	transform:scale(1.1);
 }
@@ -781,10 +781,10 @@ input[type='number'], input[type='date'], input[type='time'], textarea
 {
 	overflow-x: scroll;
 }
-#mod_table tr:nth-child(even) , #amc_table tr:nth-child(even), #rec_table tr:nth-child(even){
+#mod_table tr:nth-child(even) , #amc_table tr:nth-child(even), #rec_table tr:nth-child(even), #show_bd_details tr:nth-child(even){
     background-color: #dddddd;
 }
-#view_amc_table, #view_rec_table, #config_table, #view_supp_table, #view_prod_table
+#view_amc_table, #view_rec_table, #config_table, #view_supp_table, #view_prod_table, #view_bd_table, #view_intern_table, #view_emp_table
 {
 	margin-left: 100px;
 	margin-top: 60px;

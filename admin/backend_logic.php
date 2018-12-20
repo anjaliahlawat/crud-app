@@ -146,36 +146,36 @@ elseif (isset($_POST['save_bank_details'])) {
      $pdf->Cell(0,10,"Softlink Asia Pvt. Ltd. Bank Details",0,1,'C');
      $pdf->SetFont('Arial','',12);
      $pdf->Cell(0,17,"Please find below the Softlink Bank details:",0,1);
-     $pdf->Cell(65,10,"1.Account name:",0,0);
-     $pdf->Cell(65,10,$account_name,0,1);
-     $pdf->Cell(65,10,"2.Current Account name:",0,0);
-     $pdf->Cell(65,10,$curr_acc_no,0,1);
-     $pdf->Cell(65,10,"3.Bank name:",0,0);
-     $pdf->Cell(65,10,$bank_name,0,1);
-     $pdf->Cell(65,10,"4.Bank address:",0,0);
-     $pdf->Cell(65,10,$bank_addrs,0,1);
-     $pdf->Cell(65,10,"5.Country:",0,0);
-     $pdf->Cell(65,10,$country,0,1);
-     $pdf->Cell(65,10,"6.RTGS/NEFT/IFSC CODE:",0,0);
-     $pdf->Cell(65,10,$ifsc_code,0,1);
-     $pdf->Cell(65,10,"7.SWIFT Code/ID:",0,0);
-     $pdf->Cell(65,10,$swift_code,0,1);
-     $pdf->Cell(65,10,"8.MICR Code:",0,0);
-     $pdf->Cell(65,10,$micr_code,0,1);
-     $pdf->Cell(65,10,"9.Branch Code:",0,0);
-     $pdf->Cell(65,10,$branch_code,0,1);
-     $pdf->Cell(65,10,"10.TAN:",0,0);
-     $pdf->Cell(65,10,$tan,0,1);
-     $pdf->Cell(65,10,"11.PAN:",0,0);
-     $pdf->Cell(65,10,$pan,0,1);
-     $pdf->Cell(65,10,"12.GSTIN:",0,0);
-     $pdf->Cell(65,10,$gstin,0,1);
-     $pdf->Cell(65,10,"13.Tin no.:",0,0);
-     $pdf->Cell(65,10,$bank_addrs,0,1);
-     $pdf->Cell(65,10,"14.CIN:",0,0);
-     $pdf->Cell(65,10,$cin,0,1);
-     $pdf->Cell(65,10,"15.Date of Effect:",0,0);
-     $pdf->Cell(65,10,$date_of_effect,0,1);
+     $pdf->Cell(70,10,"1.Account name:",0,0);
+     $pdf->Cell(70,10,$account_name,0,1);
+     $pdf->Cell(70,10,"2.Current Account name:",0,0);
+     $pdf->Cell(70,10,$curr_acc_no,0,1);
+     $pdf->Cell(70,10,"3.Bank name:",0,0);
+     $pdf->Cell(70,10,$bank_name,0,1);
+     $pdf->Cell(70,10,"4.Bank address:",0,0);
+     $pdf->Cell(70,10,$bank_addrs,0,1);
+     $pdf->Cell(70,10,"5.Country:",0,0);
+     $pdf->Cell(70,10,$country,0,1);
+     $pdf->Cell(70,10,"6.RTGS/NEFT/IFSC CODE:",0,0);
+     $pdf->Cell(70,10,$ifsc_code,0,1);
+     $pdf->Cell(70,10,"7.SWIFT Code/ID:",0,0);
+     $pdf->Cell(70,10,$swift_code,0,1);
+     $pdf->Cell(70,10,"8.MICR Code:",0,0);
+     $pdf->Cell(70,10,$micr_code,0,1);
+     $pdf->Cell(70,10,"9.Branch Code:",0,0);
+     $pdf->Cell(70,10,$branch_code,0,1);
+     $pdf->Cell(70,10,"10.TAN:",0,0);
+     $pdf->Cell(70,10,$tan,0,1);
+     $pdf->Cell(70,10,"11.PAN:",0,0);
+     $pdf->Cell(70,10,$pan,0,1);
+     $pdf->Cell(70,10,"12.GSTIN:",0,0);
+     $pdf->Cell(70,10,$gstin,0,1);
+     $pdf->Cell(70,10,"13.Tin no.:",0,0);
+     $pdf->Cell(70,10,$bank_addrs,0,1);
+     $pdf->Cell(70,10,"14.CIN:",0,0);
+     $pdf->Cell(70,10,$cin,0,1);
+     $pdf->Cell(70,10,"15.Date of Effect:",0,0);
+     $pdf->Cell(70,10,$date_of_effect,0,1);
      $pdf->output("D");  
  }
 
@@ -681,17 +681,18 @@ else if(isset($_POST['submit_form6']))
 // equip B/D
 else if(isset($_POST['submit_form5']))
 {
-    $equip_name = mysqli_real_escape_string($conn, $_POST['equip_name']);
-    $bd_date_time = $_POST['bd_date_time'];
+    $equip_name = $_POST['equip_name'];
+    $bd_date = $_POST['bd_date'];
+    $bd_time = $_POST['bd_time'];
     $id_no = $_POST['id_no'];
     $bd_details = $_POST['bd_details'];
     $action_taken = $_POST['action_taken'];
     $bd_release = $_POST['bd_release'];
     $total_bd_hrs = $_POST['total_bd_hrs'];
     $remarks = $_POST['remarks'];
-    $s1 = (string)$bd_date_time;
+    $s1 = (string)$bd_date;
     $s2 = (string)$total_bd_hrs;
-
+    
 
     if (empty($equip_name) || empty($s1) || empty($id_no) || empty($bd_details) || empty($action_taken) || empty($bd_release) || empty($s2))
     {
@@ -707,7 +708,7 @@ else if(isset($_POST['submit_form5']))
         }
         else 
         {
-            $sql = "INSERT INTO euipment_bd_details(equip_name, bd_date_time, id_no, bd_details, action_taken, bd_release, total_bd_hrs, remarks) VALUES ('$equip_name', '$bd_date_time', '$id_no', '$bd_details', '$action_taken', '$bd_release', '$total_bd_hrs', '$remarks')";
+            $sql = "INSERT INTO softlinkasia.euipment_bd_details(equip_name, bd_date, bd_time, id_no, bd_details, action_taken, bd_release, total_bd_hrs, remarks) VALUES ('$equip_name', '$bd_date', '$bd_time', '$id_no', '$bd_details', '$action_taken', '$bd_release', '$total_bd_hrs', '$remarks')";
             mysqli_query($conn, $sql);
             header("Location:http://localhost/CRUD/home.php?form=success");
             exit();
@@ -1176,7 +1177,7 @@ else if(isset($_POST['prod_table_btn_save']))
 }
 else if(isset($_POST['prod_table_btn_del']))
 {
-  
+     $product_id= $_POST['product_id'];
     $query ="DELETE FROM softlinkasia.product WHERE product_id='$product_id'";
     if(mysqli_query($conn, $query))
     {
@@ -1218,7 +1219,212 @@ else if(isset($_POST['supp_table_btn_save']))
 }
 else if(isset($_POST['supp_table_btn_del']))
 {
+    $supplier_id= $_POST['supplier_id'];
+    $query ="DELETE FROM softlinkasia.supplier WHERE supplier_id='$supplier_id'";
+    if(mysqli_query($conn, $query))
+    {
+        header("Location:http://localhost/CRUD/home.php?form=success");
+        exit();
+    } 
+    else 
+    {
+        echo "Error: " . $query . "<br>" . mysqli_error($conn);
+    }
+}
+else if(isset($_POST['bd_table_btn_save']))
+{
+    $equip_name = $_POST['equip_name'];
+    $bd_date = $_POST['bd_date'];
+    $bd_time = $_POST['bd_time'];
+    $id_no = $_POST['id_no'];
+    $bd_details = $_POST['bd_details'];
+    $action_taken = $_POST['action_taken'];
+    $bd_release = $_POST['bd_release'];
+    $total_bd_hrs = $_POST['total_bd_hrs'];
+    $remarks = $_POST['remarks'];
+    $s1 = (string)$bd_date;
+    $s2 = (string)$total_bd_hrs;
+    $bd_id = $_POST['bd_id'];
+    if (empty($equip_name) || empty($s1) || empty($id_no) || empty($bd_details) || empty($action_taken) || empty($bd_release) || empty($s2))
+    {
+        header("Location:http://localhost/CRUD/home.php?form=empty");
+        exit();
+    }
+    else
+    {
+        $sql = "UPDATE softlinkasia.euipment_bd_details SET equip_name='$equip_name', bd_date='$bd_date', bd_time='$bd_time', id_no='$id_no', bd_details='$bd_details', action_taken= '$action_taken', bd_release='$bd_release', total_bd_hrs='$total_bd_hrs', remarks='$remarks' WHERE bd_id='$bd_id'";
+        if(mysqli_query($conn, $sql))
+        {
+            header("Location:http://localhost/CRUD/home.php?form=success");
+            exit();
+        }
+        else 
+        {
+           echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        } 
+    } 
+}
+else if(isset($_POST['bd_table_btn_del']))
+{
+    $bd_id= $_POST['bd_id'];
+    $query ="DELETE FROM softlinkasia.euipment_bd_details WHERE bd_id='$bd_id'";
+    if(mysqli_query($conn, $query))
+    {
+        header("Location:http://localhost/CRUD/home.php?form=success");
+        exit();
+    } 
+    else 
+    {
+        echo "Error: " . $query . "<br>" . mysqli_error($conn);
+    }
+}
+else if(isset($_POST['intern_table_btn_save']))
+{
+    $name = $_POST['name'];
+    $addrs =$_POST['addrs'];
+    $contact_no = $_POST['contact_no'];
+    $college = $_POST['college'];
+    $degree = $_POST['degree'];
+    $grad_year = $_POST['grad_year'];
+    $worked_on = $_POST['worked_on'];
+    $start_date = $_POST['start_date'];
+    $end_date = $_POST['end_date'];
+    $s1 = (string)$start_date;
+    $s2 = (string)$end_date;
+    $intern_id=$_POST['intern_id'];
+    if(empty($name) |empty($addrs) || empty($contact_no) ||  empty($college) || empty($degree) || empty($grad_year) || empty($s1) || empty($s2))
+    {
+        header("Location:http://localhost/CRUD/home.php?form=empty");
+        exit();
+    }
+    else
+    {
+        $sql1 = "UPDATE securelogin.intern SET name='$name', addrs='$addrs', contact_no='$contact_no', college='$college', degree='$degree', grad_year='$grad_year', worked_on='$worked_on', start_date='$start_date', end_date='$end_date' WHERE intern_id='$intern_id'";
+        mysqli_query($conn, $sql1);
+        header("Location:http://localhost/CRUD/home.php?form=success");
+        exit();
+    }
+}
+else if(isset($_POST['intern_table_btn_del']))
+{
+    $intern_id= $_POST['intern_id'];
+    $query ="DELETE FROM securelogin.intern WHERE intern_id='$intern_id'";
+    if(mysqli_query($conn, $query))
+    {
+        header("Location:http://localhost/CRUD/home.php?form=success");
+        exit();
+    } 
+    else 
+    {
+        echo "Error: " . $query . "<br>" . mysqli_error($conn);
+    }
+}
+else if(isset($_POST['config_table_btn_pdf_a']))
+{
+       $client_name = $_POST['client_name'];
+       $installation_date = $_POST['installation_date'];
+       $s1 = (string)$installation_date;
+       $version = $_POST['version'];
+       $nodes = $_POST['nodes'];
+       $s2 = (string)$nodes;
+       $os= $_POST['os'];
+       $system = $_POST['system'];
+       $memory = $_POST['memory'];
+       $os_type = $_POST['os_type'];
+       $cmp_name = $_POST['cmp_name'];
+       $full_cmp_name = $_POST['full_cmp_name'];
+       $domain = $_POST['domain'];
+       $workgroup = $_POST['workgroup'];
+       $ip = $_POST['ip'];
+       $webserver = $_POST['webserver'];
+       $url_web_opac = $_POST['url_web_opac'];
+       $opac_loc = $_POST['opac_loc'];
+       $db_loc = $_POST['db_loc'];
+       $drive_name_type = $_POST['drive_name_type'];
+       $free_space = $_POST['free_space'];
+       $total_space = $_POST['total_space'];
+       $client_os = $_POST['client_os'];
+       $client_system = $_POST['client_system'];
+       $client_memory = $_POST['client_memory'];
+       $client_system_type = $_POST['client_system_type'];
+       $remarks = $_POST['remarks'];
+       $count = 1;
+       require ('fpdf181/fpdf.php');
+     class PDF extends FPDF
+      {
+      // Page header
+      function Header()
+      {
+       $this->Image('fpdf181/logo.jpg',10,40,120,10,'JPG',0,1);
+      }
 
+      }
+     $pdf = new PDF();
+     $pdf->SetMargins(10,30,10);
+     $pdf->AliasNbPages();
+     $pdf->AddPage();
+     $pdf->SetFont('Arial','B',14);
+     $pdf->Cell(0,10,"Current Configuration of Server and Workstation",0,1,'C');
+     $pdf->SetFont('Arial','',11);
+     $pdf->Cell(70,10,"1. Institute Name:",0,0);
+     $pdf->Cell(70,10,$client_name,0,1);
+     $pdf->Cell(70,10,"2. Alice Installation Date:",0,0);
+     $pdf->Cell(70,10,$installation_date,0,1);
+     $pdf->Cell(70,10,"3. Alice Version:",0,0);
+     $pdf->Cell(70,10,$version,0,1);
+     $pdf->Cell(70,10,"4. Number of Nodes:",0,0);
+     $pdf->Cell(70,10,$nodes,0,1);
+     $pdf->Cell(70,10,"5. Windows Operating System:",0,0);
+     $pdf->Cell(70,10,$os,0,1);
+     $pdf->Cell(70,10,"6.System(Processor):",0,0);
+     $pdf->Cell(70,10,$system,0,1);
+     $pdf->Cell(70,10,"7. Installed Memory(RAM):",0,0);
+     $pdf->Cell(70,10,$memory,0,1);
+     $pdf->Cell(70,10,"8. Operating System Type(32/64 Bit):",0,0);
+     $pdf->Cell(70,10,$os_type,0,1);
+     $pdf->Cell(70,10,"9. Computer Name:",0,0);
+     $pdf->Cell(70,10,$cmp_name,0,1);
+     $pdf->Cell(70,10,"10. Full Computer Name:",0,0);
+     $pdf->Cell(70,10,$full_cmp_name,0,1);
+     $pdf->Cell(70,10,"11. Domain(If Yes,Name):",0,0);
+     $pdf->Cell(70,10,$domain,0,1);
+     $pdf->Cell(70,10,"12. Workgroup(If Yes,Name):",0,0);
+     $pdf->Cell(70,10,$workgroup,0,1);
+     $pdf->Cell(70,10,"13. IP(Internal/External):",0,0);
+     $pdf->Cell(70,10,$ip,0,1);
+     $pdf->Cell(70,10,"14. Web Server(IIS):",0,0);
+     $pdf->Cell(70,10,$webserver,0,1);
+     $pdf->Cell(70,10,"15. URL WEB OPAC:",0,0);
+     $pdf->Cell(70,10,$url_web_opac,0,1);
+     $pdf->Cell(70,10,"16. WEB OPAC Location:",0,0);
+     $pdf->Cell(70,10,$opac_loc,0,1);
+     $pdf->Cell(70,10,"15. OASIS + Database Location:",0,0);
+     $pdf->Cell(70,10,$db_loc,0,1);
+     $pdf->SetFont('Arial','B',14);
+     $pdf->Cell(0,10,"Hard DISK",0,1,'L');
+     $pdf->SetFont('Arial','',12);
+     $pdf->Cell(45,10,"Drive Name Type:",1,0);
+     $pdf->Cell(45,10,"Free Space",1,0);
+     $pdf->Cell(45,10,"Total Space",1,1);
+     $pdf->Cell(45,10,$drive_name_type,1,0);
+     $pdf->Cell(45,10,$free_space,1,0);
+     $pdf->Cell(45,10,$total_space,1,1);
+     $pdf->SetFont('Arial','B',14);
+     $pdf->Cell(0,10,"No. of Work Station",0,1,'L');
+     $pdf->SetFont('Arial','',11);
+     $pdf->Cell(15,20,"S.No.:",1,0);
+     $pdf->Cell(40,20,"Windows OS",1,0);
+     $pdf->Cell(40,20,"System(processor:",1,0);
+     $pdf->Cell(40,20,"Installed",1,0);
+     $pdf->Cell(30,20,"System:",1,0);
+     $pdf->Cell(30,20,"remarks:",1,1);
+     $pdf->Cell(15,20,$count,1,0);
+     $pdf->Cell(40,20,$client_os,1,0);
+     $pdf->Cell(40,20,$client_system,1,0);
+     $pdf->Cell(40,20,$client_memory,1,0);
+     $pdf->Cell(30,20,$client_system_type,1,0);
+     $pdf->Cell(30,20,$remarks,1,1);
+     $pdf->output("D");
 }
 function test_input($data)
 {

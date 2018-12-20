@@ -2,7 +2,6 @@
 <label id="form_hd2"> Software Purchased: <?php echo $software_purchased; ?></label>
 <div id = "show_full_details" class="view_full_details_div">
  <?php
-
     $query0 = "SELECT client_id, client_name, address, software_purchased, product_purchased, records, users, data_service, data_entry, status FROM softlinkasia.main where client_name='$client_name' AND software_purchased='$software_purchased'";
     if (mysqli_query($conn, $query0))
     {
@@ -375,6 +374,7 @@
                 $software_purchased = 'alice';
        ?>
               <input type='hidden' value='<?php echo $row['client_id']; ?>' name='client_id'/>
+              <input type='hidden' value='<?php echo $client_name; ?>' name='client_name'/>
               <input type='hidden' value='<?php echo $software_purchased; ?>' name='software_purchased'/>
                 <tr>
                    <td>Installation Date::</td>
@@ -389,6 +389,7 @@
                 <tr>
                     <td>No. of Nodes:</td>
                     <td><input type='number' class='config_table_textfields' name='nodes' value="<?php echo $row['no_of_nodes']?>" readonly/></td>
+                    <td><input type='submit' class='config_table_btn' id='config_table_btn_pdf_a' name='config_table_btn_pdf_a' value='Download as PDF'/></td>
                 </tr>
                 <tr>
                     <td>OS:</td>

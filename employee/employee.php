@@ -3,7 +3,7 @@
    <form action="" method="POST">
       <p style="font-size: 14px; font-weight: bold; text-align: center;">Human Resource</p>
       <button type="submit" class="emp" id="emp1" name="add_emp"  value="Add">Add</button>
-      <button type="submit" class="emp" id="emp2" name="view_emp" value="View">View</button>
+      <button type="submit" class="emp" id="emp2" name="view_hr" value="View">View</button>
       <br/>
       <br/>
       <br/>
@@ -14,20 +14,15 @@
 
 </div>
 <div class="right">
-<form action="backend_logic.php" method="POST">
-   <button type="submit" id="emp5" name="add_emp" value="customer support portal">Customer Support Portal</button>
-</form>
-   
-
 
 <?php
   if(isset($_POST['add_emp']))
   {
   	 include_once "add_emp.php";
   }
-  else if(isset($_POST['view_emp']))
+  else if(isset($_POST['view_hr']))
   {
-  	 include_once "view_emp.php";
+  	 include_once "view_hr.php";
   }
   else if(isset($_POST['add_training']))
   {
@@ -36,6 +31,24 @@
   else if(isset($_POST['view_training']))
   {
   	 include_once "view_training.php";
+  }
+  elseif(isset($_POST['view_emp_details'])) 
+  {
+     foreach ($_POST['view_emp_details'] as $k_id => $view_emp_details)
+     {
+        $id= $_POST['id'][$k_id];
+        $name = $_POST['name'][$k_id];
+        include_once "employee/view_emp_details.php";
+     }    
+  }
+  elseif(isset($_POST['view_t_details'])) 
+  {
+     foreach ($_POST['view_t_details'] as $k_id => $view_t_details)
+     {
+        $id= $_POST['id'][$k_id];
+        $name = $_POST['name'][$k_id];
+        include_once "employee/view_t_details.php";
+     }    
   }
 ?>
 

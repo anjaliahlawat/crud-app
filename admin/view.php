@@ -3,17 +3,16 @@
 ?>
 
 <div id="view_page">
-    <input class="Afield" id="view1" type="text" onkeyup="myFunction()" name="name" placeholder="type name here"/>
-    
+    <input class="Afield" id="view1" type="text" onkeyup="myFunction()" name="name" placeholder="type name here"/>    
     <select class="view_select" id="view2" name="view_select_type">
          <option  name="clients" value="clients">Clients</option>
     	   <option  name="suppliers" value="suppliers">Suppliers</option>
     	   <option  name="products" value="products">Products</option>
+         <option  name="products" value="bd_details">B/D Details</option>
     </select>
 <form method="post" action="home.php">
 <table id="show_clients">
-<?php
-   
+<?php   
    $sql_v = "SELECT client_name, address, software_purchased, product_purchased, records, users, data_service, data_entry, status FROM softlinkasia.main";
 //   $result1 = mysqli_query($conn, $sql1);
    if (mysqli_query($conn, $sql_v))
@@ -173,6 +172,58 @@
       }
    ?>
 
-</table>
+   </table>
+   <table id = "show_bd_details" style="display:none;">
+      <?php
+       $sql_e = "SELECT bd_id, equip_name, bd_date, bd_time, id_no, bd_details, action_taken, bd_release, total_bd_hrs, remarks FROM softlinkasia.euipment_bd_details";
+
+       if (mysqli_query($conn, $sql_e))
+       {
+           $result_e = mysqli_query($conn, $sql_e);
+           $resultcheck_e = mysqli_num_rows($result_e);
+           if ($resultcheck_e < 1)
+           {
+              echo "<p>No Equipment breakdown details!</p>";
+           }
+           else
+           {
+              echo "<tr>";
+              echo "<th>S.No </th>";
+              echo "<th>Equipment </th>";
+              echo "<th>B/D Date</th>";
+              echo "<th>B/D Time</th>";
+              echo "<th>Id No.</th>";
+              echo "<th>B/D Details</th>";
+              echo "<th>Action Taken</th>";
+              echo "<th>B/D Release</th>";
+              echo "<th>Total B/D hours</th>";
+              echo "<th>Remarks</th>";
+              echo "</tr>";
+              $count = 0;
+              while ($row = mysqli_fetch_assoc($result_e))
+              {
+                  echo "<tr>";
+                 echo "<td>" . $count .  "<input type='hidden' value=".$row['bd_id'] ." name='bd_id[]'/></td>";
+                 echo "<td>" . $row['equip_name'] . "<input type='hidden' value=".$row['equip_name'] ." name='equip_name[]'/></td>";
+                 echo "<td>" . $row['bd_date'] . "</td>";
+                 echo "<td>" . $row['bd_time'] . "</td>";
+                 echo "<td>" . $row['id_no'] . "</td>";
+                 echo "<td>" . $row['bd_details'] . "</td>";
+                 echo "<td>" . $row['action_taken'] . "</td>";
+                 echo "<td>" . $row['bd_release'] . "</td>";
+                 echo "<td>" . $row['total_bd_hrs'] . "</td>";
+                 echo "<td>" . $row['remarks'] . "</td>";
+                 echo "<td id='last_td3'><input type='submit' class='form_btn' id='view_full_details4' name='view_full_details4[".$count."]' value='Edit Details'></td>";
+                 echo "</tr>"; 
+                 $count++; 
+              }
+           }
+       }
+       else 
+       {
+           echo "Error: " . $sql_e . "<br>" . mysqli_error($conn);
+       }
+    ?>
+   </table>
 </form>
 </div>

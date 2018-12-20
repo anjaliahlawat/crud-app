@@ -1,4 +1,4 @@
-<form class="training_form" action="admin/backend_logic.php" method="post">
+<form class="training_form" action="employee/backend_logic.php" method="post">
 <p class="training_heading">Please fill the following details</p><br/><br/>
   <table class="training_table">
      <tr>
@@ -20,11 +20,11 @@
      </tr>
      <tr>
        <td><label>Months</label></td>
-       <td><input class="Afield" type="number" name="months"/></td>
+       <td><input class="Afield" type="text" name="months"/></td>
      </tr>
      <tr>
        <td><label>Status:</label></td>
-       <td><input class="Afield" type="text" name="topic"/></td>
+       <td><input class="Afield" type="text" name="status"/></td>
      </tr>
      <tr>
        <td><label>Faculty:</label></td>
@@ -41,11 +41,11 @@
      </tr>
      <tr>
        <td><label>Date of Training:</label></td>
-       <td><input class="Afield" type="date" name="date"/></td>
+       <td><input class="Afield" type="date" name="t_date"/></td>
      </tr>
      <tr>
        <td><label>Time of Training:</label></td>
-       <td><input class="Afield" type="time" name="time"/></td>
+       <td><input class="Afield" type="time" name="t_time"/></td>
      </tr>
      <tr>
        <td><label>Effectiveness(Rating):</label></td>
@@ -53,6 +53,6 @@
      </tr>
   </table>
   <br/>
-  <input type="submit" class="form_btn" id="form_btn1" name="submit_form2" value="Save">
+  <input type="submit" class="form_btn" id="form_btn1" name="submit_form_tr" value="Save">
   <input type="reset" class="form_btn" id="form_btn2" value="Reset">
 </form>
