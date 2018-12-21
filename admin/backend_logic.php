@@ -1142,6 +1142,45 @@ else if(isset($_POST['config_table_btn_del']))
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
 }
+else if(isset($_POST['con_table_btn_save']))
+{
+    $con_name = $_POST['con_name'];
+    $phone_no = $_POST['phone_no'];
+    $designation = $_POST['designation'];
+    $con_id = $_POST['con_id'];
+    if(empty($con_name) || empty($phone_no) || empty($designation))
+    {
+        header("Location:http://localhost/CRUD/home.php?form=empty");
+        exit();
+    }
+    else
+    {
+        $sql2 = "UPDATE softlinkasia.contact_details SET con_name='$con_name', phone_no='$phone_no', designation='$designation' WHERE con_id='$con_id'";
+        if(mysqli_query($conn, $sql2))
+        {
+            header("Location:http://localhost/CRUD/home.php?form=success");
+            exit();
+        } 
+        else 
+        {
+            echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+        }
+    }
+}
+else if(isset($_POST['con_table_btn_del']))
+{
+    $con_id= $_POST['con_id'];
+    $query ="DELETE FROM softlinkasia.contact_details WHERE con_id='$con_id'";
+    if(mysqli_query($conn, $query))
+        {
+            header("Location:http://localhost/CRUD/home.php?form=success");
+            exit();
+        } 
+        else 
+        {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+}
 else if(isset($_POST['prod_table_btn_save']))
 {
     $product_name = $_POST['product_name'];
@@ -1350,81 +1389,180 @@ else if(isset($_POST['config_table_btn_pdf_a']))
        $remarks = $_POST['remarks'];
        $count = 1;
        require ('fpdf181/fpdf.php');
-     class PDF extends FPDF
-      {
-      // Page header
-      function Header()
-      {
-       $this->Image('fpdf181/logo.jpg',10,40,120,10,'JPG',0,1);
-      }
+       class PDF extends FPDF
+        {
+        // Page header
+          function Header()
+          {
+           $this->Image('fpdf181/logo.jpg',140,5,60,10,'JPG',0,1);
+          }
 
-      }
+        }
      $pdf = new PDF();
-     $pdf->SetMargins(10,30,10);
+     $pdf->SetMargins(5,14,5,5);
      $pdf->AliasNbPages();
      $pdf->AddPage();
-     $pdf->SetFont('Arial','B',14);
+     $pdf->SetFont('Arial','B',12);
      $pdf->Cell(0,10,"Current Configuration of Server and Workstation",0,1,'C');
-     $pdf->SetFont('Arial','',11);
-     $pdf->Cell(70,10,"1. Institute Name:",0,0);
-     $pdf->Cell(70,10,$client_name,0,1);
-     $pdf->Cell(70,10,"2. Alice Installation Date:",0,0);
-     $pdf->Cell(70,10,$installation_date,0,1);
-     $pdf->Cell(70,10,"3. Alice Version:",0,0);
-     $pdf->Cell(70,10,$version,0,1);
-     $pdf->Cell(70,10,"4. Number of Nodes:",0,0);
-     $pdf->Cell(70,10,$nodes,0,1);
-     $pdf->Cell(70,10,"5. Windows Operating System:",0,0);
-     $pdf->Cell(70,10,$os,0,1);
-     $pdf->Cell(70,10,"6.System(Processor):",0,0);
-     $pdf->Cell(70,10,$system,0,1);
-     $pdf->Cell(70,10,"7. Installed Memory(RAM):",0,0);
-     $pdf->Cell(70,10,$memory,0,1);
-     $pdf->Cell(70,10,"8. Operating System Type(32/64 Bit):",0,0);
-     $pdf->Cell(70,10,$os_type,0,1);
-     $pdf->Cell(70,10,"9. Computer Name:",0,0);
-     $pdf->Cell(70,10,$cmp_name,0,1);
-     $pdf->Cell(70,10,"10. Full Computer Name:",0,0);
-     $pdf->Cell(70,10,$full_cmp_name,0,1);
-     $pdf->Cell(70,10,"11. Domain(If Yes,Name):",0,0);
-     $pdf->Cell(70,10,$domain,0,1);
-     $pdf->Cell(70,10,"12. Workgroup(If Yes,Name):",0,0);
-     $pdf->Cell(70,10,$workgroup,0,1);
-     $pdf->Cell(70,10,"13. IP(Internal/External):",0,0);
-     $pdf->Cell(70,10,$ip,0,1);
-     $pdf->Cell(70,10,"14. Web Server(IIS):",0,0);
-     $pdf->Cell(70,10,$webserver,0,1);
-     $pdf->Cell(70,10,"15. URL WEB OPAC:",0,0);
-     $pdf->Cell(70,10,$url_web_opac,0,1);
-     $pdf->Cell(70,10,"16. WEB OPAC Location:",0,0);
-     $pdf->Cell(70,10,$opac_loc,0,1);
-     $pdf->Cell(70,10,"15. OASIS + Database Location:",0,0);
-     $pdf->Cell(70,10,$db_loc,0,1);
-     $pdf->SetFont('Arial','B',14);
+     $pdf->SetFont('Arial','',10);
+     $pdf->Cell(70,7," Institute Name:",0,0);
+     $pdf->Cell(70,7,$client_name,0,1);
+     $pdf->Cell(70,7," Alice Installation Date:",0,0);
+     $pdf->Cell(70,7,$installation_date,0,1);
+     $pdf->Cell(70,7," Alice Version:",0,0);
+     $pdf->Cell(70,7,$version,0,1);
+     $pdf->Cell(70,7," Number of Nodes:",0,0);
+     $pdf->Cell(70,7,$nodes,0,1);
+     $pdf->Cell(70,7," Windows Operating System:",0,0);
+     $pdf->Cell(70,7,$os,0,1);
+     $pdf->Cell(70,7," System(Processor):",0,0);
+     $pdf->Cell(70,7,$system,0,1);
+     $pdf->Cell(70,7," Installed Memory(RAM):",0,0);
+     $pdf->Cell(70,7,$memory,0,1);
+     $pdf->Cell(70,7," Operating System Type(32/64 Bit):",0,0);
+     $pdf->Cell(70,7,$os_type,0,1);
+     $pdf->Cell(70,7," Computer Name:",0,0);
+     $pdf->Cell(70,7,$cmp_name,0,1);
+     $pdf->Cell(70,7," Full Computer Name:",0,0);
+     $pdf->Cell(70,7,$full_cmp_name,0,1);
+     $pdf->Cell(70,7," Domain(If Yes,Name):",0,0);
+     $pdf->Cell(70,7,$domain,0,1);
+     $pdf->Cell(70,7," Workgroup(If Yes,Name):",0,0);
+     $pdf->Cell(70,7,$workgroup,0,1);
+     $pdf->Cell(70,7," IP(Internal/External):",0,0);
+     $pdf->Cell(70,7,$ip,0,1);
+     $pdf->Cell(70,7," Web Server(IIS):",0,0);
+     $pdf->Cell(70,7,$webserver,0,1);
+     $pdf->Cell(70,7," URL WEB OPAC:",0,0);
+     $pdf->Cell(70,7,$url_web_opac,0,1);
+     $pdf->Cell(70,7," WEB OPAC Location:",0,0);
+     $pdf->Cell(70,7,$opac_loc,0,1);
+     $pdf->Cell(70,7," OASIS + Database Location:",0,0);
+     $pdf->Cell(70,7,$db_loc,0,1);
+     $pdf->SetFont('Arial','B',12);
      $pdf->Cell(0,10,"Hard DISK",0,1,'L');
-     $pdf->SetFont('Arial','',12);
-     $pdf->Cell(45,10,"Drive Name Type:",1,0);
-     $pdf->Cell(45,10,"Free Space",1,0);
-     $pdf->Cell(45,10,"Total Space",1,1);
+     $pdf->SetFont('Arial','',10);
+     $pdf->Cell(45,7,"Drive Name Type:",1,0);
+     $pdf->Cell(45,7,"Free Space",1,0);
+     $pdf->Cell(45,7,"Total Space",1,1);
      $pdf->Cell(45,10,$drive_name_type,1,0);
      $pdf->Cell(45,10,$free_space,1,0);
      $pdf->Cell(45,10,$total_space,1,1);
-     $pdf->SetFont('Arial','B',14);
+     $pdf->SetFont('Arial','B',12);
      $pdf->Cell(0,10,"No. of Work Station",0,1,'L');
-     $pdf->SetFont('Arial','',11);
-     $pdf->Cell(15,20,"S.No.:",1,0);
-     $pdf->Cell(40,20,"Windows OS",1,0);
-     $pdf->Cell(40,20,"System(processor:",1,0);
-     $pdf->Cell(40,20,"Installed",1,0);
-     $pdf->Cell(30,20,"System:",1,0);
-     $pdf->Cell(30,20,"remarks:",1,1);
-     $pdf->Cell(15,20,$count,1,0);
-     $pdf->Cell(40,20,$client_os,1,0);
-     $pdf->Cell(40,20,$client_system,1,0);
-     $pdf->Cell(40,20,$client_memory,1,0);
-     $pdf->Cell(30,20,$client_system_type,1,0);
-     $pdf->Cell(30,20,$remarks,1,1);
+     $pdf->SetFont('Arial','',10);
+     $pdf->Cell(15,10,"S.No.:",1,0);
+     $pdf->Cell(40,10,"Windows OS",1,0);
+     $pdf->Cell(40,10,"System(processor:",1,0);
+     $pdf->Cell(40,10,"Installed",1,0);
+     $pdf->Cell(30,10,"System:",1,0);
+     $pdf->Cell(30,10,"remarks:",1,1);
+     $pdf->Cell(15,15,$count,1,0);
+     $pdf->Cell(40,15,$client_os,1,0);
+     $pdf->Cell(40,15,$client_system,1,0);
+     $pdf->Cell(40,15,$client_memory,1,0);
+     $pdf->Cell(30,15,$client_system_type,1,0);
+     $pdf->Cell(30,15,$remarks,1,1);
+     $pdf->Cell(100,20," ",0,1);
+     $pdf->Cell(150,10,"Authorized Signatory(Softlink)",0,0);
+     $pdf->Cell(120,10,"Authorized Signatory(Library)",0,1);
      $pdf->output("D");
+}
+else if(isset($_POST['config_table_btn_pdf_l']))
+{
+    $client_name = $_POST['client_name'];
+    $installation_date = $_POST['l_installation_date'];
+    $s1 = (string)$installation_date;
+    $l_version = $_POST['l_version'];
+    $db_name = $_POST['db_name'];
+    $l_os = $_POST['l_os'];
+    $l_system = $_POST['l_system'];
+    $l_memory = $_POST['l_memory'];
+    $l_system_type = $_POST['l_system_type'];
+    $hard_disk = $_POST['hard_disk'];
+    $l_cmp_name = $_POST['l_cmp_name'];
+    $l_full_cmp_name = $_POST['l_full_cmp_name'];
+    $l_workgroup = $_POST['l_workgroup'];
+    $ip_int = $_POST['ip_int'];
+    $ip_ext = $_POST['ip_ext'];
+    $l_webserver = $_POST['l_webserver'];
+    $url_int = $_POST['url_int'];
+    $url_ext = $_POST['url_ext'];
+    $l_url_int = $_POST['l_url_int'];
+    $l_url_ext = $_POST['l_url_ext'];
+    $l_db_loc = $_POST['l_db_loc'];
+    $l_server_loc = $_POST['l_server_loc'];
+    $c_used = $_POST['c_used'];
+    $c_available = $_POST['c_available'];
+    $d_used = $_POST['d_used'];
+    $d_available = $_POST['d_available'];
+    $count = 1;
+    require ('fpdf181/fpdf.php');
+    class PDF extends FPDF
+    {
+      // Page header
+      function Header()
+      {
+         $this->Image('fpdf181/logo.jpg',140,5,60,10,'JPG',0,1);
+      }
+    }      
+     $pdf = new PDF();
+     $pdf->SetMargins(5,14,5,5);
+     $pdf->AliasNbPages();
+     $pdf->AddPage();
+     $pdf->SetFont('Arial','B',12);
+     $pdf->Cell(0,10,"Server and Liberty Configuration Details",0,1,'C');
+     $pdf->SetFont('Arial','',10);
+     $pdf->Cell(70,7,"Institute Name:",0,0);
+     $pdf->Cell(70,7,$client_name,0,1);
+     $pdf->Cell(70,7," Installation Date:",0,0);
+     $pdf->Cell(70,7,$installation_date,0,1);
+     $pdf->Cell(70,7," Liberty Version:",0,0);
+     $pdf->Cell(70,7,$l_version,0,1);
+     $pdf->Cell(70,7,"Database:",0,0);
+     $pdf->Cell(70,7,$db_name,0,1);
+     $pdf->Cell(70,7," Windows Operating System:",0,0);
+     $pdf->Cell(70,7,$l_os,0,1);
+     $pdf->Cell(70,7," System:",0,0);
+     $pdf->Cell(70,7,$l_system,0,1);
+     $pdf->Cell(70,7," Installed Memory(RAM):",0,0);
+     $pdf->Cell(70,7,$l_memory,0,1);
+     $pdf->Cell(70,7," Operating System Type(32/64 Bit):",0,0);
+     $pdf->Cell(70,7,$l_system_type,0,1);
+     $pdf->Cell(70,7," Hard Disk:",0,0);
+     $pdf->Cell(70,7,$hard_disk,0,1);
+     $pdf->Cell(70,7," Computer Name:",0,0);
+     $pdf->Cell(70,7,$l_cmp_name,0,1);
+     $pdf->Cell(70,7," Full Computer Name:",0,0);
+     $pdf->Cell(70,7,$l_full_cmp_name,0,1);
+     $pdf->Cell(70,7,"12. Workgroup:",0,0);
+     $pdf->Cell(70,7,$l_workgroup,0,1);
+     $pdf->Cell(70,7," IP(Internal):",0,0);
+     $pdf->Cell(70,7,$ip_int,0,1);
+     $pdf->Cell(70,7," IP(External):",0,0);
+     $pdf->Cell(70,7,$ip_ext,0,1);
+     $pdf->Cell(70,7," Web Server:",0,0);
+     $pdf->Cell(70,7,$l_webserver,0,1);
+     $pdf->Cell(70,7," URL Report Server(Internal):",0,0);
+     $pdf->Cell(70,7,$url_int,0,1);
+     $pdf->Cell(70,7," URL Report Server(External):",0,0);
+     $pdf->Cell(70,7,$url_ext,0,1);
+     $pdf->Cell(70,7," URL Liberty(Internal):",0,0);
+     $pdf->Cell(70,7,$l_url_int,0,1);
+     $pdf->Cell(70,7," URL Liberty(External):",0,0);
+     $pdf->Cell(70,7,$l_url_ext,0,1);
+     $pdf->Cell(70,7," Database Location:",0,0);
+     $pdf->Cell(70,7,$l_db_loc,0,1);
+     $pdf->Cell(70,7," Liberty Server Location:",0,0);
+     $pdf->Cell(70,7,$l_server_loc,0,1);
+     $pdf->Cell(70,10," ",0,1);
+     $pdf->Cell(45,7,"C:/Fixed Drive",0,0);
+     $pdf->Cell(45,7,$c_used,0,0);
+     $pdf->Cell(45,7,$c_available,0,1);
+     $pdf->Cell(45,7,"D:/Fixed Drive",0,0);
+     $pdf->Cell(45,10,$d_used,0,0);
+     $pdf->Cell(45,7,$d_available,0,1);
+     $pdf->output("D");               
 }
 function test_input($data)
 {

@@ -159,6 +159,16 @@ elseif(isset($_POST['edit_rec']))
         include_once "admin/view_rec_table.php";
     }
 }
+elseif(isset($_POST['edit_con']))
+{
+    foreach ($_POST['edit_con'] as $id => $edit_con)
+    {
+        $con_id = $_POST['con_id'][$id];
+        $client_name= $_POST['client_name'];
+        $software_purchased = $_POST['software_purchased'];
+        include_once "admin/view_con_table.php";
+    }
+}
 elseif(isset($_POST['ds_table_btn_save']))
 {
     echo "hello";

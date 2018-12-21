@@ -222,20 +222,23 @@
              }
              else
              {
+                
                 echo "<tr>";
                 echo "<th>S.No </th>";
                 echo "<th>Contact Person </th>";
                 echo "<th>Phone Number</th>";
                 echo "<th>Designation</th>";
                 echo "</tr>";
-                $count = 1;             
+                $count = 0;             
                 while($row1=mysqli_fetch_assoc($result1))
-                {
+                { 
+
                     echo "<tr>";
                     echo "<td>" . $count . "</td>";
                     echo "<td>" . $row1['con_name'] . "</td>";
                     echo "<td>" . $row1['phone_no'] . "</td>";
                     echo "<td>" . $row1['designation'] . "</td>";
+                    echo "<td><input type='hidden' value='".$row1['con_id']."' name='con_id[]'/><input type='submit' class='form_btn' id='edit_con' name='edit_con[".$count."]' value='Edit'></td>";
                     echo "</tr>";
                     $count++;
                 }
@@ -248,35 +251,7 @@
             if($data_service=='no')
             {
                 echo "<p id='error_msg'> No details available.</p>";
-                echo "<input type='button' class='ds_table_btn' id='ds_table_btn_add' name='ds_table_btn_add' value='Add Now'/>";
-                echo "<tr class='ds_tr'>";
-                echo "<td>Data Service Type:</td>";
-                echo "<td><input type='radio' id='excel' name='ds_type' value='afw'> Data import from Excel<br/>
-                <input type='radio' id='afw' name='ds_type' value='excel'> Data conversion from Afw</td>";
-                echo "</tr>";
-                echo "<tr class='ds_tr'>";
-                echo "<td>Start Date:</td>";
-                echo "<td><input type='date' class='ds_table_txt' name='start_date'/></td>";
-                echo "</tr>";
-                echo "<tr class='ds_tr'>";
-                echo "<td>End Date:</td>";
-                echo "<td><input type='date' class='ds_table_txt' name='end_date'/></td>";
-                echo "</tr>";
-                echo "<tr class='ds_tr'>";
-                echo "<td>Status</td>";
-                echo "<td><input type='radio'  name='ds_status' value='Yet to complete'> Yet to complete<br/>
-                          <input type='radio' name='ds_status' value='In process'> In process<br/>
-                          <input type='radio' name='ds_status' value='Completed'> Completed</td>";
-                echo "</tr>";
-                echo "<tr class='ds_tr'>";
-                echo "<td>Remarks</td>";
-                echo "<td><input type='text' class='ds_table_txt' name='ds_remarks'/></td>";
-                echo "</tr>";
-                echo "<tr class='ds_tr'>";
-                echo "<td></td>";
-                echo "<td><input type='submit' class='ds_table_btn' id='ds_table_btn_save' name='ds_table_btn_save' value='Save'/>";
-                echo "</tr>";
-                echo "<input type='hidden' value='".$client_id."' name='rec_id[]'/>";                
+                               
             }
             else
             {
@@ -320,7 +295,7 @@
             }
          ?>   
      </table>
-     <table id="con_table" style="display:none;">
+     <table id="de_table" style="display:none;">
         <?php
             if($data_entry=='no')
             {
@@ -518,7 +493,8 @@
                  $software_purchased = 'liberty';
         ?>
                 <input type='hidden' value='<?php echo $row['client_id']; ?>' name='client_id'/>
-               <input type='hidden' value='<?php echo $software_purchased; ?>' name='software_purchased'/>
+                <input type='hidden' value='<?php echo $client_name; ?>' name='client_name'/>
+                <input type='hidden' value='<?php echo $software_purchased; ?>' name='software_purchased'/>
                  <tr>
                    <td>Installation Date:</td>
                    <td><input type='date' class='config_table_textfields' name='l_installation_date' value="<?php echo $row['installation_date']?>" readonly/></td>
@@ -527,6 +503,7 @@
                  <tr>
                    <td>Version:</td>
                    <td><input type='text' class='config_table_textfields' name='l_version' value="<?php echo $row['version']?>" readonly/></td>
+                   <td><input type='submit' class='config_table_btn' id='config_table_btn_pdf_l' name='config_table_btn_pdf_l' value='Download as PDF'/></td>
                 </tr>
                 <tr>
                    <td>Database Name:</td>
