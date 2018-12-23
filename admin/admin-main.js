@@ -127,18 +127,6 @@ $(document).ready(function(){
       
       });
 
-      //performa-invoice 
-      $("#performa").click(function()
-      {
-          $("#p_invoice_table").css("display", "block");
-          $("#invoice_table").css("display", "none");
-      });
-      $("#invoice").click(function()
-      {
-          $("#p_invoice_table").css("display", "none");
-          $("#invoice_table").css("display", "block");
-      });
-
       // view modules details
       $("#view_full_details1").click(function()
       {

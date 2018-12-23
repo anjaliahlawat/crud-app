@@ -694,10 +694,6 @@ input[type='number'], input[type='date'], input[type='time'], textarea
 {
 	margin-left: 20px;
 }
-#p_invoice_table
-{
-	display: none;
-}
 
 #setting_div 
 {
@@ -741,7 +737,7 @@ input[type='number'], input[type='date'], input[type='time'], textarea
 {
 	margin-top: 40px;
 }
-.main_table_btn, .mod_table_btn, .amc_table_btn, .con_table_btn, #edit_con, .emp_table_btn, .rec_table_btn, #edit_rec,.intern_table_btn, .t_table_btn, .config_table_btn,#view_full_details5, #view_emp_details, .ds_table_btn, .supp_table_btn, .prod_table_btn, #view_full_details4, .bd_table_btn, #view_t_details
+.main_table_btn, .mod_table_btn, .amc_table_btn, .con_table_btn, .invoice_btn, #edit_con, .emp_table_btn, .rec_table_btn, #edit_rec,.intern_table_btn, .t_table_btn, .config_table_btn,#view_full_details5, #view_emp_details, .ds_table_btn, .supp_table_btn, .prod_table_btn, #view_full_details4, .bd_table_btn, #view_t_details
 {
 	background-color: #3a3434;
     color: white;
@@ -751,7 +747,7 @@ input[type='number'], input[type='date'], input[type='time'], textarea
     border: 1px solid #3a3434;
     cursor: pointer;
 }
-.main_table_btn:hover, .mod_table_btn:hover, .con_table_btn:hover, #edit_con:hover, .amc_table_btn:hover, .emp_table_btn:hover, .t_table_btn:hover, .rec_table_btn:hover, .intern_table_btn:hover, #edit_rec:hover, #view_full_details5:hover, .config_table_btn:hover, #view_emp_details:hover,#view_t_details:hover, .ds_table_btn:hover, .supp_table_btn:hover, .prod_table_btn:hover, .bd_table_btn:hover, #view_full_details4:hover
+.main_table_btn:hover, .mod_table_btn:hover, .con_table_btn:hover, .invoice_btn:hover, #edit_con:hover, .amc_table_btn:hover, .emp_table_btn:hover, .t_table_btn:hover, .rec_table_btn:hover, .intern_table_btn:hover, #edit_rec:hover, #view_full_details5:hover, .config_table_btn:hover, #view_emp_details:hover,#view_t_details:hover, .ds_table_btn:hover, .supp_table_btn:hover, .prod_table_btn:hover, .bd_table_btn:hover, #view_full_details4:hover
 {
 	transform:scale(1.1);
 }
