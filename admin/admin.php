@@ -8,6 +8,8 @@
     <button type="submit" class="admin_action" id="b4" name="addMod" value="Add new Modules">Add new Modules</button>
     <button type="submit" class="admin_action" id="b5" name="addRec" value="Update Records">Update Records</button>
     <button type="submit" class="admin_action" id="b6" name="addAmc" value="Add amc Details">Add AMC Details</button>
+    <button type="submit" class="admin_action" id="b12" name="addDs" value="Add ds Details">Add DS Details</button>
+    <button type="submit" class="admin_action" id="b13" name="addDe" value="Add de Details">Add DE Details</button>
     <button type="submit" class="admin_action" id="b10" name="addConfig" value="Add Config. Details">Add Config. Details</button>
     <button type="submit" class="admin_action" id="b7" name="addPr" value="Add new Product">Add new Product</button>
     <button type="submit" class="admin_action" id="b8" name="addSup" value="Add new Supplier">Add new Supplier</button>
@@ -47,6 +49,14 @@ elseif (isset($_POST['addRec']))
 elseif (isset($_POST['addAmc']))
 { 
    include_once "admin/amc_details.php";
+}
+elseif (isset($_POST['addDs']))
+{ 
+   include_once "admin/add_ds.php";
+}
+elseif (isset($_POST['addDe']))
+{ 
+   include_once "admin/add_de.php";
 }
 elseif (isset($_POST['addConfig']))
 { 

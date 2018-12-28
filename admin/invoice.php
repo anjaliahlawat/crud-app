@@ -62,17 +62,33 @@
 	     <tr>
 	     	<td><label><b>Services</b></label></td>
 	     </tr>
-	     <tr class="desc_service">
+	     <tr>
 	     	<td><label>Description of Services:</label></td>
-	     	<td><input type='text' class='invoice_field' name='desc'/></td>
+	     	<td></td>
 	     </tr>
-	     <tr class="desc_service">
-	     	<td><label>SAC:</label></td>
-	     	<td><input type='text' class='invoice_field' name='sac'/></td>
+	     <tr>
+	     	<td><label> Service No. 1:</label></td>
+	     	<td><input type='text' class='invoice_field' name='desc1' placeholder="description"/></td>
+	     	<td><input type='text' class='invoice_field' name='sac1' placeholder="SAC"/></td>
+	     	<td><input type='text' class='invoice_field' name='amount1' placeholder="amount"/></td>
 	     </tr>
-	     <tr class="desc_service">
-	     	<td><label>Amount:</label></td>
-	     	<td><input type='text' class='invoice_field' name='amount'/></td>
+	     <tr>
+	     	<td><label> Service No. 2:</label></td>
+	     	<td><input type='text' class='invoice_field' name='desc2' placeholder="description" /></td>
+	     	<td><input type='text' class='invoice_field' name='sac2' placeholder="SAC"/></td>
+	     	<td><input type='text' class='invoice_field' name='amount2' placeholder="amount"/></td>
+	     </tr>
+	     <tr>
+	     	<td><label> Service No. 3:</label></td>
+	     	<td><input type='text' class='invoice_field' name='desc3' placeholder="description" /></td>
+	     	<td><input type='text' class='invoice_field' name='sac3' placeholder="SAC"/></td>
+	     	<td><input type='text' class='invoice_field' name='amount3' placeholder="amount"/></td>
+	     </tr>
+	     <tr>
+	     	<td><label> Service No. 4:</label></td>
+	     	<td><input type='text' class='invoice_field' name='desc4' placeholder="description" /></td>
+	     	<td><input type='text' class='invoice_field' name='sac4' placeholder="SAC"/></td>
+	     	<td><input type='text' class='invoice_field' name='amount4' placeholder="amount"/></td>
 	     </tr>
 	     <tr>
 	     	<td><label>Total Amount:</label></td>

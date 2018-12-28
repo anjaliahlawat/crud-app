@@ -3,7 +3,17 @@
   <table class="soft_details">
           <tr>
             <td><label> Client Name:</label></td>
-            <td><input class="Afield" type="text" name="client_name" /> </td>
+            <td><select class="select_client" name="client_name">
+                 <?php
+                    include_once "dbh2.inc.php";
+                    $sql0 = "SELECT client_name FROM softlinkasia.main";
+                    $result1 = mysqli_query($conn, $sql0);
+                    while($row = mysqli_fetch_assoc($result1))
+                    {
+                        echo "<option value='".$row['client_name']."'>".$row['client_name']."</option>";
+                    }
+                 ?>                  
+          </select> </td>
           </tr>
           <tr>
             <td><label> Software purchased:</label></td>
@@ -12,7 +22,17 @@
           </tr>
           <tr>
             <td><label> Module Name:</label></td>
-            <td><input class="Afield" type="text" name="module_name" /> </td>
+            <td><select class="select_client" name="module_name">
+                 <?php
+                    include_once "dbh2.inc.php";
+                    $sql0 = "SELECT module_name FROM softlinkasia.modules";
+                    $result1 = mysqli_query($conn, $sql0);
+                    while($row = mysqli_fetch_assoc($result1))
+                    {
+                        echo "<option value='".$row['module_name']."'>".$row['module_name']."</option>";
+                    }
+                 ?>                  
+          </select></td>
           </tr>
           <td><label> Invoice No.:</label></td>
             <td><input class="Afield" type="text" name="invoice_no" /> </td>

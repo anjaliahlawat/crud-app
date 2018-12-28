@@ -31,7 +31,32 @@ if(isset($_POST['generate_invoice']))
      $pdf->SetFont('Arial','B',12);
      $pdf->Cell(0,20,$type,1,1,'C');
      $pdf->SetFont('Arial','',10);
-     $pdf->Cell(0,7,Service Provider,1,0);
+     $pdf->Cell(200,7,Service Provider,1,0);
+     $pdf->Cell(200,7,Service Receiver,1,1);
+     $pdf->Cell(100,7,"GSTIN:",0,0);
+     $pdf->Cell(100,7,$gstin_p,0,0);
+     $pdf->Cell(100,7,"GSTIN:",0,0);
+     $pdf->Cell(100,7,$gstin_r,0,1);
+     $pdf->Cell(100,7,"Name:",0,0);
+     $pdf->Cell(100,7,$name_p,0,0);
+     $pdf->Cell(100,7,"Name:",0,0);
+     $pdf->Cell(100,7,$name_r,0,1);
+     $pdf->Cell(100,7,"Address:",0,0);
+     $pdf->Cell(100,7,$addrs_p,0,0);
+     $pdf->Cell(100,7,"Address:",0,0);
+     $pdf->Cell(100,7,$addrs_r,0,1);
+     $pdf->Cell(70,7,"State:",0,0);
+     $pdf->Cell(70,7,$state_p,0,0);
+     $pdf->Cell(30,7,"Code:",0,0);
+     $pdf->Cell(30,7,$code_r,0,0);
+     $pdf->Cell(70,7,"State:",0,0);
+     $pdf->Cell(70,7,$state_r,0,0);
+     $pdf->Cell(30,7,"Code:",0,0);
+     $pdf->Cell(30,7,$code_r,0,1);
+     $pdf->Cell(100,7,"Invoice No.:",0,0);
+     $pdf->Cell(100,7,$invoice_p,0,1);
+     $pdf->Cell(100,7,"Date of Invoice:",0,0);
+     $pdf->Cell(100,7,$doi_p,0,1);
 }
 
 ?>

@@ -3,7 +3,17 @@
   <table class="config_table">
      <tr>
         <td><label> Institute Name:</label></td>
-        <td><input class="Afield" type="text" name="client_name" id="institute_name"/><p id="test"></p> </td>
+        <td><select class="select_client" name="client_name">
+                 <?php
+                    include_once "dbh2.inc.php";
+                    $sql0 = "SELECT client_name FROM softlinkasia.main";
+                    $result1 = mysqli_query($conn, $sql0);
+                    while($row = mysqli_fetch_assoc($result1))
+                    {
+                        echo "<option value='".$row['client_name']."'>".$row['client_name']."</option>";
+                    }
+                 ?>                  
+          </select></td>
      </tr>
      <tr>
         <td><label> Software:</label></td>

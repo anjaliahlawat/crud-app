@@ -66,6 +66,7 @@ h1{
 	background-color:#d9d8d7;
 	height:490px;
 	width:150px;
+	overflow-y: scroll;
 }
 
 .right {
@@ -425,13 +426,6 @@ input[type='number'], input[type='date'], input[type='time'], textarea
     position: relative;
     left:200px;
 }
-.ds_class{
-	display:none;
-}
-
-.de_class{
-	display:none;
-}
 
 #excel_files {
 	display:none;
@@ -737,7 +731,7 @@ input[type='number'], input[type='date'], input[type='time'], textarea
 {
 	margin-top: 40px;
 }
-.main_table_btn, .mod_table_btn, .amc_table_btn, .con_table_btn, .invoice_btn, #edit_con, .emp_table_btn, .rec_table_btn, #edit_rec,.intern_table_btn, .t_table_btn, .config_table_btn,#view_full_details5, #view_emp_details, .ds_table_btn, .supp_table_btn, .prod_table_btn, #view_full_details4, .bd_table_btn, #view_t_details
+.main_table_btn, .mod_table_btn, .amc_table_btn, .con_table_btn, .invoice_btn, #edit_con, .emp_table_btn, .rec_table_btn, #edit_rec,.intern_table_btn, .t_table_btn, .config_table_btn,#view_full_details5, #view_emp_details, .ds_table_btn,.de_table_btn, .supp_table_btn, .prod_table_btn, #view_full_details4, .bd_table_btn, #view_t_details
 {
 	background-color: #3a3434;
     color: white;
@@ -747,11 +741,11 @@ input[type='number'], input[type='date'], input[type='time'], textarea
     border: 1px solid #3a3434;
     cursor: pointer;
 }
-.main_table_btn:hover, .mod_table_btn:hover, .con_table_btn:hover, .invoice_btn:hover, #edit_con:hover, .amc_table_btn:hover, .emp_table_btn:hover, .t_table_btn:hover, .rec_table_btn:hover, .intern_table_btn:hover, #edit_rec:hover, #view_full_details5:hover, .config_table_btn:hover, #view_emp_details:hover,#view_t_details:hover, .ds_table_btn:hover, .supp_table_btn:hover, .prod_table_btn:hover, .bd_table_btn:hover, #view_full_details4:hover
+.main_table_btn:hover, .mod_table_btn:hover, .con_table_btn:hover, .invoice_btn:hover, #edit_con:hover, .amc_table_btn:hover, .emp_table_btn:hover, .t_table_btn:hover, .rec_table_btn:hover, .intern_table_btn:hover, #edit_rec:hover, #view_full_details5:hover, .config_table_btn:hover, #view_emp_details:hover,#view_t_details:hover, .ds_table_btn:hover,.de_table_btn:hover, .supp_table_btn:hover, .prod_table_btn:hover, .bd_table_btn:hover, #view_full_details4:hover
 {
 	transform:scale(1.1);
 }
-#main_table_btn_save, #view_soft, #ds_type{
+#main_table_btn_save,#ds_table_btn_save,#de_table_btn_save, #view_soft, #ds_type{
 	display: none;
 }
 #error_msg, #ds_table_btn_add
@@ -780,7 +774,7 @@ input[type='number'], input[type='date'], input[type='time'], textarea
 #mod_table tr:nth-child(even) ,#con_table tr:nth-child(even), #amc_table tr:nth-child(even), #rec_table tr:nth-child(even), #show_bd_details tr:nth-child(even){
     background-color: #dddddd;
 }
-#view_amc_table, #view_rec_table, #view_con_table, #config_table, #view_supp_table, #view_prod_table, #view_bd_table, #view_intern_table, #view_emp_table
+#view_amc_table, #view_rec_table, #view_con_table, #config_table, #view_supp_table, #view_prod_table, #view_bd_table, #view_intern_table, #view_emp_table, #ds_table, #de_table
 {
 	margin-left: 100px;
 	margin-top: 60px;

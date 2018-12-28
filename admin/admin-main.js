@@ -10,11 +10,6 @@ $(document).ready(function(){
          $("#mod_liberty").css("display", "block");
          $("#mod_alice").css("display", "none");
       }); 
-     
-     // add client page
-      $("#ds_yes").click(function(){
-   	     $(".ds_class").css("display", "block"); 
-      }); 
 
       $("#excel").click(function(){
       	 $("#excel_files").css("display", "block");
@@ -23,19 +18,6 @@ $(document).ready(function(){
       $("#afw").click(function(){
       	 $("#excel_files").css("display", "none");
       });
-
-      $("#ds_no").click(function(){
-   	     $(".ds_class").css("display", "none"); 
-           $("#excel_files").css("display", "none");
-      }); 
-
-      $("#de_yes").click(function(){
-      	 $(".de_class").css("display", "block"); 
-      });
-
-      $("#de_no").click(function(){
-   	     $(".de_class").css("display", "none"); 
-      }); 
 
       // add contact details page
       $("#b2").click(function(){
@@ -221,6 +203,20 @@ $(document).ready(function(){
           $("#main_table_btn_del").css("display", "none");
           $("#main_table_btn_edit").css("display", "none");
           $(".main_table_textfields").attr("readonly", false);
+      }); 
+      $("#ds_table_btn_edit").click(function()
+      {
+          $("#ds_table_btn_save").css("display", "block");
+          $("#ds_table_btn_del").css("display", "none");
+          $("#ds_table_btn_edit").css("display", "none");
+          $(".ds_table_textfields").attr("readonly", false);
+      });
+      $("#de_table_btn_edit").click(function()
+      {
+          $("#de_table_btn_save").css("display", "block");
+          $("#de_table_btn_del").css("display", "none");
+          $("#de_table_btn_edit").css("display", "none");
+          $(".de_table_textfields").attr("readonly", false);
       });  
        $("#config_table_btn_edit").click(function()
       {

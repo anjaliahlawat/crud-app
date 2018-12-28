@@ -35,7 +35,8 @@ if(isset($_POST['attnd_btn']))
                 $query2 = "INSERT INTO securelogin.attendance(user_id, user_name, attendance, from_time, to_time, date_today) VALUES('$user_id', '$user_name', '$mark', '$from', '$to', '$date_today')";
                 if(mysqli_query($conn, $query2))
                {
-                  echo "New record created successfully";
+                   header("Location:http://localhost/CRUD/home.php?form=success");
+                   exit();  
                } 
                 else 
                {
@@ -192,34 +193,6 @@ else if(isset($_POST['submit_form1']))
 	$de = $_POST['de'];
   $users_new = (string)$users;
 
-
-	  if($ds == 'yes')
-	  {
-		   $ds_type = $_POST['ds_type'];
-		   $ds_start_date = $_POST['start_date'];
-		   $ds_end_date = $_POST['end_date'];
-		   $ds_status = mysqli_real_escape_string($conn, $_POST['ds_status']);
-		   $ds_remarks = mysqli_real_escape_string($conn, $_POST['ds_remarks']);
-       $start_date_new = (string)$ds_start_date;
-       $end_date_new = (string)$ds_end_date;
-		   if ($ds_type == 'excel'){
-			    $no_of_excel_files_rnc = $_POST['no_of_excel_files_rnc'];
-          $num = (string)$no_of_excel_files_rnc;
-		   }
-
-	  }
-	 if ($de == 'yes')
-	 {
-	  	$de_type = $_POST['de_type'];
-		  $de_start_date = $_POST['de_start_date'];
-		  $de_end_date = $_POST['de_end_date'];
-		  $de_status = $_POST['de_status'];
-      $de_remarks = $_POST['de_remarks'];
-      $de_start_date_new = (string)$de_start_date;
-      $de_end_date_new = (string)$de_end_date;
-
-	 }
-
 	//error handlers
 	 if (empty($clientname) || empty($addrs) || empty($soft) || empty($rec) || empty($users_new))
     {
@@ -239,7 +212,8 @@ else if(isset($_POST['submit_form1']))
             $sql = "INSERT INTO main (client_name, address, software_purchased, product_purchased, records, users, data_service, data_entry, status) VALUES ('$clientname', '$addrs', '$soft', '$product_purchased','$rec', '$users', '$ds', '$de', 'active')";
             if(mysqli_query($conn, $sql))
             {
-               echo "New record created successfully";
+                header("Location:http://localhost/CRUD/home.php?form=success");
+                exit();
             } 
             else 
             {
@@ -247,64 +221,103 @@ else if(isset($_POST['submit_form1']))
             }
         }
     }
-   if($ds == 'yes' || $de == 'yes') 
-   {
-      $sql0 = "SELECT client_id FROM main WHERE client_name='$clientname' AND software_purchased='$soft'";
+}
+// add ds details
+else if (isset($_POST['submit_form11']))
+{
+       $clientname = $_POST['client_name'];
+       $software_purchased = $_POST['soft'];
+       $ds_type = $_POST['ds_type'];
+       $ds_start_date = $_POST['start_date'];
+       $ds_end_date = $_POST['end_date'];
+       $ds_status = $_POST['ds_status'];
+       $ds_remarks = $_POST['ds_remarks'];
+       $start_date_new = (string)$ds_start_date;
+       $end_date_new = (string)$ds_end_date;
+       $num = $_POST['no_of_excel_files_rnc'];
+      $sql0 = "SELECT client_id FROM softlinkasia.main WHERE client_name='$clientname' AND software_purchased='$software_purchased'";
       $result1 = mysqli_query($conn, $sql0);
       $row = mysqli_fetch_assoc($result1);
       $client_id = $row['client_id']; 
-    	if($ds == 'yes')
-    	{
-    		if (empty($start_date_new) || empty($end_date_new) || empty($ds_status) || empty($ds_type))
-        {
-             header("Location:http://localhost/CRUD/home.php?form=emptyfields2");
-             exit();
-        }
-        else
-        {
-           if($ds_type == 'excel')
-           {
-                if(empty($num))
-                {
-                    header("Location:http://localhost/CRUD/home.php?form=emptyfield");
-                    exit();
-                }
-           }
-            $sql2 = "INSERT INTO data_service (client_id, type, start_date, end_date, d_status, remarks, no_of_excel_files_rnc) VALUES('$client_id', '$ds_type', '$ds_start_date', '$ds_end_date', '$ds_status', '$ds_remarks', '$no_of_excel_files_rnc')";
-
-            if(mysqli_query($conn, $sql2))
+      $sql1 = "SELECT * FROM softlinkasia.data_service WHERE client_id='$client_id'";
+      $result = mysqli_query($conn, $sql1);
+      $resultcheck = mysqli_num_rows($result);
+      if($resultcheck > 0)
+      {
+         echo "<p>Data service details already filled.</p>";
+      }
+      else
+      {  
+            if (empty($start_date_new) || empty($end_date_new) || empty($ds_status) || empty($ds_type))
             {
-                echo "New record created successfully";
-            } 
-            else 
-            {
-                echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
-            }           
-        }            
-    	}
-    	if ($de == 'yes') 
-    	{
-    		if (empty($de_start_date_new) || empty($de_end_date_new) || empty($de_status) || empty($de_type))
-        {
-            header("Location:http://localhost/CRUD/home.php?form=emptyfields3");
-            exit();
-        }
-        else
-        {
-            $sql3 = "INSERT INTO data_entry (client_id, type, start_date, end_date, status, remarks) VALUES('$client_id', '$de_type', '$de_start_date', '$de_end_date', '$de_status', '$de_remarks')";
-            if(mysqli_query($conn, $sql3))
-            {
-                echo "New record created successfully";
-            } 
-            else 
-            {
-                echo "Error: " . $sql3 . "<br>" . mysqli_error($conn);
+               header("Location:http://localhost/CRUD/home.php?form=emptyfields2");
+               exit();
             }
-        }
-    	}
-    	
-  }
-}  
+            else
+            {
+                $sql2 = "INSERT INTO softlinkasia.data_service (client_id, type, start_date, end_date, d_status, remarks, no_of_excel_files_rnc) VALUES('$client_id', '$ds_type', '$ds_start_date', '$ds_end_date', '$ds_status', '$ds_remarks', '$num')";
+                $sql3 = "UPDATE softlinkasia.main SET data_service='yes' WHERE client_id='$client_id'";
+
+                if(mysqli_query($conn, $sql2))
+                {
+                    mysqli_query($conn, $sql3);
+                    header("Location:http://localhost/CRUD/home.php?form=success");
+                    exit();
+                } 
+                else 
+                {
+                    echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+                }           
+            }            
+       }
+}
+
+else if (isset($_POST['submit_form12']))
+{
+      $clientname = $_POST['client_name'];
+      $software_purchased = $_POST['soft'];
+      $de_type = $_POST['de_type'];
+      $de_start_date = $_POST['de_start_date'];
+      $de_end_date = $_POST['de_end_date'];
+      $de_status = $_POST['de_status'];
+      $de_remarks = $_POST['de_remarks'];
+      $de_start_date_new = (string)$de_start_date;
+      $de_end_date_new = (string)$de_end_date;
+      $sql0 = "SELECT client_id FROM softlinkasia.main WHERE client_name='$clientname' AND software_purchased='$software_purchased'";
+      $result1 = mysqli_query($conn, $sql0);
+      $row = mysqli_fetch_assoc($result1);
+      $client_id = $row['client_id'];
+      $sql1 = "SELECT * FROM softlinkasia.data_entry WHERE client_id='$client_id'";
+      $result = mysqli_query($conn, $sql1);
+      $resultcheck = mysqli_num_rows($result);
+      if($resultcheck > 0)
+      {
+         echo "<p>Data entry details already filled.</p>";
+      }
+      else
+      { 
+          if (empty($de_start_date_new) || empty($de_end_date_new) || empty($de_status) || empty($de_type))
+          {
+                header("Location:http://localhost/CRUD/home.php?form=emptyfields3");
+                exit();
+          }
+          else
+          {
+                $sql3 = "INSERT INTO softlinkasia.data_entry (client_id, type, start_date, end_date, status, remarks) VALUES('$client_id', '$de_type', '$de_start_date', '$de_end_date', '$de_status', '$de_remarks')";
+                $sql2 = "UPDATE softlinkasia.main SET data_entry='yes' WHERE client_id='$client_id'";
+                if(mysqli_query($conn, $sql3))
+                {
+                    mysqli_query($conn, $sql2);
+                    header("Location:http://localhost/CRUD/home.php?form=success");
+                    exit();
+                } 
+                else 
+                {
+                    echo "Error: " . $sql3 . "<br>" . mysqli_error($conn);
+                }
+          }  
+      }
+}
 
 //add modules......
 
@@ -485,7 +498,8 @@ else if(isset($_POST['submit_form10']))
                       {
                           if(mysqli_query($conn, $sql3))
                           {
-                             echo "Registered";
+                             header("Location:http://localhost/CRUD/home.php?form=success");
+                             exit();
                           }
                           else
                           {
@@ -540,7 +554,8 @@ else if(isset($_POST['submit_form10']))
                    $sql1 = "INSERT INTO softlinkasia.liberty_system_details(installation_date, version, db_name, os, system, installed_memory, system_type, harddisk, cmp_name, full_cmp_name, workgroup, ip_internal, ip_external, webserver, url_report_server_int, url_report_server_ext, url_liberty_int, url_liberty_ext, db_loc, server_loc, client_id, c_used, c_available, d_used, d_available) VALUES('$installation_date', '$l_version', '$db_name', '$l_os', '$l_system', '$l_memory', '$l_system_type', $hard_disk', '$l_cmp_name', '$l_full_cmp_name', '$l_workgroup', '$ip_int', '$ip_ext', '$l_webserver', '$url_int', '$url_ext', '$l_url_int', '$l_url_ext', '$l_db_loc', '$l_server_loc', '$client_id', '$c_used', '$c_available', '$d_used', '$d_available')";
                    if(mysqli_query($conn, $sql1))
                    {
-                      echo "Registered";
+                      header("Location:http://localhost/CRUD/home.php?form=success");
+                      exit();
                    } 
                    else 
                    {
@@ -625,7 +640,8 @@ else if( isset($_POST['submit_form8']))
         $sql2 = "INSERT INTO softlinkasia.product(product_name, specifications, unit, rate, tax_type, delivery_terms, notes, warranty, supplier_name) VALUES('$product_name','$specifications', '$unit', '$rate', '$tax_type', '$delivery_terms', '$notes', '$warranty', '$supplier_name')";
         if(mysqli_query($conn, $sql2))   
         {
-           echo "New record created successfully";
+            header("Location:http://localhost/CRUD/home.php?form=success");
+            exit();
         } 
         else 
         {
@@ -668,7 +684,8 @@ else if(isset($_POST['submit_form6']))
                 $sql2 = "INSERT INTO supplier(supplier_name, type_of_supplier, location, contact_person, phone_no, remarks) VALUES ('$supplier_name', '$type_of_supplier', '$location', '$contact_person', '$phone_no', '$remarks')";
                 if(mysqli_query($conn, $sql2))
                 {
-                   echo "New record created successfully";
+                   header("Location:http://localhost/CRUD/home.php?form=success");
+                   exit();
                 } 
                 else 
                 {
@@ -953,6 +970,123 @@ else if(isset($_POST['amc_table_btn_save']))
           }
     }
 }
+else if(isset($_POST['ds_table_btn_save']))
+{
+       $ds_type = $_POST['ds_type'];
+       $ds_start_date = $_POST['start_date'];
+       $ds_end_date = $_POST['end_date'];
+       $ds_status = $_POST['ds_status'];
+       $ds_remarks = $_POST['ds_remarks'];
+       $start_date_new = (string)$ds_start_date;
+       $end_date_new = (string)$ds_end_date;
+       $num = $_POST['no_of_excel_files_rnc'];
+      $ds_id = $_POST['ds_id'];
+      if (empty($start_date_new) || empty($end_date_new) || empty($ds_status) || empty($ds_type))
+      {
+          header("Location:http://localhost/CRUD/home.php?form=emptyfields2");
+          exit();
+      }
+      else
+      {
+          $sql2 = "UPDATE softlinkasia.data_service SET type='$ds_type', start_date='$ds_start_date', end_date='$ds_end_date', d_status='$ds_status', remarks='$ds_remarks', no_of_excel_files_rnc='$num' WHERE ds_id='$ds_id'";
+
+                if(mysqli_query($conn, $sql2))
+                {
+                    header("Location:http://localhost/CRUD/home.php?form=success");
+                    exit();
+                } 
+                else 
+                {
+                    echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+                }           
+      }
+
+}
+else if(isset($_POST['ds_table_btn_del']))
+{
+    $ds_id= $_POST['ds_id'];
+    $query1 ="SELECT client_id FROM softlinkasia.data_service WHERE ds_id='$ds_id'";
+    $result1 = mysqli_query($conn, $query1);
+    $row = mysqli_fetch_assoc($result1);
+    $client_id=$row['client_id'];
+    $query ="DELETE FROM softlinkasia.data_service WHERE ds_id='$ds_id'";
+    if(mysqli_query($conn, $query))
+    {
+        $value="no";
+        $query2 ="UPDATE softlinkasia.main SET data_service='$value' WHERE client_id='$client_id'";
+        if(mysqli_query($conn, $query2))
+        {
+            header("Location:http://localhost/CRUD/home.php?form=success");
+            exit();            
+        }
+        else
+        {
+            echo "Error: " . $query2 . "<br>" . mysqli_error($conn);
+        }
+    } 
+    else 
+    {
+        echo "Error: " . $query . "<br>" . mysqli_error($conn);
+    }
+}
+else if(isset($_POST['de_table_btn_save']))
+{
+       $de_type = $_POST['de_type'];
+       $de_start_date = $_POST['de_start_date'];
+       $de_end_date = $_POST['de_end_date'];
+       $de_status = $_POST['de_status'];
+       $de_remarks = $_POST['de_remarks'];
+       $start_date_new = (string)$de_start_date;
+       $end_date_new = (string)$de_end_date;
+      $de_id = $_POST['de_id'];
+      if (empty($start_date_new) || empty($end_date_new) || empty($de_status) || empty($de_type))
+      {
+          header("Location:http://localhost/CRUD/home.php?form=emptyfields2");
+          exit();
+      }
+      else
+      {
+          $sql2 = "UPDATE softlinkasia.data_entry SET type='$de_type', start_date='$de_start_date', end_date='$de_end_date', status='$de_status', remarks='$de_remarks' WHERE de_id='$de_id'";
+
+                if(mysqli_query($conn, $sql2))
+                {
+
+                    header("Location:http://localhost/CRUD/home.php?form=success");
+                    exit();
+                } 
+                else 
+                {
+                    echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
+                }           
+      }
+}
+else if(isset($_POST['de_table_btn_del']))
+{
+    $de_id= $_POST['de_id'];
+    $query1 ="SELECT client_id FROM softlinkasia.data_entry WHERE de_id='$de_id'";
+    $result1 = mysqli_query($conn, $query1);
+    $row = mysqli_fetch_assoc($result1);
+    $client_id=$row['client_id'];
+    $query ="DELETE FROM softlinkasia.data_entry WHERE de_id='$de_id'";
+    if(mysqli_query($conn, $query))
+    {  
+        $value="no";
+        $query2 ="UPDATE softlinkasia.main SET data_entry='$value' WHERE client_id='$client_id'";
+        if(mysqli_query($conn, $query2))
+        {
+            header("Location:http://localhost/CRUD/home.php?form=success");
+            exit();
+        }
+        else
+        {
+            echo "Error: " . $query2 . "<br>" . mysqli_error($conn);
+        }
+    } 
+    else 
+    {
+        echo "Error: " . $query . "<br>" . mysqli_error($conn);
+    }
+}
 else if(isset($_POST['amc_table_btn_del']))
 {
     $amc_id= $_POST['amc_id'];
@@ -1117,7 +1251,7 @@ else if(isset($_POST['config_table_btn_save']))
              $query="UPDATE softlinkasia.liberty_system_details SET installation_date='$installation_date', version='$l_version', db_name='$db_name', os='$l_os', system='$l_system', installed_memory='$l_memory', system_type='$l_system_type', harddisk='$hard_disk', cmp_name='$l_cmp_name', full_cmp_name='$l_full_cmp_name', workgroup='$l_workgroup', ip_internal='$ip_int', ip_external='$ip_ext', webserver='$l_webserver', url_report_server_int ='$url_int', url_report_server_ext='$url_ext', url_liberty_int='$l_url_int', url_liberty_ext='$l_url_ext', db_loc='$l_db_loc', server_loc='$l_server_loc', c_used ='$c_used',c_available='$c_used', d_used='$d_used', d_available='$d_available' WHERE client_id='$client_id'";
              if(mysqli_query($conn, $query))
              {
-                 header("Location:http://localhost/CRUD/home.php?form=emptyfields");
+                 header("Location:http://localhost/CRUD/home.php?form=success");
                  exit();
              }
              else 
