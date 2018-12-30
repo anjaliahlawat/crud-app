@@ -117,13 +117,13 @@
              <input type="submit" id="save_pwd" name="save_pwd" value="Save Changes"/>
          </div>
       </form>
-      <a href="http://localhost/CRUD/softlinkasia.php">Back to home</a>
+      <a href="http://localhost:81/CRUD/softlinkasia.php">Back to home</a>
    </div>
  <?php
    }
    else
    {
-   	    header("Location:http://localhost/CRUD/softlinkasia.php");
+   	    header("Location:http://localhost:81/CRUD/softlinkasia.php");
         exit();
    }
  ?>

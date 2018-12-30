@@ -12,7 +12,7 @@ if (isset($_POST['Login']))
 	//error handlers
 	if (empty($username) || empty($password))
 	{
-        header("Location:http://localhost/CRUD/softlinkasia.php?login=empty");
+        header("Location:http://localhost:81/CRUD/softlinkasia.php?login=empty");
 	    exit();
 
        
@@ -32,7 +32,7 @@ if (isset($_POST['Login']))
 
              if ($resultCheck < 1)
              {
-                header("Location:http://localhost/CRUD/softlinkasia.php?login=error1");
+                header("Location:http://localhost/:81CRUD/softlinkasia.php?login=error1");
                 exit();
              }
              else 
@@ -44,7 +44,7 @@ if (isset($_POST['Login']))
                     if ($hashedPwdCheck == false)
                     {
 
-                        header("Location:http://localhost/CRUD/softlinkasia.php?login=error2");
+                        header("Location:http://localhost:81/CRUD/softlinkasia.php?login=error2");
                         exit();
                     }
                     elseif($hashedPwdCheck == true)
@@ -54,7 +54,7 @@ if (isset($_POST['Login']))
                         $_SESSION['username'] = $row['user_name'];
                         $_SESSION['code'] = $row['code'];
                         $_SESSION['type'] = $row['type'];
-                        header("Location:http://localhost/CRUD/softlinkasia.php?login=success");
+                        header("Location:http://localhost:81/CRUD/softlinkasia.php?login=success");
                         exit();
                     }
                 }
@@ -65,7 +65,7 @@ if (isset($_POST['Login']))
 }
 else
 	{
-	   header("Location:http://localhost/CRUD/softlinkasia.php?login=error3");
+	   header("Location:http://localhost:81/CRUD/softlinkasia.php?login=error3");
 	   exit();
 	}
 

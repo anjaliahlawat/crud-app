@@ -1,10 +1,10 @@
 
 <div class="header">
    <h1>Softlinkasia ERP Portal</h1>
-    <a class="header_links" id="homepage_link" href="http://localhost/CRUD/home.php">HOME</a>
-    <a class="header_links" id="bank" href="http://localhost/CRUD/home.php?view=Bank">BANK</a>
-    <a class="header_links" id="invoice" name="invoice" value="Invoice" href="http://localhost/CRUD/home.php?view1=Invoice">INVOICE</a>
-    <a class="header_links" id="help" name="help" value="help" href="http://localhost/CRUD/help.php">HELP?</a>
+    <a class="header_links" id="homepage_link" href="http://localhost:81/CRUD/home.php">HOME</a>
+    <a class="header_links" id="bank" href="http://localhost:81/CRUD/home.php?view=Bank">BANK</a>
+    <a class="header_links" id="invoice" name="invoice" value="Invoice" href="http://localhost:81/CRUD/home.php?view1=Invoice">INVOICE</a>
+    <a class="header_links" id="help" name="help" value="help" href="http://localhost:81/CRUD/help.php">HELP?</a>
    <div class="dropdown">
     <form method="POST">
     <button class="dropbtn"><a class="username" href="#"><?php echo $_SESSION['username'] ?></a></button>

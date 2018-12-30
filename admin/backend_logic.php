@@ -10,7 +10,7 @@ if(isset($_POST['attnd_btn']))
     $s3 = (string)$date_today;
     if(empty($s3))
     {
-        header("Location:http://localhost/CRUD/home.php?form=emptydatefield");
+        header("Location:http://localhost:81/CRUD/home.php?form=emptydatefield");
         exit();
     }
     // check if attendance is already taken on that date
@@ -35,7 +35,7 @@ if(isset($_POST['attnd_btn']))
                 $query2 = "INSERT INTO securelogin.attendance(user_id, user_name, attendance, from_time, to_time, date_today) VALUES('$user_id', '$user_name', '$mark', '$from', '$to', '$date_today')";
                 if(mysqli_query($conn, $query2))
                {
-                   header("Location:http://localhost/CRUD/home.php?form=success");
+                   header("Location:http://localhost:81/CRUD/home.php?form=success");
                    exit();  
                } 
                 else 
@@ -103,7 +103,7 @@ elseif (isset($_POST['save_bank_details'])) {
     $date = (string)$date_of_effect;
     if(empty($account_name) || empty($bank_name) || empty($curr_acc_no) || empty($bank_addrs) || empty($country) || empty($swift_code) || empty($ifsc_code) || empty($micr_code) || empty($branch_code) || empty($tan) || empty($pan) || empty($gstin) || empty($tin_no) || empty($cin) || empty($date))
     {
-       header("Location:http://localhost/CRUD/home.php?view=bank?form=emptyfield");
+       header("Location:http://localhost:81/CRUD/home.php?view=bank?form=emptyfield");
         exit();
     }
     else
@@ -111,7 +111,7 @@ elseif (isset($_POST['save_bank_details'])) {
        $query = "UPDATE securelogin.bank_details set account_name='$account_name', curr_acc_no='$curr_acc_no', bank_name='$bank_name', bank_addrs='$bank_addrs', country='$country', ifsc_code='$ifsc_code', swift_code='$swift_code', micr_code='$micr_code', branch_code='$branch_code', tan='$tan', pan='$pan', gstin='$gstin', tin_no='$tin_no', cin='$cin', date_of_effect='$date_of_effect'";
        if(mysqli_query($conn, $query))
        {
-           header("Location:http://localhost/CRUD/home.php?view=Bank");
+           header("Location:http://localhost:81/CRUD/home.php?view=Bank");
             exit();
        } 
        else 
@@ -196,7 +196,7 @@ else if(isset($_POST['submit_form1']))
 	//error handlers
 	 if (empty($clientname) || empty($addrs) || empty($soft) || empty($rec) || empty($users_new))
     {
-        header("Location:http://localhost/CRUD/home.php?form=emptyfields1");
+        header("Location:http://localhost:81/CRUD/home.php?form=emptyfields1");
         exit();
     }
     else 
@@ -204,7 +204,7 @@ else if(isset($_POST['submit_form1']))
         // check if input characters are valid
         if(!preg_match("/^[a-zA-Z .]*$/", $clientname))
         {
-          header("Location:http://localhost/CRUD/home.php?form=invalid");
+          header("Location:http://localhost:81/CRUD/home.php?form=invalid");
           exit();
         }
         else 
@@ -212,7 +212,7 @@ else if(isset($_POST['submit_form1']))
             $sql = "INSERT INTO main (client_name, address, software_purchased, product_purchased, records, users, data_service, data_entry, status) VALUES ('$clientname', '$addrs', '$soft', '$product_purchased','$rec', '$users', '$ds', '$de', 'active')";
             if(mysqli_query($conn, $sql))
             {
-                header("Location:http://localhost/CRUD/home.php?form=success");
+                header("Location:http://localhost:81/CRUD/home.php?form=success");
                 exit();
             } 
             else 
@@ -250,7 +250,7 @@ else if (isset($_POST['submit_form11']))
       {  
             if (empty($start_date_new) || empty($end_date_new) || empty($ds_status) || empty($ds_type))
             {
-               header("Location:http://localhost/CRUD/home.php?form=emptyfields2");
+               header("Location:http://localhost:81/CRUD/home.php?form=emptyfields2");
                exit();
             }
             else
@@ -261,7 +261,7 @@ else if (isset($_POST['submit_form11']))
                 if(mysqli_query($conn, $sql2))
                 {
                     mysqli_query($conn, $sql3);
-                    header("Location:http://localhost/CRUD/home.php?form=success");
+                    header("Location:http://localhost:81/CRUD/home.php?form=success");
                     exit();
                 } 
                 else 
@@ -298,7 +298,7 @@ else if (isset($_POST['submit_form12']))
       { 
           if (empty($de_start_date_new) || empty($de_end_date_new) || empty($de_status) || empty($de_type))
           {
-                header("Location:http://localhost/CRUD/home.php?form=emptyfields3");
+                header("Location:http://localhost:81/CRUD/home.php?form=emptyfields3");
                 exit();
           }
           else
@@ -308,7 +308,7 @@ else if (isset($_POST['submit_form12']))
                 if(mysqli_query($conn, $sql3))
                 {
                     mysqli_query($conn, $sql2);
-                    header("Location:http://localhost/CRUD/home.php?form=success");
+                    header("Location:http://localhost:81/CRUD/home.php?form=success");
                     exit();
                 } 
                 else 
@@ -343,14 +343,14 @@ else if (isset($_POST['submit_form7']))
 
     if (empty($clientname) || empty($software_purchased) || empty($module_name) || empty($s1) || empty($s2) || empty($s3) || empty($purchased_order_no) || empty($reg_no) || empty($s4) || empty($s5) || empty($s6))
     {
-        header("Location:http://localhost/CRUD/home.php?form=emptyfields");
+        header("Location:http://localhost:81/CRUD/home.php?form=emptyfields");
                 exit();
     }
     else
     {
         if(!preg_match("/^[a-zA-Z .]*$/", $clientname))
         {
-           header("Location:http://localhost/CRUD/home.php?form=invalid");
+           header("Location:http://localhost:81/CRUD/home.php?form=invalid");
             exit();
         }
         else 
@@ -369,7 +369,7 @@ else if (isset($_POST['submit_form7']))
                $client_id = $row['client_id'];
                $sql2 = "INSERT INTO softlinkasia.modules ( module_name, client_id, installation_date, purchased_order_no, no_of_nodes_purchased, date_of_m_purchased, module_cost, reg_no, training_date, no_of_training_days) VALUES ( '$module_name', '$client_id', '$installation_date', '$purchased_order_no', '$no_of_nodes_purchased', '$date_of_m_purchased', '$module_cost', '$reg_no', '$training_date', '$no_of_training_days')";
                mysqli_query($conn, $sql2);
-               header("Location:http://localhost/CRUD/home.php?form=success");
+               header("Location:http://localhost:81/CRUD/home.php?form=success");
                 exit();
            }
         }  
@@ -392,14 +392,14 @@ elseif (isset($_POST['submit_form3']))
     $s3 = (string)$per_of_amc_given;
     if (empty($clientname) || empty($software_purchased) || empty($module_name) || empty($invoice_no) || empty($s1) || empty($s2) || empty($s3))
     {
-        header("Location:http://localhost/CRUD/home.php?form=emptyfields");
+        header("Location:http://localhost:81/CRUD/home.php?form=emptyfields");
         exit();
     }
     else 
     {
         if(!preg_match("/^[a-zA-Z .]*$/", $clientname))
         {
-            header("Location:http://localhost/CRUD/home.php?form=invalid");
+            header("Location:http://localhost:81/CRUD/home.php?form=invalid");
             exit();
         }
         else         {
@@ -418,7 +418,7 @@ elseif (isset($_POST['submit_form3']))
                $sql2 = "INSERT INTO softlinkasia.amc(client_id, module_name, invoice_no, invoice_date, amc_period, per_of_amc_given, remarks) VALUES('$client_id', '$module_name', '$invoice_no', '$invoice_date', '$amc_period', '$per_of_amc_given', '$remarks')";
                if(mysqli_query($conn, $sql2))
                {
-                   header("Location:http://localhost/CRUD/home.php?form=success");
+                   header("Location:http://localhost:81/CRUD/home.php?form=success");
                    exit();
                }
                else
@@ -438,7 +438,7 @@ else if(isset($_POST['submit_form10']))
     $config_soft = $_POST['config_soft'];
     if(empty($client_name) || empty($config_soft))
     {
-        header("Location:http://localhost/CRUD/home.php?form=emptyfields1");
+        header("Location:http://localhost:81/CRUD/home.php?form=emptyfields1");
         exit();
     }
     else
@@ -484,7 +484,7 @@ else if(isset($_POST['submit_form10']))
               $remarks = $_POST['remarks'];
               if(empty($version) || empty($s1) || empty($s2) || empty($os) || empty($system) || empty($memory) || empty($os_type) || empty($cmp_name) || empty($full_cmp_name) || empty($domain) || empty($workgroup) || empty($ip) || empty($webserver) || empty($url_web_opac) || empty($opac_loc) || empty($db_loc) || empty($drive_name_type) || empty($free_space) || empty($total_space) || empty($client_os) || empty($client_system) || empty($client_memory) || empty($client_system_type))
               {
-                  header("Location:http://localhost/CRUD/home.php?form=emptyfields2");
+                  header("Location:http://localhost:81/CRUD/home.php?form=emptyfields2");
                   exit();
               }
               else
@@ -498,7 +498,7 @@ else if(isset($_POST['submit_form10']))
                       {
                           if(mysqli_query($conn, $sql3))
                           {
-                             header("Location:http://localhost/CRUD/home.php?form=success");
+                             header("Location:http://localhost:81/CRUD/home.php?form=success");
                              exit();
                           }
                           else
@@ -546,7 +546,7 @@ else if(isset($_POST['submit_form10']))
                $d_available = $_POST['d_available'];
                if(empty($s1) || empty($l_version) || empty($db_name) || empty($l_os) || empty($l_system) || empty($l_memory) || empty($l_system_type) || empty($hard_disk) || empty($l_cmp_name) || empty($l_full_cmp_name) || empty($l_workgroup) || empty($ip_int) || empty($ip_ext) || empty($l_webserver) || empty($url_int) || empty($url_ext) || empty($l_url_int) || empty($l_url_ext) || empty($l_db_loc) || empty($l_server_loc))
                {
-                   header("Location:http://localhost/CRUD/home.php?form=emptyfields");
+                   header("Location:http://localhost:81/CRUD/home.php?form=emptyfields");
                    exit();
                }
                else
@@ -554,7 +554,7 @@ else if(isset($_POST['submit_form10']))
                    $sql1 = "INSERT INTO softlinkasia.liberty_system_details(installation_date, version, db_name, os, system, installed_memory, system_type, harddisk, cmp_name, full_cmp_name, workgroup, ip_internal, ip_external, webserver, url_report_server_int, url_report_server_ext, url_liberty_int, url_liberty_ext, db_loc, server_loc, client_id, c_used, c_available, d_used, d_available) VALUES('$installation_date', '$l_version', '$db_name', '$l_os', '$l_system', '$l_memory', '$l_system_type', $hard_disk', '$l_cmp_name', '$l_full_cmp_name', '$l_workgroup', '$ip_int', '$ip_ext', '$l_webserver', '$url_int', '$url_ext', '$l_url_int', '$l_url_ext', '$l_db_loc', '$l_server_loc', '$client_id', '$c_used', '$c_available', '$d_used', '$d_available')";
                    if(mysqli_query($conn, $sql1))
                    {
-                      header("Location:http://localhost/CRUD/home.php?form=success");
+                      header("Location:http://localhost:81/CRUD/home.php?form=success");
                       exit();
                    } 
                    else 
@@ -582,14 +582,14 @@ else if (isset($_POST['submit_form2']))
 
    if (empty($clientname) || empty($rec) || empty($purchased_order_no) || empty($s1) || empty($reg_no) || empty($s2) || empty($s3))
    {
-      header("Location:http://localhost/CRUD/home.php?form=emptyfields");
+      header("Location:http://localhost:81/CRUD/home.php?form=emptyfields");
       exit();
    }
    else 
    {
       if(!preg_match("/^[a-zA-Z .]*$/", $clientname))
       {
-          header("Location:http://localhost/CRUD/home.php?form=invalid");
+          header("Location:http://localhost:81/CRUD/home.php?form=invalid");
                 exit();
       }
       else 
@@ -608,7 +608,7 @@ else if (isset($_POST['submit_form2']))
             $sql2 = "INSERT INTO softlinkasia.records(client_id, records, installation_date, purchased_order_no, date_of_new_records, cost, reg_no) VALUES('$client_id', '$rec', '$installation_date', '$purchased_order_no', '$date_of_new_records', '$cost', '$reg_no')";
             if(mysqli_query($conn, $sql2))
             {
-                header("Location:http://localhost/CRUD/home.php?form=success");
+                header("Location:http://localhost:81/CRUD/home.php?form=success");
                   exit();
             }            
          }
@@ -632,7 +632,7 @@ else if( isset($_POST['submit_form8']))
 
     if (empty($product_name) || empty($specifications) || empty($s1) || empty($s2) || empty($delivery_terms) || empty($notes))
     {
-       header("Location:http://localhost/CRUD/home.php?form=emptyfields");
+       header("Location:http://localhost:81/CRUD/home.php?form=emptyfields");
        exit();
     }
     else 
@@ -640,7 +640,7 @@ else if( isset($_POST['submit_form8']))
         $sql2 = "INSERT INTO softlinkasia.product(product_name, specifications, unit, rate, tax_type, delivery_terms, notes, warranty, supplier_name) VALUES('$product_name','$specifications', '$unit', '$rate', '$tax_type', '$delivery_terms', '$notes', '$warranty', '$supplier_name')";
         if(mysqli_query($conn, $sql2))   
         {
-            header("Location:http://localhost/CRUD/home.php?form=success");
+            header("Location:http://localhost:81/CRUD/home.php?form=success");
             exit();
         } 
         else 
@@ -660,14 +660,14 @@ else if(isset($_POST['submit_form6']))
     $remarks = $_POST['remarks'];
     if(empty($supplier_name) || empty($type_of_supplier) || empty($location) || empty($contact_person) || empty($phone_no))
     {
-        header("Location:http://localhost/CRUD/home.php?form=empty");
+        header("Location:http://localhost:81/CRUD/home.php?form=empty");
                   exit();
     }
     else 
     {
         if (!preg_match("/^[a-zA-Z .]*$/", $supplier_name))
          {
-              header("Location:http://localhost/CRUD/home.php?form=invalid");
+              header("Location:http://localhost:81/CRUD/home.php?form=invalid");
               exit();  
          }
          else
@@ -684,7 +684,7 @@ else if(isset($_POST['submit_form6']))
                 $sql2 = "INSERT INTO supplier(supplier_name, type_of_supplier, location, contact_person, phone_no, remarks) VALUES ('$supplier_name', '$type_of_supplier', '$location', '$contact_person', '$phone_no', '$remarks')";
                 if(mysqli_query($conn, $sql2))
                 {
-                   header("Location:http://localhost/CRUD/home.php?form=success");
+                   header("Location:http://localhost:81/CRUD/home.php?form=success");
                    exit();
                 } 
                 else 
@@ -713,21 +713,21 @@ else if(isset($_POST['submit_form5']))
 
     if (empty($equip_name) || empty($s1) || empty($id_no) || empty($bd_details) || empty($action_taken) || empty($bd_release) || empty($s2))
     {
-        header("Location:http://localhost/CRUD/home.php?form=empty");
+        header("Location:http://localhost:81/CRUD/home.php?form=empty");
         exit();
     }
     else 
     {
         if (!preg_match("/^[a-zA-Z ]*$/", $equip_name))
         {
-            header("Location:http://localhost/CRUD/home.php?form=empty");
+            header("Location:http://localhost:81/CRUD/home.php?form=empty");
             exit();
         }
         else 
         {
             $sql = "INSERT INTO softlinkasia.euipment_bd_details(equip_name, bd_date, bd_time, id_no, bd_details, action_taken, bd_release, total_bd_hrs, remarks) VALUES ('$equip_name', '$bd_date', '$bd_time', '$id_no', '$bd_details', '$action_taken', '$bd_release', '$total_bd_hrs', '$remarks')";
             mysqli_query($conn, $sql);
-            header("Location:http://localhost/CRUD/home.php?form=success");
+            header("Location:http://localhost:81/CRUD/home.php?form=success");
             exit();
         }
     }
@@ -741,14 +741,14 @@ else if(isset($_POST['submit_form_con']))
     $designation = $_POST['designation'];
     if( empty($clientname) || empty($con_name) || empty($phone_no) || empty($designation))
     {
-        header("Location:http://localhost/CRUD/home.php?form=empty");
+        header("Location:http://localhost:81/CRUD/home.php?form=empty");
         exit();
     }
     else
     {
         if(!preg_match("/^[a-zA-Z ]*$/", $clientname) || !preg_match("/^[a-zA-Z ]*$/", $con_name) || !preg_match("/^[a-zA-Z ]*$/", $designation))
         {
-            header("Location:http://localhost/CRUD/home.php?form=invalid");
+            header("Location:http://localhost:81/CRUD/home.php?form=invalid");
             exit();
         }
         else
@@ -774,7 +774,7 @@ else if(isset($_POST['submit_form_con']))
                     
                     if(!preg_match("/^[a-zA-Z ]*$/", $con_name2) || !preg_match("/^[a-zA-Z ]*$/", $designation2))
                     {
-                        header("Location:http://localhost/CRUD/home.php?form=invalid");
+                        header("Location:http://localhost:81/CRUD/home.php?form=invalid");
                         exit();
                     }
                     else 
@@ -790,7 +790,7 @@ else if(isset($_POST['submit_form_con']))
                  {                    
                      if(!preg_match("/^[a-zA-Z ]*$/", $con_name3) || !preg_match("/^[a-zA-Z ]*$/", $designation3))
                      {
-                          header("Location:http://localhost/CRUD/home.php?form=invalid");
+                          header("Location:http://localhost:81/CRUD/home.php?form=invalid");
                           exit();
                      }
                      else 
@@ -800,7 +800,7 @@ else if(isset($_POST['submit_form_con']))
                           
                      }
                 }
-                header("Location:http://localhost/CRUD/home.php?form=success");
+                header("Location:http://localhost:81/CRUD/home.php?form=success");
                 exit();
     
            }
@@ -825,21 +825,21 @@ else if(isset($_POST['submit_form9']))
 
     if(empty($name) |empty($addrs) || empty($contact_no) ||  empty($college) || empty($degree) || empty($grad_year) || empty($s3) || empty($s1) || empty($s2))
     {
-        header("Location:http://localhost/CRUD/home.php?form=empty");
+        header("Location:http://localhost:81/CRUD/home.php?form=empty");
                    exit();
     }
     else
     {
         if(!preg_match("/^[a-zA-Z .]*$/", $name))
         {
-           header("Location:http://localhost/CRUD/home.php?form=invalid");
+           header("Location:http://localhost:81/CRUD/home.php?form=invalid");
                    exit();
         }
         else
         {
             $sql1 = "INSERT INTO securelogin.intern(name, addrs, contact_no, college, degree, grad_year, worked_on, start_date, end_date) VALUES('$name', '$addrs', '$contact_no', '$college', '$degree', '$grad_year', '$worked_on', '$start_date', '$end_date')";
             mysqli_query($conn, $sql1);
-            header("Location:http://localhost/CRUD/home.php?form=success");
+            header("Location:http://localhost:81/CRUD/home.php?form=success");
                    exit();
         }
     }
@@ -856,7 +856,7 @@ else if(isset($_POST['main_table_btn_save']))
     $client_id= $_POST['client_id'];
     if(empty($s1) || empty($status) || empty($address))
     {
-        header("Location:http://localhost/CRUD/home.php?form=empty");
+        header("Location:http://localhost:81/CRUD/home.php?form=empty");
         exit();
     }
     else
@@ -864,7 +864,7 @@ else if(isset($_POST['main_table_btn_save']))
         $query="UPDATE softlinkasia.main set address='$address', product_purchased='$product_purchased', users= '$users', status='$status' WHERE client_id='$client_id'";
         if(mysqli_query($conn, $query))
         {
-            header("Location:http://localhost/CRUD/home.php?form=success");
+            header("Location:http://localhost:81/CRUD/home.php?form=success");
             exit();
         } 
         else 
@@ -880,7 +880,7 @@ else if(isset($_POST['main_table_btn_del']))
     $query ="DELETE FROM softlinkasia.main WHERE client_id='$client_id'";
     if(mysqli_query($conn, $query))
         {
-            header("Location:http://localhost/CRUD/home.php?form=success");
+            header("Location:http://localhost:81/CRUD/home.php?form=success");
             exit();
         } 
         else 
@@ -908,7 +908,7 @@ else if(isset($_POST['mod_table_btn_save']))
     $mod_id = $_POST['mod_id'];
     if(empty($s1) || empty($s2) || empty($s3) || empty($s4) || empty($s5) || empty($s6) || empty($reg_no) || empty($purchased_order_no) || empty($module_name))
     {
-        header("Location:http://localhost/CRUD/home.php?form=empty");
+        header("Location:http://localhost:81/CRUD/home.php?form=empty");
         exit();     
     }
     else
@@ -916,7 +916,7 @@ else if(isset($_POST['mod_table_btn_save']))
          $query="UPDATE softlinkasia.modules SET module_name ='$module_name', installation_date='$installation_date', purchased_order_no='$purchased_order_no', no_of_nodes_purchased='$no_of_nodes_purchased', date_of_m_purchased='$date_of_m_purchased', module_cost='$module_cost', reg_no='$reg_no', training_date='$training_date', no_of_training_days='$no_of_training_days' WHERE mod_id='$mod_id'";
          if(mysqli_query($conn, $query))
           {
-              header("Location:http://localhost/CRUD/home.php?form=success");
+              header("Location:http://localhost:81/CRUD/home.php?form=success");
               exit();
           } 
           else 
@@ -931,7 +931,7 @@ else if(isset($_POST['mod_table_btn_del']))
     $query ="DELETE FROM softlinkasia.modules WHERE mod_id='$mod_id'";
     if(mysqli_query($conn, $query))
         {
-            header("Location:http://localhost/CRUD/home.php?form=success");
+            header("Location:http://localhost:81/CRUD/home.php?form=success");
             exit();
         } 
         else 
@@ -953,7 +953,7 @@ else if(isset($_POST['amc_table_btn_save']))
     $amc_id = $_POST['amc_id'];
     if(empty($s1) || empty($s2) || empty($s3) || empty($module_name) || empty($invoice_no) || empty($remarks))
     {
-        header("Location:http://localhost/CRUD/home.php?form=empty");
+        header("Location:http://localhost:81/CRUD/home.php?form=empty");
         exit();     
     }
     else
@@ -961,7 +961,7 @@ else if(isset($_POST['amc_table_btn_save']))
         $query="UPDATE softlinkasia.amc SET module_name ='$module_name', invoice_no='$invoice_no', invoice_date='$invoice_date', amc_period='$amc_period', per_of_amc_given='$per_of_amc_given', remarks='$remarks' WHERE amc_id='$amc_id'";
          if(mysqli_query($conn, $query))
           {
-              header("Location:http://localhost/CRUD/home.php?form=success");
+              header("Location:http://localhost:81/CRUD/home.php?form=success");
               exit();
           } 
           else 
@@ -983,7 +983,7 @@ else if(isset($_POST['ds_table_btn_save']))
       $ds_id = $_POST['ds_id'];
       if (empty($start_date_new) || empty($end_date_new) || empty($ds_status) || empty($ds_type))
       {
-          header("Location:http://localhost/CRUD/home.php?form=emptyfields2");
+          header("Location:http://localhost:81/CRUD/home.php?form=emptyfields2");
           exit();
       }
       else
@@ -992,7 +992,7 @@ else if(isset($_POST['ds_table_btn_save']))
 
                 if(mysqli_query($conn, $sql2))
                 {
-                    header("Location:http://localhost/CRUD/home.php?form=success");
+                    header("Location:http://localhost:81/CRUD/home.php?form=success");
                     exit();
                 } 
                 else 
@@ -1016,7 +1016,7 @@ else if(isset($_POST['ds_table_btn_del']))
         $query2 ="UPDATE softlinkasia.main SET data_service='$value' WHERE client_id='$client_id'";
         if(mysqli_query($conn, $query2))
         {
-            header("Location:http://localhost/CRUD/home.php?form=success");
+            header("Location:http://localhost:81/CRUD/home.php?form=success");
             exit();            
         }
         else
@@ -1041,7 +1041,7 @@ else if(isset($_POST['de_table_btn_save']))
       $de_id = $_POST['de_id'];
       if (empty($start_date_new) || empty($end_date_new) || empty($de_status) || empty($de_type))
       {
-          header("Location:http://localhost/CRUD/home.php?form=emptyfields2");
+          header("Location:http://localhost:81/CRUD/home.php?form=emptyfields2");
           exit();
       }
       else
@@ -1051,7 +1051,7 @@ else if(isset($_POST['de_table_btn_save']))
                 if(mysqli_query($conn, $sql2))
                 {
 
-                    header("Location:http://localhost/CRUD/home.php?form=success");
+                    header("Location:http://localhost:81/CRUD/home.php?form=success");
                     exit();
                 } 
                 else 
@@ -1074,7 +1074,7 @@ else if(isset($_POST['de_table_btn_del']))
         $query2 ="UPDATE softlinkasia.main SET data_entry='$value' WHERE client_id='$client_id'";
         if(mysqli_query($conn, $query2))
         {
-            header("Location:http://localhost/CRUD/home.php?form=success");
+            header("Location:http://localhost:81/CRUD/home.php?form=success");
             exit();
         }
         else
@@ -1093,7 +1093,7 @@ else if(isset($_POST['amc_table_btn_del']))
     $query ="DELETE FROM softlinkasia.amc WHERE amc_id='$amc_id'";
     if(mysqli_query($conn, $query))
         {
-            header("Location:http://localhost/CRUD/home.php?form=success");
+            header("Location:http://localhost:81/CRUD/home.php?form=success");
             exit();
         } 
         else 
@@ -1116,7 +1116,7 @@ else if(isset($_POST['rec_table_btn_save']))
     $rec_id = $_POST['rec_id'];
     if(empty($s1) || empty($s2) || empty($s3)  || empty($s4) || empty($reg_no) || empty($purchased_order_no))
     {
-        header("Location:http://localhost/CRUD/home.php?form=empty");
+        header("Location:http://localhost:81/CRUD/home.php?form=empty");
         exit();     
     }
     else
@@ -1124,7 +1124,7 @@ else if(isset($_POST['rec_table_btn_save']))
         $query="UPDATE softlinkasia.records SET records ='$records', installation_date='$installation_date', purchased_order_no='$purchased_order_no', date_of_new_records='$date_of_new_records', cost='$cost', reg_no='$reg_no' WHERE rec_id='$rec_id'";
          if(mysqli_query($conn, $query))
           {
-              header("Location:http://localhost/CRUD/home.php?form=success");
+              header("Location:http://localhost:81/CRUD/home.php?form=success");
               exit();
           } 
           else 
@@ -1139,7 +1139,7 @@ else if(isset($_POST['rec_table_btn_del']))
     $query ="DELETE FROM softlinkasia.records WHERE rec_id='$rec_id'";
     if(mysqli_query($conn, $query))
         {
-            header("Location:http://localhost/CRUD/home.php?form=success");
+            header("Location:http://localhost:81/CRUD/home.php?form=success");
             exit();
         } 
         else 
@@ -1181,7 +1181,7 @@ else if(isset($_POST['config_table_btn_save']))
        $remarks = $_POST['remarks'];
        if(empty($version) || empty($s1) || empty($s2) || empty($os) || empty($system) || empty($memory) || empty($os_type) || empty($cmp_name) || empty($full_cmp_name) || empty($domain) || empty($workgroup) || empty($ip) || empty($webserver) || empty($url_web_opac) || empty($opac_loc) || empty($db_loc) || empty($drive_name_type) || empty($free_space) || empty($total_space) || empty($client_os) || empty($client_system) || empty($client_memory) || empty($client_system_type))
        {
-            header("Location:http://localhost/CRUD/home.php?form=emptyfields2");
+            header("Location:http://localhost:81/CRUD/home.php?form=emptyfields2");
             exit();
        }
        else
@@ -1195,7 +1195,7 @@ else if(isset($_POST['config_table_btn_save']))
                   $query2 = "UPDATE softlinkasia.workstation SET os='$client_os', system='$client_system', installed_memory='$client_memory', system_type='$client_system_type', remarks='$remarks' WHERE client_id='$client_id'";
                   if(mysqli_query($conn, $query2))
                   {
-                       header("Location:http://localhost/CRUD/home.php?form=success");
+                       header("Location:http://localhost:81/CRUD/home.php?form=success");
                        exit();
                   }
                   else 
@@ -1243,7 +1243,7 @@ else if(isset($_POST['config_table_btn_save']))
         $d_available = $_POST['d_available'];
         if(empty($s1) || empty($l_version) || empty($db_name) || empty($l_os) || empty($l_system) || empty($l_memory) || empty($l_system_type) || empty($hard_disk) || empty($l_cmp_name) || empty($l_full_cmp_name) || empty($l_workgroup) || empty($ip_int) || empty($ip_ext) || empty($l_webserver) || empty($url_int) || empty($url_ext) || empty($l_url_int) || empty($l_url_ext) || empty($l_db_loc) || empty($l_server_loc))
         {
-            header("Location:http://localhost/CRUD/home.php?form=emptyfields");
+            header("Location:http://localhost:81/CRUD/home.php?form=emptyfields");
             exit();
         }
         else
@@ -1251,7 +1251,7 @@ else if(isset($_POST['config_table_btn_save']))
              $query="UPDATE softlinkasia.liberty_system_details SET installation_date='$installation_date', version='$l_version', db_name='$db_name', os='$l_os', system='$l_system', installed_memory='$l_memory', system_type='$l_system_type', harddisk='$hard_disk', cmp_name='$l_cmp_name', full_cmp_name='$l_full_cmp_name', workgroup='$l_workgroup', ip_internal='$ip_int', ip_external='$ip_ext', webserver='$l_webserver', url_report_server_int ='$url_int', url_report_server_ext='$url_ext', url_liberty_int='$l_url_int', url_liberty_ext='$l_url_ext', db_loc='$l_db_loc', server_loc='$l_server_loc', c_used ='$c_used',c_available='$c_used', d_used='$d_used', d_available='$d_available' WHERE client_id='$client_id'";
              if(mysqli_query($conn, $query))
              {
-                 header("Location:http://localhost/CRUD/home.php?form=success");
+                 header("Location:http://localhost:81/CRUD/home.php?form=success");
                  exit();
              }
              else 
@@ -1268,7 +1268,7 @@ else if(isset($_POST['config_table_btn_del']))
     $query ="DELETE FROM softlinkasia.records WHERE config_id='$config_id'";
     if(mysqli_query($conn, $query))
         {
-            header("Location:http://localhost/CRUD/home.php?form=success");
+            header("Location:http://localhost:81/CRUD/home.php?form=success");
             exit();
         } 
         else 
@@ -1284,7 +1284,7 @@ else if(isset($_POST['con_table_btn_save']))
     $con_id = $_POST['con_id'];
     if(empty($con_name) || empty($phone_no) || empty($designation))
     {
-        header("Location:http://localhost/CRUD/home.php?form=empty");
+        header("Location:http://localhost:81/CRUD/home.php?form=empty");
         exit();
     }
     else
@@ -1292,7 +1292,7 @@ else if(isset($_POST['con_table_btn_save']))
         $sql2 = "UPDATE softlinkasia.contact_details SET con_name='$con_name', phone_no='$phone_no', designation='$designation' WHERE con_id='$con_id'";
         if(mysqli_query($conn, $sql2))
         {
-            header("Location:http://localhost/CRUD/home.php?form=success");
+            header("Location:http://localhost:81/CRUD/home.php?form=success");
             exit();
         } 
         else 
@@ -1307,7 +1307,7 @@ else if(isset($_POST['con_table_btn_del']))
     $query ="DELETE FROM softlinkasia.contact_details WHERE con_id='$con_id'";
     if(mysqli_query($conn, $query))
         {
-            header("Location:http://localhost/CRUD/home.php?form=success");
+            header("Location:http://localhost:81/CRUD/home.php?form=success");
             exit();
         } 
         else 
@@ -1331,7 +1331,7 @@ else if(isset($_POST['prod_table_btn_save']))
     $product_id= $_POST['product_id'];
     if (empty($product_name) || empty($specifications) || empty($s1) || empty($s2) || empty($delivery_terms) || empty($notes))
     {
-       header("Location:http://localhost/CRUD/home.php?form=emptyfields");
+       header("Location:http://localhost:81/CRUD/home.php?form=emptyfields");
        exit();
     }
     else 
@@ -1339,7 +1339,7 @@ else if(isset($_POST['prod_table_btn_save']))
         $sql2 = "UPDATE softlinkasia.product SET product_name='$product_name', specifications='$specifications', unit='$unit', rate='$rate', tax_type='$tax_type', delivery_terms='$delivery_terms', notes='$notes', warranty='$warranty', supplier_name='$supplier_name' WHERE product_id='$product_id'";
        if(mysqli_query($conn, $sql2))     
        {
-           header("Location:http://localhost/CRUD/home.php?form=success");
+           header("Location:http://localhost:81/CRUD/home.php?form=success");
            exit();
        } 
        else 
@@ -1354,7 +1354,7 @@ else if(isset($_POST['prod_table_btn_del']))
     $query ="DELETE FROM softlinkasia.product WHERE product_id='$product_id'";
     if(mysqli_query($conn, $query))
     {
-        header("Location:http://localhost/CRUD/home.php?form=success");
+        header("Location:http://localhost:81/CRUD/home.php?form=success");
         exit();
     } 
     else 
@@ -1373,7 +1373,7 @@ else if(isset($_POST['supp_table_btn_save']))
     $supplier_id = $_POST['supplier_id'];
     if(empty($supplier_name) || empty($type_of_supplier) || empty($location) || empty($contact_person) || empty($phone_no))
     {
-        header("Location:http://localhost/CRUD/home.php?form=empty");
+        header("Location:http://localhost:81/CRUD/home.php?form=empty");
         exit();
     }
     else 
@@ -1381,7 +1381,7 @@ else if(isset($_POST['supp_table_btn_save']))
         $sql2 = "UPDATE softlinkasia.supplier SET supplier_name='$supplier_name', type_of_supplier='$type_of_supplier', location='$location', contact_person='$contact_person', phone_no='$phone_no', remarks='$remarks' WHERE supplier_id='$supplier_id'";
         if(mysqli_query($conn, $sql2))
         {
-            header("Location:http://localhost/CRUD/home.php?form=success");
+            header("Location:http://localhost:81/CRUD/home.php?form=success");
             exit();
         } 
         else 
@@ -1396,7 +1396,7 @@ else if(isset($_POST['supp_table_btn_del']))
     $query ="DELETE FROM softlinkasia.supplier WHERE supplier_id='$supplier_id'";
     if(mysqli_query($conn, $query))
     {
-        header("Location:http://localhost/CRUD/home.php?form=success");
+        header("Location:http://localhost:81/CRUD/home.php?form=success");
         exit();
     } 
     else 
@@ -1420,7 +1420,7 @@ else if(isset($_POST['bd_table_btn_save']))
     $bd_id = $_POST['bd_id'];
     if (empty($equip_name) || empty($s1) || empty($id_no) || empty($bd_details) || empty($action_taken) || empty($bd_release) || empty($s2))
     {
-        header("Location:http://localhost/CRUD/home.php?form=empty");
+        header("Location:http://localhost:81/CRUD/home.php?form=empty");
         exit();
     }
     else
@@ -1428,7 +1428,7 @@ else if(isset($_POST['bd_table_btn_save']))
         $sql = "UPDATE softlinkasia.euipment_bd_details SET equip_name='$equip_name', bd_date='$bd_date', bd_time='$bd_time', id_no='$id_no', bd_details='$bd_details', action_taken= '$action_taken', bd_release='$bd_release', total_bd_hrs='$total_bd_hrs', remarks='$remarks' WHERE bd_id='$bd_id'";
         if(mysqli_query($conn, $sql))
         {
-            header("Location:http://localhost/CRUD/home.php?form=success");
+            header("Location:http://localhost:81/CRUD/home.php?form=success");
             exit();
         }
         else 
@@ -1443,7 +1443,7 @@ else if(isset($_POST['bd_table_btn_del']))
     $query ="DELETE FROM softlinkasia.euipment_bd_details WHERE bd_id='$bd_id'";
     if(mysqli_query($conn, $query))
     {
-        header("Location:http://localhost/CRUD/home.php?form=success");
+        header("Location:http://localhost:81/CRUD/home.php?form=success");
         exit();
     } 
     else 
@@ -1467,14 +1467,14 @@ else if(isset($_POST['intern_table_btn_save']))
     $intern_id=$_POST['intern_id'];
     if(empty($name) |empty($addrs) || empty($contact_no) ||  empty($college) || empty($degree) || empty($grad_year) || empty($s1) || empty($s2))
     {
-        header("Location:http://localhost/CRUD/home.php?form=empty");
+        header("Location:http://localhost:81/CRUD/home.php?form=empty");
         exit();
     }
     else
     {
         $sql1 = "UPDATE securelogin.intern SET name='$name', addrs='$addrs', contact_no='$contact_no', college='$college', degree='$degree', grad_year='$grad_year', worked_on='$worked_on', start_date='$start_date', end_date='$end_date' WHERE intern_id='$intern_id'";
         mysqli_query($conn, $sql1);
-        header("Location:http://localhost/CRUD/home.php?form=success");
+        header("Location:http://localhost:81/CRUD/home.php?form=success");
         exit();
     }
 }
@@ -1484,7 +1484,7 @@ else if(isset($_POST['intern_table_btn_del']))
     $query ="DELETE FROM securelogin.intern WHERE intern_id='$intern_id'";
     if(mysqli_query($conn, $query))
     {
-        header("Location:http://localhost/CRUD/home.php?form=success");
+        header("Location:http://localhost:81/CRUD/home.php?form=success");
         exit();
     } 
     else 
